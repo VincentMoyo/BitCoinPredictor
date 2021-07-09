@@ -1,0 +1,816 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2716AA52CF96FC9F42E9E90C /* Pods_BitCoinPredictor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17DC8E37780EE7057E65C1D9 /* Pods_BitCoinPredictor.framework */; };
+		39212604D6188AD1E065A495 /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1542B84DAE1FD68ECF1AE16E /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework */; };
+		7871481B268F13C5001CB255 /* APIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7871481A268F13C5001CB255 /* APIClass.swift */; };
+		7881AD07268DF1D800C319CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD06268DF1D800C319CF /* AppDelegate.swift */; };
+		7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD08268DF1D800C319CF /* SceneDelegate.swift */; };
+		7881AD10268DF1DB00C319CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD0F268DF1DB00C319CF /* Assets.xcassets */; };
+		7881AD13268DF1DB00C319CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD11268DF1DB00C319CF /* LaunchScreen.storyboard */; };
+		7881AD1E268DF1DB00C319CF /* BitCoinPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */; };
+		7881AD29268DF1DB00C319CF /* BitCoinPredictorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD28268DF1DB00C319CF /* BitCoinPredictorUITests.swift */; };
+		7881AD3C268DF55F00C319CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD3B268DF55F00C319CF /* Main.storyboard */; };
+		7881AD42268DF64B00C319CF /* DateClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3D268DF64800C319CF /* DateClass.swift */; };
+		7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3E268DF64900C319CF /* ComparisonViewController.swift */; };
+		7881AD44268DF64B00C319CF /* PredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3F268DF64900C319CF /* PredictViewController.swift */; };
+		7881AD45268DF64B00C319CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD40268DF64A00C319CF /* HomeViewController.swift */; };
+		7881AD46268DF64B00C319CF /* CrementClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD41268DF64B00C319CF /* CrementClass.swift */; };
+		7881AD49268DF65D00C319CF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD47268DF65C00C319CF /* APIManager.swift */; };
+		7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD48268DF65D00C319CF /* PriceList.swift */; };
+		7881AD4C268DF74100C319CF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD4B268DF74100C319CF /* DatabaseManager.swift */; };
+		7881AD4E268DFB4B00C319CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */; };
+		788B0175269304A8006AEE55 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788B0174269304A8006AEE55 /* TimerViewController.swift */; };
+		78B6A1FD269700F600133C0C /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6A1FC269700F600133C0C /* NewsViewController.swift */; };
+		78B6A1FF269706A400133C0C /* NewsTableCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6A1FE269706A400133C0C /* NewsTableCellViewController.swift */; };
+		863A0681181F88496FE6E564 /* Pods_BitCoinPredictorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EA3B6F6DC9805E545F48B4 /* Pods_BitCoinPredictorTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7881AD1A268DF1DB00C319CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7881ACFB268DF1D800C319CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7881AD02268DF1D800C319CF;
+			remoteInfo = BitCoinPredictor;
+		};
+		7881AD25268DF1DB00C319CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7881ACFB268DF1D800C319CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7881AD02268DF1D800C319CF;
+			remoteInfo = BitCoinPredictor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E59F19158D5C516F0A1057A /* Pods-BitCoinPredictor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor/Pods-BitCoinPredictor.release.xcconfig"; sourceTree = "<group>"; };
+		1542B84DAE1FD68ECF1AE16E /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinPredictor_BitCoinPredictorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17DC8E37780EE7057E65C1D9 /* Pods_BitCoinPredictor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinPredictor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2763469BF6BFA8600A786C7C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7871481A268F13C5001CB255 /* APIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClass.swift; sourceTree = "<group>"; };
+		7881AD03268DF1D800C319CF /* BitCoinPredictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinPredictor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7881AD06268DF1D800C319CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7881AD08268DF1D800C319CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7881AD0F268DF1DB00C319CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7881AD12268DF1DB00C319CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7881AD14268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7881AD19268DF1DB00C319CF /* BitCoinPredictorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinPredictorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinPredictorTests.swift; sourceTree = "<group>"; };
+		7881AD1F268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7881AD24268DF1DB00C319CF /* BitCoinPredictorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinPredictorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7881AD28268DF1DB00C319CF /* BitCoinPredictorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinPredictorUITests.swift; sourceTree = "<group>"; };
+		7881AD2A268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7881AD3B268DF55F00C319CF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7881AD3D268DF64800C319CF /* DateClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateClass.swift; sourceTree = "<group>"; };
+		7881AD3E268DF64900C319CF /* ComparisonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonViewController.swift; sourceTree = "<group>"; };
+		7881AD3F268DF64900C319CF /* PredictViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictViewController.swift; sourceTree = "<group>"; };
+		7881AD40268DF64A00C319CF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7881AD41268DF64B00C319CF /* CrementClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrementClass.swift; sourceTree = "<group>"; };
+		7881AD47268DF65C00C319CF /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		7881AD48268DF65D00C319CF /* PriceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceList.swift; sourceTree = "<group>"; };
+		7881AD4B268DF74100C319CF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		788B0174269304A8006AEE55 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		78B6A1FC269700F600133C0C /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		78B6A1FE269706A400133C0C /* NewsTableCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableCellViewController.swift; sourceTree = "<group>"; };
+		937AC07EB6239DCEF2A1F607 /* Pods-BitCoinPredictorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6F909A695ADC8EABAD6E595 /* Pods-BitCoinPredictorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF72DABCC18A6BE2D09E569C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC83E8F6784E03075F4FA5E2 /* Pods-BitCoinPredictor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor/Pods-BitCoinPredictor.debug.xcconfig"; sourceTree = "<group>"; };
+		F1EA3B6F6DC9805E545F48B4 /* Pods_BitCoinPredictorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinPredictorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7881AD00268DF1D800C319CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2716AA52CF96FC9F42E9E90C /* Pods_BitCoinPredictor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7881AD16268DF1DB00C319CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863A0681181F88496FE6E564 /* Pods_BitCoinPredictorTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7881AD21268DF1DB00C319CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39212604D6188AD1E065A495 /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		56AE5C23F50A28BA9312BD57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17DC8E37780EE7057E65C1D9 /* Pods_BitCoinPredictor.framework */,
+				1542B84DAE1FD68ECF1AE16E /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework */,
+				F1EA3B6F6DC9805E545F48B4 /* Pods_BitCoinPredictorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7881ACFA268DF1D800C319CF = {
+			isa = PBXGroup;
+			children = (
+				7881AD05268DF1D800C319CF /* BitCoinPredictor */,
+				7881AD1C268DF1DB00C319CF /* BitCoinPredictorTests */,
+				7881AD27268DF1DB00C319CF /* BitCoinPredictorUITests */,
+				7881AD04268DF1D800C319CF /* Products */,
+				BF6AE6D8F83770EB68BFFF5F /* Pods */,
+				56AE5C23F50A28BA9312BD57 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7881AD04268DF1D800C319CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7881AD03268DF1D800C319CF /* BitCoinPredictor.app */,
+				7881AD19268DF1DB00C319CF /* BitCoinPredictorTests.xctest */,
+				7881AD24268DF1DB00C319CF /* BitCoinPredictorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7881AD05268DF1D800C319CF /* BitCoinPredictor */ = {
+			isa = PBXGroup;
+			children = (
+				7881AD3A268DF50200C319CF /* Controller */,
+				7881AD39268DF4FB00C319CF /* View */,
+				7881AD38268DF4F200C319CF /* Model */,
+				7881AD06268DF1D800C319CF /* AppDelegate.swift */,
+				7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */,
+				7881AD08268DF1D800C319CF /* SceneDelegate.swift */,
+				7881AD0F268DF1DB00C319CF /* Assets.xcassets */,
+				7881AD11268DF1DB00C319CF /* LaunchScreen.storyboard */,
+				7881AD14268DF1DB00C319CF /* Info.plist */,
+			);
+			path = BitCoinPredictor;
+			sourceTree = "<group>";
+		};
+		7881AD1C268DF1DB00C319CF /* BitCoinPredictorTests */ = {
+			isa = PBXGroup;
+			children = (
+				7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */,
+				7881AD1F268DF1DB00C319CF /* Info.plist */,
+			);
+			path = BitCoinPredictorTests;
+			sourceTree = "<group>";
+		};
+		7881AD27268DF1DB00C319CF /* BitCoinPredictorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7881AD28268DF1DB00C319CF /* BitCoinPredictorUITests.swift */,
+				7881AD2A268DF1DB00C319CF /* Info.plist */,
+			);
+			path = BitCoinPredictorUITests;
+			sourceTree = "<group>";
+		};
+		7881AD38268DF4F200C319CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7881AD47268DF65C00C319CF /* APIManager.swift */,
+				7881AD4B268DF74100C319CF /* DatabaseManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7881AD39268DF4FB00C319CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				788B0174269304A8006AEE55 /* TimerViewController.swift */,
+				7881AD40268DF64A00C319CF /* HomeViewController.swift */,
+				78B6A1FC269700F600133C0C /* NewsViewController.swift */,
+				7881AD3F268DF64900C319CF /* PredictViewController.swift */,
+				7881AD3E268DF64900C319CF /* ComparisonViewController.swift */,
+				7881AD3B268DF55F00C319CF /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7881AD3A268DF50200C319CF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7881AD41268DF64B00C319CF /* CrementClass.swift */,
+				7881AD3D268DF64800C319CF /* DateClass.swift */,
+				7871481A268F13C5001CB255 /* APIClass.swift */,
+				78B6A1FE269706A400133C0C /* NewsTableCellViewController.swift */,
+				7881AD48268DF65D00C319CF /* PriceList.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF6AE6D8F83770EB68BFFF5F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC83E8F6784E03075F4FA5E2 /* Pods-BitCoinPredictor.debug.xcconfig */,
+				0E59F19158D5C516F0A1057A /* Pods-BitCoinPredictor.release.xcconfig */,
+				AF72DABCC18A6BE2D09E569C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig */,
+				2763469BF6BFA8600A786C7C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig */,
+				A6F909A695ADC8EABAD6E595 /* Pods-BitCoinPredictorTests.debug.xcconfig */,
+				937AC07EB6239DCEF2A1F607 /* Pods-BitCoinPredictorTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7881AD02268DF1D800C319CF /* BitCoinPredictor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7881AD2D268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictor" */;
+			buildPhases = (
+				2C069C0DA19987567A914174 /* [CP] Check Pods Manifest.lock */,
+				7881ACFF268DF1D800C319CF /* Sources */,
+				7881AD00268DF1D800C319CF /* Frameworks */,
+				7881AD01268DF1D800C319CF /* Resources */,
+				9997FE423947202BCC9BC64E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitCoinPredictor;
+			productName = BitCoinPredictor;
+			productReference = 7881AD03268DF1D800C319CF /* BitCoinPredictor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7881AD18268DF1DB00C319CF /* BitCoinPredictorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7881AD30268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictorTests" */;
+			buildPhases = (
+				D1410D5EBBC1E29D653B4DD5 /* [CP] Check Pods Manifest.lock */,
+				7881AD15268DF1DB00C319CF /* Sources */,
+				7881AD16268DF1DB00C319CF /* Frameworks */,
+				7881AD17268DF1DB00C319CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7881AD1B268DF1DB00C319CF /* PBXTargetDependency */,
+			);
+			name = BitCoinPredictorTests;
+			productName = BitCoinPredictorTests;
+			productReference = 7881AD19268DF1DB00C319CF /* BitCoinPredictorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7881AD23268DF1DB00C319CF /* BitCoinPredictorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7881AD33268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictorUITests" */;
+			buildPhases = (
+				FB6ED079A8A23C4E007708C4 /* [CP] Check Pods Manifest.lock */,
+				7881AD20268DF1DB00C319CF /* Sources */,
+				7881AD21268DF1DB00C319CF /* Frameworks */,
+				7881AD22268DF1DB00C319CF /* Resources */,
+				F5B26BE0A12BD43E8AAFDEB1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7881AD26268DF1DB00C319CF /* PBXTargetDependency */,
+			);
+			name = BitCoinPredictorUITests;
+			productName = BitCoinPredictorUITests;
+			productReference = 7881AD24268DF1DB00C319CF /* BitCoinPredictorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7881ACFB268DF1D800C319CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					7881AD02268DF1D800C319CF = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					7881AD18268DF1DB00C319CF = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 7881AD02268DF1D800C319CF;
+					};
+					7881AD23268DF1DB00C319CF = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 7881AD02268DF1D800C319CF;
+					};
+				};
+			};
+			buildConfigurationList = 7881ACFE268DF1D800C319CF /* Build configuration list for PBXProject "BitCoinPredictor" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7881ACFA268DF1D800C319CF;
+			productRefGroup = 7881AD04268DF1D800C319CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7881AD02268DF1D800C319CF /* BitCoinPredictor */,
+				7881AD18268DF1DB00C319CF /* BitCoinPredictorTests */,
+				7881AD23268DF1DB00C319CF /* BitCoinPredictorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7881AD01268DF1D800C319CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7881AD13268DF1DB00C319CF /* LaunchScreen.storyboard in Resources */,
+				7881AD4E268DFB4B00C319CF /* GoogleService-Info.plist in Resources */,
+				7881AD10268DF1DB00C319CF /* Assets.xcassets in Resources */,
+				7881AD3C268DF55F00C319CF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7881AD17268DF1DB00C319CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7881AD22268DF1DB00C319CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C069C0DA19987567A914174 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitCoinPredictor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9997FE423947202BCC9BC64E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor/Pods-BitCoinPredictor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor/Pods-BitCoinPredictor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor/Pods-BitCoinPredictor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1410D5EBBC1E29D653B4DD5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitCoinPredictorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5B26BE0A12BD43E8AAFDEB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB6ED079A8A23C4E007708C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitCoinPredictor-BitCoinPredictorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7881ACFF268DF1D800C319CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7871481B268F13C5001CB255 /* APIClass.swift in Sources */,
+				7881AD49268DF65D00C319CF /* APIManager.swift in Sources */,
+				7881AD45268DF64B00C319CF /* HomeViewController.swift in Sources */,
+				7881AD4C268DF74100C319CF /* DatabaseManager.swift in Sources */,
+				7881AD44268DF64B00C319CF /* PredictViewController.swift in Sources */,
+				78B6A1FF269706A400133C0C /* NewsTableCellViewController.swift in Sources */,
+				7881AD42268DF64B00C319CF /* DateClass.swift in Sources */,
+				7881AD07268DF1D800C319CF /* AppDelegate.swift in Sources */,
+				7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */,
+				7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */,
+				788B0175269304A8006AEE55 /* TimerViewController.swift in Sources */,
+				78B6A1FD269700F600133C0C /* NewsViewController.swift in Sources */,
+				7881AD46268DF64B00C319CF /* CrementClass.swift in Sources */,
+				7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7881AD15268DF1DB00C319CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7881AD1E268DF1DB00C319CF /* BitCoinPredictorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7881AD20268DF1DB00C319CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7881AD29268DF1DB00C319CF /* BitCoinPredictorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7881AD1B268DF1DB00C319CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7881AD02268DF1D800C319CF /* BitCoinPredictor */;
+			targetProxy = 7881AD1A268DF1DB00C319CF /* PBXContainerItemProxy */;
+		};
+		7881AD26268DF1DB00C319CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7881AD02268DF1D800C319CF /* BitCoinPredictor */;
+			targetProxy = 7881AD25268DF1DB00C319CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7881AD11268DF1DB00C319CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7881AD12268DF1DB00C319CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7881AD2B268DF1DB00C319CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7881AD2C268DF1DB00C319CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7881AD2E268DF1DB00C319CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC83E8F6784E03075F4FA5E2 /* Pods-BitCoinPredictor.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				INFOPLIST_FILE = BitCoinPredictor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7881AD2F268DF1DB00C319CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E59F19158D5C516F0A1057A /* Pods-BitCoinPredictor.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				INFOPLIST_FILE = BitCoinPredictor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7881AD31268DF1DB00C319CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6F909A695ADC8EABAD6E595 /* Pods-BitCoinPredictorTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				INFOPLIST_FILE = BitCoinPredictorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitCoinPredictor.app/BitCoinPredictor";
+			};
+			name = Debug;
+		};
+		7881AD32268DF1DB00C319CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 937AC07EB6239DCEF2A1F607 /* Pods-BitCoinPredictorTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				INFOPLIST_FILE = BitCoinPredictorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitCoinPredictor.app/BitCoinPredictor";
+			};
+			name = Release;
+		};
+		7881AD34268DF1DB00C319CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF72DABCC18A6BE2D09E569C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				INFOPLIST_FILE = BitCoinPredictorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitCoinPredictor;
+			};
+			name = Debug;
+		};
+		7881AD35268DF1DB00C319CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2763469BF6BFA8600A786C7C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				INFOPLIST_FILE = BitCoinPredictorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitCoinPredictor;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7881ACFE268DF1D800C319CF /* Build configuration list for PBXProject "BitCoinPredictor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7881AD2B268DF1DB00C319CF /* Debug */,
+				7881AD2C268DF1DB00C319CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7881AD2D268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7881AD2E268DF1DB00C319CF /* Debug */,
+				7881AD2F268DF1DB00C319CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7881AD30268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7881AD31268DF1DB00C319CF /* Debug */,
+				7881AD32268DF1DB00C319CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7881AD33268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7881AD34268DF1DB00C319CF /* Debug */,
+				7881AD35268DF1DB00C319CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7881ACFB268DF1D800C319CF /* Project object */;
+}

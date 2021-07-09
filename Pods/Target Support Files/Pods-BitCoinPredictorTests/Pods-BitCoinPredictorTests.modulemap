@@ -1,0 +1,6 @@
+framework module Pods_BitCoinPredictorTests {
+  umbrella header "Pods-BitCoinPredictorTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
