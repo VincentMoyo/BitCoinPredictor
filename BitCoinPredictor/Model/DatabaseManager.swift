@@ -13,7 +13,7 @@ struct DatabaseManager {
     let db = Firestore.firestore()
     
     func loadPricesFromDatabse(completion: @escaping (Result<[PriceList],Error>) -> Void) {
-        db.collection("ByteCoins")
+        db.collection(K.Database.BitCoinDatabaseName)
             .order(by: "date")
             .addSnapshotListener { (querySnapshot, error) in
                 var priceList: [PriceList] = []
@@ -36,7 +36,7 @@ struct DatabaseManager {
     }
     
     func loadPredictedPriceFromDatabase(completion: @escaping (Result<(price: String, date: String),Error>) -> Void) {
-        db.collection("PredictedPricesDatabase")
+        db.collection(K.Database.PredictedPriceDatabaseName)
             .addSnapshotListener { (querySnapshot, error) in
                 if let e = error {
                     print("There was an issue retrieving data from firestorem: \(e)")
@@ -55,7 +55,7 @@ struct DatabaseManager {
     }
     
     func updatePredictedPriceIntoDatabase(_ predictedPrice: String) {
-        db.collection("PredictedPricesDatabase").document("prices").updateData([
+        db.collection(K.Database.PredictedPriceDatabaseName).document(K.Database.PredictedPriceDocumentName).updateData([
             "price": predictedPrice,
             "date": String(Date().timeIntervalSince1970 + 30)
         ])
@@ -69,7 +69,7 @@ struct DatabaseManager {
     }
     
     func insertPriceToDatabase(_ price: String) {
-        db.collection("ByteCoins").addDocument(data: [
+        db.collection(K.Database.BitCoinDatabaseName).addDocument(data: [
             "rate": price,
             "date": String(Date().timeIntervalSince1970)
         ]) { (error) in

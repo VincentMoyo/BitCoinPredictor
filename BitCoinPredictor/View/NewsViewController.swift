@@ -11,12 +11,12 @@ import SafariServices
 
 class NewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let newsAPI = NewsAPI(apiKey: "2f6fc28af88f4ad0955e7e4568e26c37")
+    let newsAPI = NewsAPI(apiKey: K.News.apiKey)
     
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(NewsTableCellViewController.self,
-                       forCellReuseIdentifier: NewsTableCellViewController.identifier)
+                       forCellReuseIdentifier: K.News.identifier)
         return table
     }()
     
@@ -29,7 +29,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        newsAPI.getTopHeadlines(q: "bitcoin") { [weak self] result in
+        newsAPI.getTopHeadlines(q: K.News.headline) { [weak self] result in
             switch result {
             case .success(let headlines):
                 self?.articles = headlines
@@ -60,7 +60,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: NewsTableCellViewController.identifier ,
+            withIdentifier: K.News.identifier,
             for: indexPath
         ) as? NewsTableCellViewController else {
             fatalError()

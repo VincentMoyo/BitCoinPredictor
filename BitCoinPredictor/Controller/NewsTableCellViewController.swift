@@ -26,8 +26,6 @@ class NewsTableCellViewControllerModel {
 
 class NewsTableCellViewController: UITableViewCell {
     
-    static let identifier = "NewsTableCellViewController"
-    
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0

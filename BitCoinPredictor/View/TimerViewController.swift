@@ -11,10 +11,10 @@ import FirebaseFirestore
 
 class TimerViewController: UIViewController, ChartViewDelegate {
 
-    var dataManager = APIManager()
-    var timerSeconds = 0
+    let dataManager = APIManager()
     let apiClass = APIClass()
-    var database = DatabaseManager()
+    let database = DatabaseManager()
+    var timerSeconds = 0
     var priceList: [PriceList] = []
     var lineChart = LineChartView()
     var timer = Timer()
