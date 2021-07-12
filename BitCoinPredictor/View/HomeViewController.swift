@@ -12,6 +12,7 @@ class HomeViewController: TimerViewController {
     
     @IBOutlet weak var bitCoinLabel: UILabel!
     @IBOutlet weak var chartViewPrices: UIView!
+    @IBOutlet weak var liveGraphView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +61,10 @@ class HomeViewController: TimerViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         lineChart.frame = CGRect(x: 0, y: 0,
-                                 width: self.chartViewPrices.frame.size.width,
-                                 height: self.chartViewPrices.frame.size.width)
-        lineChart.center = chartViewPrices.center
-        view.addSubview(lineChart)
+                                 width: self.liveGraphView.frame.size.width,
+                                 height: self.liveGraphView.frame.size.width)
+        //lineChart.center = liveGraphView.center
+        liveGraphView.addSubview(lineChart)
         var entries = [ChartDataEntry]()
         for price in priceList {
             entries.append(ChartDataEntry(x: Double(price.date)!,
