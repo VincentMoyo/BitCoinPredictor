@@ -7,29 +7,14 @@
 
 import UIKit
 
-class NewsTableCellViewControllerModel {
-    let title: String
-    let subtile: String
-    let imageURL: URL?
-    var imageData: Data? = nil
-    
-    init(
-        title: String,
-        subtile: String,
-        imageURL: URL?
-    ) {
-        self.title = title
-        self.subtile = subtile
-        self.imageURL = imageURL
-    }
-}
+
 
 class NewsTableCellViewController: UITableViewCell {
     
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 25, weight: .medium)
+        label.font = .systemFont(ofSize: 15, weight: .medium)
         return label
     } ()
     

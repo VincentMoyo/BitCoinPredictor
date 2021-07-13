@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2716AA52CF96FC9F42E9E90C /* Pods_BitCoinPredictor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17DC8E37780EE7057E65C1D9 /* Pods_BitCoinPredictor.framework */; };
 		39212604D6188AD1E065A495 /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1542B84DAE1FD68ECF1AE16E /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework */; };
+		780AB350269C5E1E003BD7C9 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AB34F269C5E1E003BD7C9 /* NewsTableViewController.swift */; };
+		780AB358269C7977003BD7C9 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AB356269C7977003BD7C9 /* NewsCell.swift */; };
+		780AB359269C7977003BD7C9 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780AB357269C7977003BD7C9 /* NewsCell.xib */; };
 		784B13C226985C4500453A1A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B13C126985C4500453A1A /* Constants.swift */; };
 		7871481B268F13C5001CB255 /* APIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7871481A268F13C5001CB255 /* APIClass.swift */; };
 		7881AD07268DF1D800C319CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD06268DF1D800C319CF /* AppDelegate.swift */; };
@@ -28,7 +31,6 @@
 		7881AD4C268DF74100C319CF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD4B268DF74100C319CF /* DatabaseManager.swift */; };
 		7881AD4E268DFB4B00C319CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */; };
 		788B0175269304A8006AEE55 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788B0174269304A8006AEE55 /* TimerViewController.swift */; };
-		78B6A1FD269700F600133C0C /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6A1FC269700F600133C0C /* NewsViewController.swift */; };
 		78B6A1FF269706A400133C0C /* NewsTableCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6A1FE269706A400133C0C /* NewsTableCellViewController.swift */; };
 		863A0681181F88496FE6E564 /* Pods_BitCoinPredictorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EA3B6F6DC9805E545F48B4 /* Pods_BitCoinPredictorTests.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,9 @@
 		1542B84DAE1FD68ECF1AE16E /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinPredictor_BitCoinPredictorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DC8E37780EE7057E65C1D9 /* Pods_BitCoinPredictor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinPredictor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2763469BF6BFA8600A786C7C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		780AB34F269C5E1E003BD7C9 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		780AB356269C7977003BD7C9 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		780AB357269C7977003BD7C9 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		784B13C126985C4500453A1A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7871481A268F13C5001CB255 /* APIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClass.swift; sourceTree = "<group>"; };
 		7881AD03268DF1D800C319CF /* BitCoinPredictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinPredictor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +85,6 @@
 		7881AD4B268DF74100C319CF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		788B0174269304A8006AEE55 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		78B6A1FC269700F600133C0C /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		78B6A1FE269706A400133C0C /* NewsTableCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableCellViewController.swift; sourceTree = "<group>"; };
 		937AC07EB6239DCEF2A1F607 /* Pods-BitCoinPredictorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F909A695ADC8EABAD6E595 /* Pods-BitCoinPredictorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,10 +202,12 @@
 			children = (
 				788B0174269304A8006AEE55 /* TimerViewController.swift */,
 				7881AD40268DF64A00C319CF /* HomeViewController.swift */,
-				78B6A1FC269700F600133C0C /* NewsViewController.swift */,
 				7881AD3F268DF64900C319CF /* PredictViewController.swift */,
 				7881AD3E268DF64900C319CF /* ComparisonViewController.swift */,
 				7881AD3B268DF55F00C319CF /* Main.storyboard */,
+				780AB34F269C5E1E003BD7C9 /* NewsTableViewController.swift */,
+				780AB356269C7977003BD7C9 /* NewsCell.swift */,
+				780AB357269C7977003BD7C9 /* NewsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 			files = (
 				7881AD13268DF1DB00C319CF /* LaunchScreen.storyboard in Resources */,
 				7881AD4E268DFB4B00C319CF /* GoogleService-Info.plist in Resources */,
+				780AB359269C7977003BD7C9 /* NewsCell.xib in Resources */,
 				7881AD10268DF1DB00C319CF /* Assets.xcassets in Resources */,
 				7881AD3C268DF55F00C319CF /* Main.storyboard in Resources */,
 			);
@@ -476,13 +483,14 @@
 				7881AD4C268DF74100C319CF /* DatabaseManager.swift in Sources */,
 				7881AD44268DF64B00C319CF /* PredictViewController.swift in Sources */,
 				784B13C226985C4500453A1A /* Constants.swift in Sources */,
+				780AB358269C7977003BD7C9 /* NewsCell.swift in Sources */,
 				78B6A1FF269706A400133C0C /* NewsTableCellViewController.swift in Sources */,
 				7881AD42268DF64B00C319CF /* DateClass.swift in Sources */,
 				7881AD07268DF1D800C319CF /* AppDelegate.swift in Sources */,
 				7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */,
 				7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */,
 				788B0175269304A8006AEE55 /* TimerViewController.swift in Sources */,
-				78B6A1FD269700F600133C0C /* NewsViewController.swift in Sources */,
+				780AB350269C5E1E003BD7C9 /* NewsTableViewController.swift in Sources */,
 				7881AD46268DF64B00C319CF /* CrementClass.swift in Sources */,
 				7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */,
 			);
