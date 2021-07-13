@@ -9,7 +9,7 @@ import Foundation
 
 class APIManager {
     
-    var databaseClass = DatabaseManager()
+    var delegate: showUserErrorDelegate?
     
     let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
     let apiKey1 = "4645E475-133C-458A-AA48-2EB70A347301"
@@ -47,7 +47,8 @@ class APIManager {
             return lastPrice
         }
         catch {
-            print("Error parsing data: \(error)")
+            let message = "Error parsing data: \(error)"
+            delegate?.showUserErrorMessageDidInitiate(message)
             return nil
         }
     }

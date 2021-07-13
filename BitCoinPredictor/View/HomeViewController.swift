@@ -7,15 +7,24 @@
 
 import UIKit
 import Charts
+import FirebaseFirestore
 
-class HomeViewController: TimerViewController {
+class HomeViewController: UIViewController, ChartViewDelegate, showUserErrorDelegate {
     
     @IBOutlet weak var bitCoinLabel: UILabel!
     @IBOutlet weak var chartViewPrices: UIView!
     @IBOutlet weak var liveGraphView: UIView!
     
+    let bitcoinAPI = BitcoinAPI()
+    var database = DatabaseManager()
+    var timerSeconds = 0
+    var priceList: [PriceList] = []
+    var lineChart = LineChartView()
+    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        database.delegateError = self
         timer.invalidate()
         updateTimer()
     }
@@ -29,10 +38,10 @@ class HomeViewController: TimerViewController {
         }
     }
     
-    override func updateTimer() {
+    @objc func updateTimer() {
         if timerSeconds % 5 == 0 {
             timerSeconds += 1
-            apiClass.getAPI() { result in
+            bitcoinAPI.getAPI() { result in
                 do {
                     let newPrice = try result.get()
                     DispatchQueue.main.async {
@@ -40,7 +49,8 @@ class HomeViewController: TimerViewController {
                         self.bitCoinLabel.text = newPrice
                     }
                 } catch {
-                    print("there is an error \(error.localizedDescription)")
+                    let message = "there is an error \(error.localizedDescription)"
+                    self.showUserErrorMessageDidInitiate(message)
                 }
             }
             database.loadPricesFromDatabse { result in
@@ -48,7 +58,8 @@ class HomeViewController: TimerViewController {
                     let newList = try result.get()
                     self.priceList = newList
                 } catch {
-                    print("there is an error \(error.localizedDescription)")
+                    let message = "there is an error \(error.localizedDescription)"
+                    self.showUserErrorMessageDidInitiate(message)
                 }
             }
             lineChart.delegate = self
@@ -58,23 +69,42 @@ class HomeViewController: TimerViewController {
         }
     }
     
+    func showUserErrorMessageDidInitiate(_ message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        lineChart.frame = CGRect(x: 0, y: 0,
-                                 width: self.liveGraphView.frame.size.width,
-                                 height: self.liveGraphView.frame.size.width)
-        //lineChart.center = liveGraphView.center
+        setChartFrame()
         liveGraphView.addSubview(lineChart)
+        
+        let set = LineChartDataSet(entries: setChartEntries())
+        setPropertiesOfSet(set)
+        
+        let data = LineChartData(dataSet: set)
+        lineChart.data =  data
+    }
+    
+    private func setChartEntries() -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         for price in priceList {
             entries.append(ChartDataEntry(x: Double(price.date)!,
                                           y: Double(price.rate)!))
         }
-        let set = LineChartDataSet(entries: entries)
+        return entries
+    }
+    
+    private func setPropertiesOfSet(_ set: LineChartDataSet) {
         set.colors = ChartColorTemplates.liberty()
         set.drawValuesEnabled = false
+    }
+    
+    private func setChartFrame() {
+        lineChart.frame = CGRect(x: 0, y: 0,
+                                 width: self.liveGraphView.frame.size.width,
+                                 height: self.liveGraphView.frame.size.width)
         lineChart.xAxis.drawLabelsEnabled = false
-        let data = LineChartData(dataSet: set)
-        lineChart.data =  data
     }
 }

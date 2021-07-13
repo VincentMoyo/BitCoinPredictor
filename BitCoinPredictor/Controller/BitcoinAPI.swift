@@ -7,11 +7,12 @@
 
 import Foundation
 
-class APIClass {
+class BitcoinAPI {
     
     var dataManager = APIManager()
     var currentPrice = PriceData()
     var priceString: String = ""
+    var delegate: showUserErrorDelegate?
     
     func getAPI(completion: @escaping (Result<(String),Error>) -> Void) {
         dataManager.getCoinPrice(for: "ZAR") { result in
@@ -22,7 +23,8 @@ class APIClass {
                 self.priceString = currencyInfo
                 completion(.success(currencyInfo))
             } catch {
-                print("there is an error \(error.localizedDescription)")
+                let message = "there is an error \(error.localizedDescription)"
+                self.delegate?.showUserErrorMessageDidInitiate(message)
                 completion(.failure(error))
             }
         }

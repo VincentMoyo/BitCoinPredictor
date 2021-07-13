@@ -6,13 +6,13 @@
 //
 
 import UIKit
-import FirebaseFirestore
 
-class PredictViewController: TimerViewController {
+class PredictViewController: UIViewController, showUserErrorDelegate, showUserSucessDelegate {
     
     var priceData = PriceData()
     var controller = CrementClass()
-    let db = Firestore.firestore()
+    let bitcoinAPI = BitcoinAPI()
+    var database = DatabaseManager()
     
     private var crementValue = 0.0
     private var curent = 0.0
@@ -25,7 +25,9 @@ class PredictViewController: TimerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiClass.getAPI() { result in
+        database.delegateError = self
+        database.delegateSucess = self
+        bitcoinAPI.getAPI() { result in
             do {
                 let newPrice = try result.get()
                 DispatchQueue.main.async {
@@ -33,7 +35,8 @@ class PredictViewController: TimerViewController {
                     self.priceData.currentPrice = Double(newPrice)!
                 }
             } catch {
-                print("there is an error \(error.localizedDescription)")
+                let message = "there is an error \(error.localizedDescription)"
+                self.showUserErrorMessageDidInitiate(message)
             }
         }
     }
@@ -61,5 +64,17 @@ class PredictViewController: TimerViewController {
     
     @IBAction func predictButtonPressed(_ sender: UIButton) {
         database.updatePredictedPriceIntoDatabase(String(curent))
+    }
+    
+    func showUserSucessMessageDidInitiate(_ message: String) {
+        let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true)
+    }
+    
+    func showUserErrorMessageDidInitiate(_ message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true)
     }
 }

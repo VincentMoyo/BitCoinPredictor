@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DateClass {
+struct DateFormat {
     func getCurrentDate() -> Date {
         let date = Date()
         let dateFormatterGet = DateFormatter()

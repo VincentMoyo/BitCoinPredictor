@@ -19,11 +19,8 @@ class NewsCell: UITableViewCell {
     }
 
     func configure(with viewModel: NewsTableCellViewControllerModel){
-
         headingLabel.text = viewModel.title
-        //print("heading: \(headingLabel.text)")
         descriptionLabel.text = viewModel.subtile
-        
         if let data = viewModel.imageData {
             newsImage.image = UIImage(data: data)
         } else if let url = viewModel.imageURL {
@@ -41,18 +38,10 @@ class NewsCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
-    
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        headingLabel?.text = nil
-//        descriptionLabel?.text = nil
-//        newsImage?.image = nil
-//    }
-    
 }
 
+//MARK: - News Table Model
 class NewsTableCellViewControllerModel {
     let title: String
     let subtile: String
