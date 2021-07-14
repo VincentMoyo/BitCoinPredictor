@@ -26,7 +26,6 @@
 		7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3E268DF64900C319CF /* ComparisonViewController.swift */; };
 		7881AD44268DF64B00C319CF /* PredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3F268DF64900C319CF /* PredictViewController.swift */; };
 		7881AD45268DF64B00C319CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD40268DF64A00C319CF /* HomeViewController.swift */; };
-		7881AD46268DF64B00C319CF /* CrementClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD41268DF64B00C319CF /* CrementClass.swift */; };
 		7881AD49268DF65D00C319CF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD47268DF65C00C319CF /* APIManager.swift */; };
 		7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD48268DF65D00C319CF /* PriceList.swift */; };
 		7881AD4C268DF74100C319CF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD4B268DF74100C319CF /* DatabaseManager.swift */; };
@@ -79,7 +78,6 @@
 		7881AD3E268DF64900C319CF /* ComparisonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonViewController.swift; sourceTree = "<group>"; };
 		7881AD3F268DF64900C319CF /* PredictViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictViewController.swift; sourceTree = "<group>"; };
 		7881AD40268DF64A00C319CF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		7881AD41268DF64B00C319CF /* CrementClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrementClass.swift; sourceTree = "<group>"; };
 		7881AD47268DF65C00C319CF /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		7881AD48268DF65D00C319CF /* PriceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceList.swift; sourceTree = "<group>"; };
 		7881AD4B268DF74100C319CF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 		7881AD3A268DF50200C319CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7881AD41268DF64B00C319CF /* CrementClass.swift */,
 				7881AD3D268DF64800C319CF /* DateFormat.swift */,
 				7871481A268F13C5001CB255 /* BitcoinAPI.swift */,
 				7881AD48268DF65D00C319CF /* PriceList.swift */,
@@ -487,7 +484,6 @@
 				7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */,
 				7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */,
 				780AB350269C5E1E003BD7C9 /* NewsTableViewController.swift in Sources */,
-				7881AD46268DF64B00C319CF /* CrementClass.swift in Sources */,
 				7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

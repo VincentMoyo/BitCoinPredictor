@@ -7,15 +7,15 @@
 
 import UIKit
 
-class PredictViewController: UIViewController, showUserErrorDelegate, showUserSucessDelegate {
+class PredictViewController: UIViewController {
     
     var priceData = PriceData()
     var controller = CrementClass()
     let bitcoinAPI = BitcoinAPI()
     var database = DatabaseManager()
     
-    private var crementValue = 0.0
-    private var curent = 0.0
+    lazy private var crementValue = 0.0
+    lazy private var curent = 0.0
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var predictPriceLabel: UILabel!
@@ -27,18 +27,7 @@ class PredictViewController: UIViewController, showUserErrorDelegate, showUserSu
         super.viewDidLoad()
         database.delegateError = self
         database.delegateSucess = self
-        bitcoinAPI.getAPI() { result in
-            do {
-                let newPrice = try result.get()
-                DispatchQueue.main.async {
-                    self.priceLabel.text = newPrice
-                    self.priceData.currentPrice = Double(newPrice)!
-                }
-            } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.showUserErrorMessageDidInitiate(message)
-            }
-        }
+        getBitcoinPrincUsingAPI()
     }
     
     @IBAction func incrementPriceButtonPressed(_ sender: UIButton) {
@@ -66,6 +55,25 @@ class PredictViewController: UIViewController, showUserErrorDelegate, showUserSu
         database.updatePredictedPriceIntoDatabase(String(curent))
     }
     
+    func getBitcoinPrincUsingAPI() {
+        bitcoinAPI.getAPI() { result in
+            do {
+                let newPrice = try result.get()
+                DispatchQueue.main.async {
+                    self.priceLabel.text = newPrice
+                    self.priceData.currentPrice = Double(newPrice)!
+                }
+            } catch {
+                let message = "there is an error \(error.localizedDescription)"
+                self.showUserErrorMessageDidInitiate(message)
+            }
+        }
+    }
+}
+
+//MARK: - User Alerts
+extension PredictViewController: showUserErrorDelegate, showUserSucessDelegate{
+    
     func showUserSucessMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -76,5 +84,20 @@ class PredictViewController: UIViewController, showUserErrorDelegate, showUserSu
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true)
+    }
+}
+
+//MARK: - Increment and Decrement section
+struct CrementClass {
+    func incrementByInterval(_ byteCoinPrice: Double, _ incrementValue: Double, _ increment: Bool) -> Double{
+        var finalPrice = 0.0
+        if incrementValue > 0 {
+            if (increment){
+                finalPrice = byteCoinPrice + incrementValue
+            } else {
+                finalPrice = byteCoinPrice - incrementValue
+            }
+        }
+        return finalPrice
     }
 }

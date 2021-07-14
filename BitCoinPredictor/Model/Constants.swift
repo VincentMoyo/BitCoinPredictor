@@ -8,6 +8,9 @@
 import Foundation
 
 struct K {
+    
+    static let dateFormatterGet = DateFormatter()
+    
     struct News {
         static let identifier = "Cell"
         static let cellNibName = "NewsCell"

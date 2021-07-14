@@ -10,6 +10,7 @@ target 'BitCoinPredictor' do
 pod 'Charts'
 pod 'Firebase/Firestore'
 pod 'NewsAPISwift'
+pod 'Kingfisher'
 
   target 'BitCoinPredictorTests' do
     inherit! :search_paths

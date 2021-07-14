@@ -9,7 +9,7 @@ import UIKit
 import Charts
 import FirebaseFirestore
 
-class HomeViewController: UIViewController, ChartViewDelegate, showUserErrorDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var bitCoinLabel: UILabel!
     @IBOutlet weak var chartViewPrices: UIView!
@@ -17,13 +17,12 @@ class HomeViewController: UIViewController, ChartViewDelegate, showUserErrorDele
     
     let bitcoinAPI = BitcoinAPI()
     var database = DatabaseManager()
-    var timerSeconds = 0
+    lazy var timerSeconds = 0
     var priceList: [PriceList] = []
     var lineChart = LineChartView()
     var timer = Timer()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLoad() {         super.viewDidLoad()
         database.delegateError = self
         timer.invalidate()
         updateTimer()
@@ -41,27 +40,8 @@ class HomeViewController: UIViewController, ChartViewDelegate, showUserErrorDele
     @objc func updateTimer() {
         if timerSeconds % 5 == 0 {
             timerSeconds += 1
-            bitcoinAPI.getAPI() { result in
-                do {
-                    let newPrice = try result.get()
-                    DispatchQueue.main.async {
-                        self.database.insertPriceToDatabase(newPrice)
-                        self.bitCoinLabel.text = newPrice
-                    }
-                } catch {
-                    let message = "there is an error \(error.localizedDescription)"
-                    self.showUserErrorMessageDidInitiate(message)
-                }
-            }
-            database.loadPricesFromDatabse { result in
-                do {
-                    let newList = try result.get()
-                    self.priceList = newList
-                } catch {
-                    let message = "there is an error \(error.localizedDescription)"
-                    self.showUserErrorMessageDidInitiate(message)
-                }
-            }
+            getBitcoinPrincUsingAPI()
+            loadPricesFromDatabse()
             lineChart.delegate = self
         }
         else{
@@ -69,12 +49,45 @@ class HomeViewController: UIViewController, ChartViewDelegate, showUserErrorDele
         }
     }
     
+    func getBitcoinPrincUsingAPI() {
+        bitcoinAPI.getAPI() { result in
+            do {
+                let newPrice = try result.get()
+                DispatchQueue.main.async {
+                    self.database.insertPriceToDatabase(newPrice)
+                    self.bitCoinLabel.text = newPrice
+                }
+            } catch {
+                let message = "there is an error \(error.localizedDescription)"
+                self.showUserErrorMessageDidInitiate(message)
+            }
+        }
+    }
+    
+    func loadPricesFromDatabse(){
+        database.loadPricesFromDatabse { result in
+            do {
+                let newList = try result.get()
+                self.priceList = newList
+            } catch {
+                let message = "there is an error \(error.localizedDescription)"
+                self.showUserErrorMessageDidInitiate(message)
+            }
+        }
+    }
+}
+
+//MARK: - User Alerts 
+extension HomeViewController :showUserErrorDelegate {
     func showUserErrorMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true)
     }
-    
+}
+
+//MARK: - Chart View Delegate section
+extension HomeViewController: ChartViewDelegate{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setChartFrame()
@@ -104,7 +117,7 @@ class HomeViewController: UIViewController, ChartViewDelegate, showUserErrorDele
     private func setChartFrame() {
         lineChart.frame = CGRect(x: 0, y: 0,
                                  width: self.liveGraphView.frame.size.width,
-                                 height: self.liveGraphView.frame.size.width)
+                                 height: self.liveGraphView.frame.size.height)
         lineChart.xAxis.drawLabelsEnabled = false
     }
 }

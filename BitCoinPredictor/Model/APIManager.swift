@@ -19,7 +19,7 @@ class APIManager {
     
     func getCoinPrice(for currency: String, completion: @escaping (Result<(String),Error>) -> Void) {
         
-        let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey1)"
+        let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey3)"
         
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)

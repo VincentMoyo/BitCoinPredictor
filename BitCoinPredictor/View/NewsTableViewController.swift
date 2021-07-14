@@ -12,8 +12,8 @@ import SafariServices
 class NewsTableViewController: UITableViewController {
     
     let newsAPI = NewsAPI(apiKey: K.News.apiKey)
-    private var articles = [NewsArticle]()
-    private var viewModels = [NewsTableCellViewControllerModel]()
+    lazy private var articles = [NewsArticle]()
+    lazy private var viewModels = [NewsTableCellViewControllerModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

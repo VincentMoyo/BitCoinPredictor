@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsCell: UITableViewCell {
 
@@ -15,25 +16,12 @@ class NewsCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     func configure(with viewModel: NewsTableCellViewControllerModel){
         headingLabel.text = viewModel.title
         descriptionLabel.text = viewModel.subtile
-        if let data = viewModel.imageData {
-            newsImage.image = UIImage(data: data)
-        } else if let url = viewModel.imageURL {
-            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-                guard let data = data, error == nil else {
-                    return
-                }
-                viewModel.imageData = data
-                DispatchQueue.main.async {
-                    self?.newsImage.image = UIImage(data: data)
-                }
-            }.resume()
-        }
+        newsImage.kf.setImage(with: viewModel.imageURL)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -9,9 +9,9 @@ import Foundation
 
 class BitcoinAPI {
     
-    var dataManager = APIManager()
-    var currentPrice = PriceData()
-    var priceString: String = ""
+    lazy var dataManager = APIManager()
+    lazy var currentPrice = PriceData()
+    lazy var priceString: String = ""
     var delegate: showUserErrorDelegate?
     
     func getAPI(completion: @escaping (Result<(String),Error>) -> Void) {
