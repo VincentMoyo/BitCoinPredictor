@@ -8,6 +8,7 @@ target 'BitCoinPredictor' do
   # Pods for BitCoinPredictor
 
 pod 'Charts'
+pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'NewsAPISwift'
 pod 'Kingfisher'

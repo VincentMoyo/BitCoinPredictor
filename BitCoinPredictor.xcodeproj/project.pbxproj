@@ -34,6 +34,9 @@
 		789F756D26A0472800A01183 /* NewsTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F756C26A0472800A01183 /* NewsTableModel.swift */; };
 		789F756F26A048A400A01183 /* PriceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F756E26A048A400A01183 /* PriceListModel.swift */; };
 		78C16B6326A0590900E49A9F /* PredictedPriceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C16B6226A0590900E49A9F /* PredictedPriceData.swift */; };
+		78C16B6526A0636000E49A9F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C16B6426A0636000E49A9F /* WelcomeViewController.swift */; };
+		78C16B6726A0636E00E49A9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C16B6626A0636E00E49A9F /* LoginViewController.swift */; };
+		78C16B6926A0637D00E49A9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C16B6826A0637D00E49A9F /* RegisterViewController.swift */; };
 		863A0681181F88496FE6E564 /* Pods_BitCoinPredictorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EA3B6F6DC9805E545F48B4 /* Pods_BitCoinPredictorTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +93,9 @@
 		789F756C26A0472800A01183 /* NewsTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableModel.swift; sourceTree = "<group>"; };
 		789F756E26A048A400A01183 /* PriceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListModel.swift; sourceTree = "<group>"; };
 		78C16B6226A0590900E49A9F /* PredictedPriceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedPriceData.swift; sourceTree = "<group>"; };
+		78C16B6426A0636000E49A9F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		78C16B6626A0636E00E49A9F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		78C16B6826A0637D00E49A9F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		937AC07EB6239DCEF2A1F607 /* Pods-BitCoinPredictorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F909A695ADC8EABAD6E595 /* Pods-BitCoinPredictorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF72DABCC18A6BE2D09E569C /* Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,12 +212,12 @@
 		7881AD39268DF4FB00C319CF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7881AD3E268DF64900C319CF /* ComparisonViewController.swift */,
-				7881AD3F268DF64900C319CF /* PredictViewController.swift */,
-				7881AD40268DF64A00C319CF /* HomeViewController.swift */,
-				780AB34F269C5E1E003BD7C9 /* NewsTableViewController.swift */,
+				780AB356269C7977003BD7C9 /* NewsCell.swift */,
 				7881AD3B268DF55F00C319CF /* Main.storyboard */,
 				780AB357269C7977003BD7C9 /* NewsCell.xib */,
+				78C16B6426A0636000E49A9F /* WelcomeViewController.swift */,
+				78C16B6626A0636E00E49A9F /* LoginViewController.swift */,
+				78C16B6826A0637D00E49A9F /* RegisterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,12 +225,15 @@
 		7881AD3A268DF50200C319CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				780AB356269C7977003BD7C9 /* NewsCell.swift */,
 				7881AD3D268DF64800C319CF /* DateFormat.swift */,
 				7871481A268F13C5001CB255 /* BitcoinAPI.swift */,
 				7881AD4B268DF74100C319CF /* DatabaseManager.swift */,
+				7881AD3E268DF64900C319CF /* ComparisonViewController.swift */,
+				7881AD40268DF64A00C319CF /* HomeViewController.swift */,
 				78C16B6226A0590900E49A9F /* PredictedPriceData.swift */,
+				7881AD3F268DF64900C319CF /* PredictViewController.swift */,
 				7881AD47268DF65C00C319CF /* APIManager.swift */,
+				780AB34F269C5E1E003BD7C9 /* NewsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -499,6 +508,8 @@
 				789F756D26A0472800A01183 /* NewsTableModel.swift in Sources */,
 				784B13C226985C4500453A1A /* Constants.swift in Sources */,
 				789F756B26A040D100A01183 /* NewsList.swift in Sources */,
+				78C16B6726A0636E00E49A9F /* LoginViewController.swift in Sources */,
+				78C16B6926A0637D00E49A9F /* RegisterViewController.swift in Sources */,
 				780AB358269C7977003BD7C9 /* NewsCell.swift in Sources */,
 				7881AD42268DF64B00C319CF /* DateFormat.swift in Sources */,
 				78C16B6326A0590900E49A9F /* PredictedPriceData.swift in Sources */,
@@ -509,6 +520,7 @@
 				7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */,
 				780AB350269C5E1E003BD7C9 /* NewsTableViewController.swift in Sources */,
 				7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */,
+				78C16B6526A0636000E49A9F /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

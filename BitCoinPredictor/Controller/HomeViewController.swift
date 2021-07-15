@@ -22,7 +22,8 @@ class HomeViewController: UIViewController {
     var lineChart = LineChartView()
     var timer = Timer()
     
-    override func viewDidLoad() {         super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         database.delegateError = self
         timer.invalidate()
         updateTimer()
