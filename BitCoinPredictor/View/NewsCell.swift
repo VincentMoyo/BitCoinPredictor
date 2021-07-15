@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class NewsCell: UITableViewCell {
-
+    
     @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var newsImage: UIImageView!
@@ -17,7 +17,7 @@ class NewsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     func configure(with viewModel: NewsTableModel){
         headingLabel.text = viewModel.title
         descriptionLabel.text = viewModel.subtile

@@ -216,8 +216,6 @@
 				7881AD3B268DF55F00C319CF /* Main.storyboard */,
 				780AB357269C7977003BD7C9 /* NewsCell.xib */,
 				78C16B6426A0636000E49A9F /* WelcomeViewController.swift */,
-				78C16B6626A0636E00E49A9F /* LoginViewController.swift */,
-				78C16B6826A0637D00E49A9F /* RegisterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,6 +232,8 @@
 				7881AD3F268DF64900C319CF /* PredictViewController.swift */,
 				7881AD47268DF65C00C319CF /* APIManager.swift */,
 				780AB34F269C5E1E003BD7C9 /* NewsTableViewController.swift */,
+				78C16B6826A0637D00E49A9F /* RegisterViewController.swift */,
+				78C16B6626A0636E00E49A9F /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

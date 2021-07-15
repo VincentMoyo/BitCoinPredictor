@@ -79,8 +79,3 @@ class NewsTableViewController: UITableViewController {
         present(alertController, animated: true)
     }
 }
-
-
-//title: $0.title,
-//subtile: $0.articleDescription ?? "No Description",
-//imageURL: $0.urlToImage
