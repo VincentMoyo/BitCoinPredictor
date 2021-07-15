@@ -17,7 +17,7 @@ class ComparisonViewController: UIViewController {
     let apiClass = BitcoinAPI()
     var database = DatabaseManager()
     lazy var timerSeconds = 0
-    lazy var priceList: [PriceList] = []
+    lazy var priceList: [PriceListModel] = []
     var lineChart = LineChartView()
     var timer = Timer()
     lazy var predictedPrice = 0.0

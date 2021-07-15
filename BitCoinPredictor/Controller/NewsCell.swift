@@ -18,7 +18,7 @@ class NewsCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configure(with viewModel: NewsTableCellViewControllerModel){
+    func configure(with viewModel: NewsTableModel){
         headingLabel.text = viewModel.title
         descriptionLabel.text = viewModel.subtile
         newsImage.kf.setImage(with: viewModel.imageURL)
@@ -26,23 +26,5 @@ class NewsCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-}
-
-//MARK: - News Table Model
-class NewsTableCellViewControllerModel {
-    let title: String
-    let subtile: String
-    let imageURL: URL?
-    var imageData: Data? = nil
-    
-    init(
-        title: String,
-        subtile: String,
-        imageURL: URL?
-    ) {
-        self.title = title
-        self.subtile = subtile
-        self.imageURL = imageURL
     }
 }

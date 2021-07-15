@@ -9,7 +9,7 @@ import UIKit
 
 class PredictViewController: UIViewController {
     
-    var priceData = PriceData()
+    var priceData = PredictedPriceData()
     var controller = CrementClass()
     let bitcoinAPI = BitcoinAPI()
     var database = DatabaseManager()

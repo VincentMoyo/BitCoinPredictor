@@ -17,11 +17,11 @@ struct DatabaseManager {
     var delegateSucess: showUserSucessDelegate?
     
     
-    func loadPricesFromDatabse(completion: @escaping (Result<[PriceList],Error>) -> Void) {
+    func loadPricesFromDatabse(completion: @escaping (Result<[PriceListModel],Error>) -> Void) {
         db.collection(K.Database.BitCoinDatabaseName)
             .order(by: K.Database.date)
             .addSnapshotListener { (querySnapshot, error) in
-                var priceList: [PriceList] = []
+                var priceList: [PriceListModel] = []
                 if let e = error {
                     let message = "There was an issue retrieving data from firestorem: \(e)"
                     delegateError?.showUserErrorMessageDidInitiate(message)
@@ -31,7 +31,7 @@ struct DatabaseManager {
                         for doc in snapshotDocument {
                             let data = doc.data()
                             if let priceOfByteCoin = data[K.Database.rate] as? String, let date = data[K.Database.date] as? String {
-                                let newPrice = PriceList(rate: priceOfByteCoin, date: date)
+                                let newPrice = PriceListModel(priceList: PriceList(rate: priceOfByteCoin, date: date))
                                 priceList.append(newPrice)
                             }
                         }

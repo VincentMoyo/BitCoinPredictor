@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     let bitcoinAPI = BitcoinAPI()
     var database = DatabaseManager()
     lazy var timerSeconds = 0
-    var priceList: [PriceList] = []
+    var priceList: [PriceListModel] = []
     var lineChart = LineChartView()
     var timer = Timer()
     

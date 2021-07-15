@@ -13,7 +13,7 @@ class NewsTableViewController: UITableViewController {
     
     let newsAPI = NewsAPI(apiKey: K.News.apiKey)
     lazy private var articles = [NewsArticle]()
-    lazy private var viewModels = [NewsTableCellViewControllerModel]()
+    lazy private var viewModels = [NewsTableModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +29,10 @@ class NewsTableViewController: UITableViewController {
                 } else {
                     self?.articles = headlines
                     self?.viewModels = headlines.compactMap({
-                        NewsTableCellViewControllerModel(
-                            title: $0.title,
-                            subtile: $0.articleDescription ?? "No Description",
-                            imageURL: $0.urlToImage
+                        NewsTableModel(
+                            newsList: NewsList(title: $0.title,
+                                               subtile: $0.articleDescription ?? "No Description",
+                                               imageURL: $0.urlToImage)
                         )
                     })
                     DispatchQueue.main.async {
@@ -79,3 +79,8 @@ class NewsTableViewController: UITableViewController {
         present(alertController, animated: true)
     }
 }
+
+
+//title: $0.title,
+//subtile: $0.articleDescription ?? "No Description",
+//imageURL: $0.urlToImage

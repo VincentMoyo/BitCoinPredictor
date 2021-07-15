@@ -10,8 +10,7 @@ import Foundation
 class BitcoinAPI {
     
     lazy var dataManager = APIManager()
-    lazy var currentPrice = PriceData()
-    lazy var priceString: String = ""
+    lazy var currentPrice = PredictedPriceData()
     var delegate: showUserErrorDelegate?
     
     func getAPI(completion: @escaping (Result<(String),Error>) -> Void) {
@@ -19,8 +18,6 @@ class BitcoinAPI {
             do
             {
                 let currencyInfo = try result.get()
-                self.currentPrice.price = Double(currencyInfo)!
-                self.priceString = currencyInfo
                 completion(.success(currencyInfo))
             } catch {
                 let message = "there is an error \(error.localizedDescription)"
