@@ -8,6 +8,7 @@
 import Foundation
 
 class PredictedPriceData {
+    
     private var initialPredictedPrice = 0.0
     var currentPrice: Double {
         set{
