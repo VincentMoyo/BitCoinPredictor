@@ -37,7 +37,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.69307362780000004" green="0.85369379249999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.98876605169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Vgc-Gr-oKG" secondAttribute="bottom" id="Df2-bY-Dqq"/>
                             <constraint firstItem="Vgc-Gr-oKG" firstAttribute="top" secondItem="Y7S-up-858" secondAttribute="top" id="IPf-cM-vaB"/>
@@ -50,7 +50,7 @@
                         <rect key="frame" x="238" y="0.0" width="115" height="90"/>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.69411764710000001" green="0.85369379249999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.1234657388" green="0.97982208479999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="lcK-3Z-YkZ" firstAttribute="top" secondItem="Y7S-up-858" secondAttribute="top" id="1AY-sq-Hci"/>
                     <constraint firstItem="Y7S-up-858" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6pW-uW-hav"/>

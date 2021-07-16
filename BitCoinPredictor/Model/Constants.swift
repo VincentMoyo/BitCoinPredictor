@@ -26,4 +26,9 @@ struct K {
         static let rate = "rate"
         static let price = "price"
     }
+    
+    struct Authentication {
+        static let registerSegue = "register"
+        static let loginSegue = "login"
+    }
 }
