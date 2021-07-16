@@ -159,3 +159,5 @@ extension ComparisonViewController: ChartViewDelegate{
         lineChart.xAxis.drawLabelsEnabled = false
     }
 }
+
+
