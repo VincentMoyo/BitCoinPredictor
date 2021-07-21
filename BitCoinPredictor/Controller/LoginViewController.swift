@@ -15,9 +15,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let e = error{
-                    let message = "\(e.localizedDescription)"
+            Auth.auth().signIn(withEmail: email, password: password) { _, error in
+                if let err = error {
+                    let message = "\(err.localizedDescription)"
                     self.showUserErrorMessageDidInitiate(message)
                 } else {
                     self.performSegue(withIdentifier: Constants.Authentication.kLoginSegue, sender: self)

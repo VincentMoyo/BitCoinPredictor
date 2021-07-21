@@ -18,7 +18,7 @@ class NewsTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configure(with viewModel: NewsTableModel){
+    func configure(with viewModel: NewsTableModel) {
         headingLabel.text = viewModel.title
         descriptionLabel.text = viewModel.subtile
         newsImage.kf.setImage(with: viewModel.imageURL)

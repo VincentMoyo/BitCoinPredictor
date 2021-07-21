@@ -17,11 +17,12 @@ class NewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: Constants.News.kCellNibName, bundle: nil), forCellReuseIdentifier: Constants.News.kIdentifier)
+        tableView.register(UINib(nibName: Constants.News.kCellNibName, bundle: nil),
+                           forCellReuseIdentifier: Constants.News.kIdentifier)
         newsAPI.getTopHeadlines(q: Constants.News.kHeadline) { [weak self] result in
             switch result {
             case .success(let headlines):
-                if headlines.count == 0 {
+                if headlines.isEmpty {
                     DispatchQueue.main.async {
                         let message = "There are no news for the current subject: \(Constants.News.kHeadline)"
                         self?.showUserErrorMessageDidInitiate(message)
@@ -53,7 +54,8 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.News.kIdentifier, for: indexPath) as? NewsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.News.kIdentifier, for: indexPath)
+                as? NewsTableViewCell else {
             fatalError()
         }
         cell.configure(with: viewModels[indexPath.row])
@@ -65,8 +67,8 @@ class NewsTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let article = articles[indexPath.row]
         
-        let vc = SFSafariViewController(url: article.url)
-        present(vc, animated: true, completion: nil)
+        let vcc = SFSafariViewController(url: article.url)
+        present(vcc, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

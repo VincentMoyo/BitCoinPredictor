@@ -37,7 +37,8 @@ class ComparisonViewController: UIViewController {
     
     @IBAction func liveGraphSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                         selector: #selector(updateTimer), userInfo: nil, repeats: true)
             
         } else {
             timer.invalidate()
@@ -54,7 +55,7 @@ class ComparisonViewController: UIViewController {
     }
     
     func getBitcoinPrincUsingAPI() {
-        apiClass.getAPI() { result in
+        apiClass.getAPI { result in
             do {
                 let newPrice = try result.get()
                 DispatchQueue.main.async {
@@ -68,7 +69,7 @@ class ComparisonViewController: UIViewController {
         }
     }
     
-    func loadPricesFromDatabse(){
+    func loadPricesFromDatabse() {
         database.loadPricesFromDatabse { result in
             do {
                 let newList = try result.get()
@@ -80,7 +81,7 @@ class ComparisonViewController: UIViewController {
         }
     }
     
-    func loadPredictedPricesFromDatabse(){
+    func loadPredictedPricesFromDatabse() {
         database.loadPredictedPriceFromDatabase { result in
             do {
                 let newPredictedPrice = try result.get()
@@ -97,8 +98,8 @@ class ComparisonViewController: UIViewController {
     }
 }
 
-//MARK: - User Alert section
-extension ComparisonViewController: ShowUserErrorDelegate{
+// MARK: - User Alert section
+extension ComparisonViewController: ShowUserErrorDelegate {
     func showUserErrorMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -106,8 +107,8 @@ extension ComparisonViewController: ShowUserErrorDelegate{
     }
 }
 
-//MARK: - Chart View Delegate section
-extension ComparisonViewController: ChartViewDelegate{
+// MARK: - Chart View Delegate section
+extension ComparisonViewController: ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -115,7 +116,8 @@ extension ComparisonViewController: ChartViewDelegate{
         setChartFrame()
         let set = LineChartDataSet(entries: comparisonViewModel.setChartEntries())
         let set2 = LineChartDataSet(entries: [
-            ChartDataEntry(x: comparisonViewModel.predictedPriceData.currentDate, y: comparisonViewModel.predictedPriceData.currentPrice)
+            ChartDataEntry(x: comparisonViewModel.predictedPriceData.currentDate,
+                           y: comparisonViewModel.predictedPriceData.currentPrice)
         ])
         
         comparisonViewModel.setPropertiesOfSet1(set)
@@ -126,8 +128,6 @@ extension ComparisonViewController: ChartViewDelegate{
         lineChart.data =  data
     }
     
-    
-    
     private func setChartFrame() {
         lineChart.frame = CGRect(x: 0, y: 0,
                                  width: self.chartComparisonPrices.frame.size.width,
@@ -135,5 +135,3 @@ extension ComparisonViewController: ChartViewDelegate{
         lineChart.xAxis.drawLabelsEnabled = false
     }
 }
-
-

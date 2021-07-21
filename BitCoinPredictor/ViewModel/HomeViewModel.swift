@@ -21,14 +21,13 @@ class HomeViewModel {
             timerSeconds += 1
             getBitcoinPrincUsingAPI()
             loadPricesFromDatabse()
-        }
-        else {
+        } else {
             timerSeconds += 1
         }
     }
     
     private func getBitcoinPrincUsingAPI() {
-        apiClass.getAPI() { result in
+        apiClass.getAPI { result in
             do {
                 let newPrice = try result.get()
                 self.database.insertPriceToDatabase(newPrice)
@@ -40,7 +39,7 @@ class HomeViewModel {
         }
     }
     
-    private func loadPricesFromDatabse(){
+    private func loadPricesFromDatabse() {
         database.loadPricesFromDatabse { result in
             do {
                 let newList = try result.get()
@@ -51,7 +50,6 @@ class HomeViewModel {
             }
         }
     }
-    
     
     func setChartEntries() -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()

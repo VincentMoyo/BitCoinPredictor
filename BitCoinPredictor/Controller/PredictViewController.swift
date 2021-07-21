@@ -42,7 +42,6 @@ class PredictViewController: UIViewController {
         curent = priceData.currentPrice
     }
     
-    
     @IBAction func incrementChanged(_ sender: UIButton) {
         tenIncrementButton.isSelected = false
         hundredIncrementButton.isSelected = false
@@ -56,7 +55,7 @@ class PredictViewController: UIViewController {
     }
     
     func getBitcoinPrincUsingAPI() {
-        bitcoinAPI.getAPI() { result in
+        bitcoinAPI.getAPI { result in
             do {
                 let newPrice = try result.get()
                 DispatchQueue.main.async {
@@ -72,8 +71,8 @@ class PredictViewController: UIViewController {
     }
 }
 
-//MARK: - User Alerts
-extension PredictViewController: ShowUserErrorDelegate, ShowUserSucessDelegate{
+// MARK: - User Alerts
+extension PredictViewController: ShowUserErrorDelegate, ShowUserSucessDelegate {
     
     func showUserSucessMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)

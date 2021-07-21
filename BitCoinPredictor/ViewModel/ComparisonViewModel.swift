@@ -26,14 +26,13 @@ class ComparisonViewModel {
             getBitcoinPrincUsingAPI()
             loadPricesFromDatabse()
             loadPredictedPricesFromDatabse()
-        }
-        else {
+        } else {
             timerSeconds += 1
         }
     }
     
     private func getBitcoinPrincUsingAPI() {
-        apiClass.getAPI() { result in
+        apiClass.getAPI { result in
             do {
                 let newPrice = try result.get()
                 self.database.insertPriceToDatabase(newPrice)
@@ -45,7 +44,7 @@ class ComparisonViewModel {
         }
     }
     
-    func loadPredictedPricesFromDatabse(){
+    func loadPredictedPricesFromDatabse() {
         database.loadPredictedPriceFromDatabase { result in
             do {
                 let newPredictedPrice = try result.get()
@@ -58,7 +57,7 @@ class ComparisonViewModel {
         }
     }
     
-    private func loadPricesFromDatabse(){
+    private func loadPricesFromDatabse() {
         database.loadPricesFromDatabse { result in
             do {
                 let newList = try result.get()
@@ -69,7 +68,6 @@ class ComparisonViewModel {
             }
         }
     }
-    
     
     func setChartEntries() -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
@@ -89,7 +87,7 @@ class ComparisonViewModel {
         set2.highlightEnabled = true
         set2.highlightColor = .red
         set2.highlightLineWidth = 4
-        set2.highlightLineDashLengths = [4,2]
+        set2.highlightLineDashLengths = [4, 2]
         set2.drawHorizontalHighlightIndicatorEnabled = true
         set2.drawVerticalHighlightIndicatorEnabled = true
     }

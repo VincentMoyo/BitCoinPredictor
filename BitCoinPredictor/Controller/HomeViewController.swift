@@ -29,7 +29,8 @@ class HomeViewController: UIViewController {
     
     @IBAction func liveGraphChanged(_ sender: UISwitch) {
         if sender.isOn {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                         selector: #selector(updateTimer), userInfo: nil, repeats: true)
             
         } else {
             timer.invalidate()
@@ -45,8 +46,8 @@ class HomeViewController: UIViewController {
     }
 }
 
-//MARK: - User Alerts 
-extension HomeViewController :ShowUserErrorDelegate {
+// MARK: - User Alerts
+extension HomeViewController: ShowUserErrorDelegate {
     func showUserErrorMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -54,8 +55,8 @@ extension HomeViewController :ShowUserErrorDelegate {
     }
 }
 
-//MARK: - Chart View Delegate section
-extension HomeViewController: ChartViewDelegate{
+// MARK: - Chart View Delegate section
+extension HomeViewController: ChartViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setChartFrame()

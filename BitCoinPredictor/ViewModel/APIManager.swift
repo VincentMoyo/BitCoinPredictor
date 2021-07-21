@@ -17,19 +17,19 @@ class APIManager {
     let apiKey3 = "4ADA8654-C36C-448C-A383-3A2B2E5FE169"
     let apiKey4 = "ED0E63CD-0577-4190-8C24-BC1F2A276C21"
     
-    func getCoinPrice(for currency: String, completion: @escaping (Result<(String),Error>) -> Void) {
+    func getCoinPrice(for currency: String, completion: @escaping (Result<(String), Error>) -> Void) {
         
         let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey3)"
         
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
+            let task = session.dataTask(with: url) { (data, _, error) in
                 if error != nil {
                     completion(.failure(error!))
                     return
                 }
                 if let safeData = data {
-                    if let bitcoinPrice = self.parseJSON(safeData){
+                    if let bitcoinPrice = self.parseJSON(safeData) {
                         let priceString = String(format: "%.2f", bitcoinPrice)
                         completion(.success(priceString))
                     }
@@ -41,12 +41,11 @@ class APIManager {
     
     func parseJSON(_ data: Data) -> Double? {
         let decoder = JSONDecoder()
-        do{
+        do {
             let decodedData = try decoder.decode(CoinData.self, from: data)
             let lastPrice = decodedData.rate
             return lastPrice
-        }
-        catch {
+        } catch {
             let message = "Error parsing data: \(error)"
             delegate?.showUserErrorMessageDidInitiate(message)
             return nil

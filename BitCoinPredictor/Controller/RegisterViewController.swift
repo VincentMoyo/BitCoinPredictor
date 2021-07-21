@@ -17,9 +17,9 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                if let e = error{
-                    let message = "\(e.localizedDescription)"
+            Auth.auth().createUser(withEmail: email, password: password) { _, error in
+                if let err = error {
+                    let message = "\(err.localizedDescription)"
                     self.showUserErrorMessageDidInitiate(message)
                 } else {
                     self.performSegue(withIdentifier: Constants.Authentication.kRegisterSegue, sender: self)

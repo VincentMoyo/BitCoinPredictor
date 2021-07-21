@@ -308,6 +308,7 @@ PODS:
   - nanopb/encode (2.30908.0)
   - NewsAPISwift (2.0)
   - PromisesObjC (1.2.12)
+  - SwiftLint (0.43.1)
 
 DEPENDENCIES:
   - Charts
@@ -315,6 +316,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Kingfisher
   - NewsAPISwift
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -336,6 +338,7 @@ SPEC REPOS:
     - nanopb
     - NewsAPISwift
     - PromisesObjC
+    - SwiftLint
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -356,7 +359,8 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   NewsAPISwift: 61b069546b0170b48ee3ef7a0158b294e125d7b7
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 3ca8f4e7aaf5d59adbd7006220a0625ae7dd7c17
+PODFILE CHECKSUM: 16485c3141e99f98d11411599c469096965dab9e
 
 COCOAPODS: 1.10.1
