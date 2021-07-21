@@ -11,7 +11,7 @@ class BitcoinAPI {
     
     lazy var dataManager = APIManager()
     lazy var currentPrice = PredictedPriceData()
-    var delegate: showUserErrorDelegate?
+    var delegate: ShowUserErrorDelegate?
     
     func getAPI(completion: @escaping (Result<(String),Error>) -> Void) {
         dataManager.getCoinPrice(for: "ZAR") { result in

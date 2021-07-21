@@ -11,19 +11,19 @@ import SafariServices
 
 class NewsTableViewController: UITableViewController {
     
-    let newsAPI = NewsAPI(apiKey: K.News.apiKey)
+    let newsAPI = NewsAPI(apiKey: Constants.News.kApiKey)
     lazy private var articles = [NewsArticle]()
     lazy private var viewModels = [NewsTableModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: K.News.cellNibName, bundle: nil), forCellReuseIdentifier: K.News.identifier)
-        newsAPI.getTopHeadlines(q: K.News.headline) { [weak self] result in
+        tableView.register(UINib(nibName: Constants.News.kCellNibName, bundle: nil), forCellReuseIdentifier: Constants.News.kIdentifier)
+        newsAPI.getTopHeadlines(q: Constants.News.kHeadline) { [weak self] result in
             switch result {
             case .success(let headlines):
                 if headlines.count == 0 {
                     DispatchQueue.main.async {
-                        let message = "There are no news for the current subject: \(K.News.headline)"
+                        let message = "There are no news for the current subject: \(Constants.News.kHeadline)"
                         self?.showUserErrorMessageDidInitiate(message)
                     }
                 } else {
@@ -53,7 +53,7 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.News.identifier, for: indexPath) as? NewsCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.News.kIdentifier, for: indexPath) as? NewsTableViewCell else {
             fatalError()
         }
         cell.configure(with: viewModels[indexPath.row])

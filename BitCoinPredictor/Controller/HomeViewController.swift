@@ -15,12 +15,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var chartViewPrices: UIView!
     @IBOutlet weak var liveGraphView: UIView!
     
-    let bitcoinAPI = BitcoinAPI()
     var database = DatabaseManager()
-    lazy var timerSeconds = 0
-    var priceList: [PriceListModel] = []
     var lineChart = LineChartView()
     var timer = Timer()
+    var homeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,47 +37,16 @@ class HomeViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        if timerSeconds % 5 == 0 {
-            timerSeconds += 1
-            getBitcoinPrincUsingAPI()
-            loadPricesFromDatabse()
-            lineChart.delegate = self
+        homeViewModel.updateTimer()
+        DispatchQueue.main.async {
+            self.bitCoinLabel.text = String(self.homeViewModel.priceData.price)
         }
-        else{
-            timerSeconds += 1
-        }
-    }
-    
-    func getBitcoinPrincUsingAPI() {
-        bitcoinAPI.getAPI() { result in
-            do {
-                let newPrice = try result.get()
-                DispatchQueue.main.async {
-                    self.database.insertPriceToDatabase(newPrice)
-                    self.bitCoinLabel.text = newPrice
-                }
-            } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.showUserErrorMessageDidInitiate(message)
-            }
-        }
-    }
-    
-    func loadPricesFromDatabse(){
-        database.loadPricesFromDatabse { result in
-            do {
-                let newList = try result.get()
-                self.priceList = newList
-            } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.showUserErrorMessageDidInitiate(message)
-            }
-        }
+        lineChart.delegate = self
     }
 }
 
 //MARK: - User Alerts 
-extension HomeViewController :showUserErrorDelegate {
+extension HomeViewController :ShowUserErrorDelegate {
     func showUserErrorMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -94,25 +61,11 @@ extension HomeViewController: ChartViewDelegate{
         setChartFrame()
         liveGraphView.addSubview(lineChart)
         
-        let set = LineChartDataSet(entries: setChartEntries())
-        setPropertiesOfSet(set)
+        let set = LineChartDataSet(entries: homeViewModel.setChartEntries())
+        homeViewModel.setPropertiesOfSet(set)
         
         let data = LineChartData(dataSet: set)
         lineChart.data =  data
-    }
-    
-    private func setChartEntries() -> [ChartDataEntry] {
-        var entries = [ChartDataEntry]()
-        for price in priceList {
-            entries.append(ChartDataEntry(x: Double(price.date)!,
-                                          y: Double(price.rate)!))
-        }
-        return entries
-    }
-    
-    private func setPropertiesOfSet(_ set: LineChartDataSet) {
-        set.colors = ChartColorTemplates.liberty()
-        set.drawValuesEnabled = false
     }
     
     private func setChartFrame() {

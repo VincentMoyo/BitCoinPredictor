@@ -14,6 +14,7 @@ class ComparisonViewController: UIViewController {
     @IBOutlet weak var predictedPricelLabel: UILabel!
     @IBOutlet weak var chartComparisonPrices: UIView!
     
+    let comparisonViewModel = ComparisonViewModel()
     let apiClass = BitcoinAPI()
     var database = DatabaseManager()
     lazy var timerSeconds = 0
@@ -44,16 +45,12 @@ class ComparisonViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        if timerSeconds % 5 == 0 {
-            timerSeconds += 1
-            getBitcoinPrincUsingAPI()
-            loadPricesFromDatabse()
-            loadPredictedPricesFromDatabse()
-            lineChart.delegate = self
+        comparisonViewModel.updateTimer()
+        DispatchQueue.main.async {
+            self.actualPriceLabel.text = String(self.comparisonViewModel.priceData.price)
+            self.predictedPricelLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
         }
-        else{
-            timerSeconds += 1
-        }
+        lineChart.delegate = self
     }
     
     func getBitcoinPrincUsingAPI() {
@@ -101,7 +98,7 @@ class ComparisonViewController: UIViewController {
 }
 
 //MARK: - User Alert section
-extension ComparisonViewController: showUserErrorDelegate{
+extension ComparisonViewController: ShowUserErrorDelegate{
     func showUserErrorMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -116,41 +113,20 @@ extension ComparisonViewController: ChartViewDelegate{
         super.viewDidLayoutSubviews()
         chartComparisonPrices.addSubview(lineChart)
         setChartFrame()
-        let set = LineChartDataSet(entries: setChartEntries())
+        let set = LineChartDataSet(entries: comparisonViewModel.setChartEntries())
         let set2 = LineChartDataSet(entries: [
-            ChartDataEntry(x: predictedTime, y: predictedPrice)
+            ChartDataEntry(x: comparisonViewModel.predictedPriceData.currentDate, y: comparisonViewModel.predictedPriceData.currentPrice)
         ])
         
-        setPropertiesOfSet1(set)
-        setPropertiesOfSet2(set2)
+        comparisonViewModel.setPropertiesOfSet1(set)
+        comparisonViewModel.setPropertiesOfSet2(set2)
         
         let data = LineChartData(dataSet: set)
         data.addDataSet(set2)
         lineChart.data =  data
     }
     
-    private func setChartEntries() -> [ChartDataEntry] {
-        var entries = [ChartDataEntry]()
-        for price in priceList {
-            entries.append(ChartDataEntry(x: Double(price.date)!,
-                                          y: Double(price.rate)!))
-        }
-        return entries
-    }
     
-    private func setPropertiesOfSet1(_ set: LineChartDataSet) {
-        set.colors = ChartColorTemplates.colorful()
-        set.drawValuesEnabled = false
-    }
-    
-    private func setPropertiesOfSet2(_ set2: LineChartDataSet) {
-        set2.highlightEnabled = true
-        set2.highlightColor = .red
-        set2.highlightLineWidth = 4
-        set2.highlightLineDashLengths = [4,2]
-        set2.drawHorizontalHighlightIndicatorEnabled = true
-        set2.drawVerticalHighlightIndicatorEnabled = true
-    }
     
     private func setChartFrame() {
         lineChart.frame = CGRect(x: 0, y: 0,

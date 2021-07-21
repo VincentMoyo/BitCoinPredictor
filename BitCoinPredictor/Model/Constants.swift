@@ -7,28 +7,28 @@
 
 import Foundation
 
-struct K {
+struct Constants {
     
     static let dateFormatterGet = DateFormatter()
     
     struct News {
-        static let identifier = "Cell"
-        static let cellNibName = "NewsCell"
-        static let apiKey = "2f6fc28af88f4ad0955e7e4568e26c37"
-        static let headline = "Bitcoin"
+        static let kIdentifier = "Cell"
+        static let kCellNibName = "NewsTableViewCell"
+        static let kApiKey = "2f6fc28af88f4ad0955e7e4568e26c37"
+        static let kHeadline = "Bitcoin"
     }
     
     struct Database {
-        static let BitCoinDatabaseName = "ByteCoins"
-        static let PredictedPriceDatabaseName = "PredictedPricesDatabase"
-        static let PredictedPriceDocumentName = "prices"
-        static let date = "date"
-        static let rate = "rate"
-        static let price = "price"
+        static let kBitCoinDatabaseName = "ByteCoins"
+        static let kPredictedPriceDatabaseName = "PredictedPricesDatabase"
+        static let kPredictedPriceDocumentName = "prices"
+        static let kDate = "date"
+        static let kRate = "rate"
+        static let kPrice = "price"
     }
     
     struct Authentication {
-        static let registerSegue = "register"
-        static let loginSegue = "login"
+        static let kRegisterSegue = "register"
+        static let kLoginSegue = "login"
     }
 }

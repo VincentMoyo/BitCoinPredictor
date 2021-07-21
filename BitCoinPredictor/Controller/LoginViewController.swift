@@ -13,11 +13,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -25,14 +20,14 @@ class LoginViewController: UIViewController {
                     let message = "\(e.localizedDescription)"
                     self.showUserErrorMessageDidInitiate(message)
                 } else {
-                    self.performSegue(withIdentifier: K.Authentication.loginSegue, sender: self)
+                    self.performSegue(withIdentifier: Constants.Authentication.kLoginSegue, sender: self)
                 }
             }
         }
     }
 }
 
-extension LoginViewController: showUserErrorDelegate {
+extension LoginViewController: ShowUserErrorDelegate {
     func showUserErrorMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

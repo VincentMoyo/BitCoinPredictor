@@ -13,11 +13,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var delegateError: showUserErrorDelegate?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    var delegateError: ShowUserErrorDelegate?
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
@@ -26,7 +22,7 @@ class RegisterViewController: UIViewController {
                     let message = "\(e.localizedDescription)"
                     self.showUserErrorMessageDidInitiate(message)
                 } else {
-                    self.performSegue(withIdentifier: K.Authentication.registerSegue, sender: self)
+                    self.performSegue(withIdentifier: Constants.Authentication.kRegisterSegue, sender: self)
                 }
                 
             }
@@ -34,7 +30,7 @@ class RegisterViewController: UIViewController {
     }
 }
 
-extension RegisterViewController: showUserErrorDelegate {
+extension RegisterViewController: ShowUserErrorDelegate {
     func showUserErrorMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

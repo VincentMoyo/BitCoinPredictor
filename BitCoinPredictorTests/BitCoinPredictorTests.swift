@@ -10,7 +10,7 @@ import XCTest
 
 class BitCoinPredictorTests: XCTestCase {
 
-    let crementvalues = CrementClass()
+    //let crementvalues = CrementClass()
         
     override func setUpWithError() throws {
     }
@@ -18,10 +18,10 @@ class BitCoinPredictorTests: XCTestCase {
     override func tearDownWithError() throws {
     }
 
-    func testNegativeIncrementValue() {
-        let negIncrement = crementvalues.incrementByInterval(50000, -1, true)
-        XCTAssertEqual(negIncrement, 0.0)
-    }
+//    func testNegativeIncrementValue() {
+//        let negIncrement = crementvalues.incrementByInterval(50000, -1, true)
+//        XCTAssertEqual(negIncrement, 0.0)
+//    }
 
     func testPerformanceExample() throws {
 

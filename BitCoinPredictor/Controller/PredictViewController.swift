@@ -10,7 +10,7 @@ import UIKit
 class PredictViewController: UIViewController {
     
     var priceData = PredictedPriceData()
-    var controller = CrementClass()
+    var predictViewModel = PredictViewModel()
     let bitcoinAPI = BitcoinAPI()
     var database = DatabaseManager()
     
@@ -31,13 +31,13 @@ class PredictViewController: UIViewController {
     }
     
     @IBAction func incrementPriceButtonPressed(_ sender: UIButton) {
-        priceData.currentPrice = controller.incrementByInterval(priceData.currentPrice, crementValue, true)
+        priceData.currentPrice = predictViewModel.incrementByInterval(priceData.currentPrice, crementValue, true)
         predictPriceLabel.text = String(priceData.currentPrice)
         curent = priceData.currentPrice
     }
     
     @IBAction func decrementPriceButtonPressed(_ sender: UIButton) {
-        priceData.currentPrice = controller.incrementByInterval(priceData.currentPrice, crementValue, false)
+        priceData.currentPrice = predictViewModel.incrementByInterval(priceData.currentPrice, crementValue, false)
         predictPriceLabel.text = String(priceData.currentPrice)
         curent = priceData.currentPrice
     }
@@ -61,6 +61,7 @@ class PredictViewController: UIViewController {
                 let newPrice = try result.get()
                 DispatchQueue.main.async {
                     self.priceLabel.text = newPrice
+                    self.predictPriceLabel.text = newPrice
                     self.priceData.currentPrice = Double(newPrice)!
                 }
             } catch {
@@ -72,7 +73,7 @@ class PredictViewController: UIViewController {
 }
 
 //MARK: - User Alerts
-extension PredictViewController: showUserErrorDelegate, showUserSucessDelegate{
+extension PredictViewController: ShowUserErrorDelegate, ShowUserSucessDelegate{
     
     func showUserSucessMessageDidInitiate(_ message: String) {
         let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
@@ -84,20 +85,5 @@ extension PredictViewController: showUserErrorDelegate, showUserSucessDelegate{
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true)
-    }
-}
-
-//MARK: - Increment and Decrement section
-struct CrementClass {
-    func incrementByInterval(_ byteCoinPrice: Double, _ incrementValue: Double, _ increment: Bool) -> Double{
-        var finalPrice = 0.0
-        if incrementValue > 0 {
-            if (increment){
-                finalPrice = byteCoinPrice + incrementValue
-            } else {
-                finalPrice = byteCoinPrice - incrementValue
-            }
-        }
-        return finalPrice
     }
 }

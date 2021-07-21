@@ -9,7 +9,7 @@ import Foundation
 
 class APIManager {
     
-    var delegate: showUserErrorDelegate?
+    var delegate: ShowUserErrorDelegate?
     
     let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
     let apiKey1 = "4645E475-133C-458A-AA48-2EB70A347301"
@@ -19,7 +19,7 @@ class APIManager {
     
     func getCoinPrice(for currency: String, completion: @escaping (Result<(String),Error>) -> Void) {
         
-        let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey4)"
+        let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey3)"
         
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
