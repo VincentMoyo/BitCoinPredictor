@@ -20,7 +20,6 @@
 		7881AD10268DF1DB00C319CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD0F268DF1DB00C319CF /* Assets.xcassets */; };
 		7881AD13268DF1DB00C319CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD11268DF1DB00C319CF /* LaunchScreen.storyboard */; };
 		7881AD1E268DF1DB00C319CF /* BitCoinPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */; };
-		7881AD29268DF1DB00C319CF /* BitCoinPredictorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD28268DF1DB00C319CF /* BitCoinPredictorUITests.swift */; };
 		7881AD3C268DF55F00C319CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD3B268DF55F00C319CF /* Main.storyboard */; };
 		7881AD42268DF64B00C319CF /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3D268DF64800C319CF /* DateFormat.swift */; };
 		7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3E268DF64900C319CF /* ComparisonViewController.swift */; };
@@ -81,8 +80,6 @@
 		7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinPredictorTests.swift; sourceTree = "<group>"; };
 		7881AD1F268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7881AD24268DF1DB00C319CF /* BitCoinPredictorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinPredictorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7881AD28268DF1DB00C319CF /* BitCoinPredictorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinPredictorUITests.swift; sourceTree = "<group>"; };
-		7881AD2A268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7881AD3B268DF55F00C319CF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7881AD3D268DF64800C319CF /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		7881AD3E268DF64900C319CF /* ComparisonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +149,6 @@
 			children = (
 				7881AD05268DF1D800C319CF /* BitCoinPredictor */,
 				7881AD1C268DF1DB00C319CF /* BitCoinPredictorTests */,
-				7881AD27268DF1DB00C319CF /* BitCoinPredictorUITests */,
 				7881AD04268DF1D800C319CF /* Products */,
 				BF6AE6D8F83770EB68BFFF5F /* Pods */,
 				4BEC464BA15715A93B422EFE /* Frameworks */,
@@ -193,15 +189,6 @@
 				7881AD1F268DF1DB00C319CF /* Info.plist */,
 			);
 			path = BitCoinPredictorTests;
-			sourceTree = "<group>";
-		};
-		7881AD27268DF1DB00C319CF /* BitCoinPredictorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7881AD28268DF1DB00C319CF /* BitCoinPredictorUITests.swift */,
-				7881AD2A268DF1DB00C319CF /* Info.plist */,
-			);
-			path = BitCoinPredictorUITests;
 			sourceTree = "<group>";
 		};
 		7881AD38268DF4F200C319CF /* Model */ = {
@@ -566,7 +553,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7881AD29268DF1DB00C319CF /* BitCoinPredictorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,7 +634,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -703,7 +689,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

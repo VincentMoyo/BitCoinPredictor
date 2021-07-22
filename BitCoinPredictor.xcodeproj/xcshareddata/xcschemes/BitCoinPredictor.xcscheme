@@ -20,6 +20,34 @@
                ReferencedContainer = "container:BitCoinPredictor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7881AD18268DF1DB00C319CF"
+               BuildableName = "BitCoinPredictorTests.xctest"
+               BlueprintName = "BitCoinPredictorTests"
+               ReferencedContainer = "container:BitCoinPredictor.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7881AD23268DF1DB00C319CF"
+               BuildableName = "BitCoinPredictorUITests.xctest"
+               BlueprintName = "BitCoinPredictorUITests"
+               ReferencedContainer = "container:BitCoinPredictor.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -35,16 +63,6 @@
                BlueprintIdentifier = "7881AD18268DF1DB00C319CF"
                BuildableName = "BitCoinPredictorTests.xctest"
                BlueprintName = "BitCoinPredictorTests"
-               ReferencedContainer = "container:BitCoinPredictor.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7881AD23268DF1DB00C319CF"
-               BuildableName = "BitCoinPredictorUITests.xctest"
-               BlueprintName = "BitCoinPredictorUITests"
                ReferencedContainer = "container:BitCoinPredictor.xcodeproj">
             </BuildableReference>
          </TestableReference>
