@@ -37,20 +37,12 @@
 		78C16B6726A0636E00E49A9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C16B6626A0636E00E49A9F /* LoginViewController.swift */; };
 		78C16B6926A0637D00E49A9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C16B6826A0637D00E49A9F /* RegisterViewController.swift */; };
 		78E5146126A5F9B2004B9F71 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E5146026A5F9B2004B9F71 /* HomeViewModel.swift */; };
-		7E2B07B0B829CB3969923F25 /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66DEE2053D41596432E3E09 /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework */; };
 		9BF1C014C11E191D29D0EC1F /* Pods_BitCoinPredictor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2568784E3D81D7F5363B616 /* Pods_BitCoinPredictor.framework */; };
 		CFDAEADDDBE14873905DCB89 /* Pods_BitCoinPredictorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0339AEE8114E31AC939E1E59 /* Pods_BitCoinPredictorTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		7881AD1A268DF1DB00C319CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7881ACFB268DF1D800C319CF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7881AD02268DF1D800C319CF;
-			remoteInfo = BitCoinPredictor;
-		};
-		7881AD25268DF1DB00C319CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7881ACFB268DF1D800C319CF /* Project object */;
 			proxyType = 1;
@@ -79,7 +71,6 @@
 		7881AD19268DF1DB00C319CF /* BitCoinPredictorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinPredictorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinPredictorTests.swift; sourceTree = "<group>"; };
 		7881AD1F268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7881AD24268DF1DB00C319CF /* BitCoinPredictorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinPredictorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7881AD3B268DF55F00C319CF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7881AD3D268DF64800C319CF /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		7881AD3E268DF64900C319CF /* ComparisonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparisonViewController.swift; sourceTree = "<group>"; };
@@ -123,14 +114,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7881AD21268DF1DB00C319CF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E2B07B0B829CB3969923F25 /* Pods_BitCoinPredictor_BitCoinPredictorUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -160,7 +143,6 @@
 			children = (
 				7881AD03268DF1D800C319CF /* BitCoinPredictor.app */,
 				7881AD19268DF1DB00C319CF /* BitCoinPredictorTests.xctest */,
-				7881AD24268DF1DB00C319CF /* BitCoinPredictorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,26 +280,6 @@
 			productReference = 7881AD19268DF1DB00C319CF /* BitCoinPredictorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7881AD23268DF1DB00C319CF /* BitCoinPredictorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7881AD33268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictorUITests" */;
-			buildPhases = (
-				8D3CDCF2A1E9A3827DE9E618 /* [CP] Check Pods Manifest.lock */,
-				7881AD20268DF1DB00C319CF /* Sources */,
-				7881AD21268DF1DB00C319CF /* Frameworks */,
-				7881AD22268DF1DB00C319CF /* Resources */,
-				BE5460C428BC9CB9B1758BCB /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7881AD26268DF1DB00C319CF /* PBXTargetDependency */,
-			);
-			name = BitCoinPredictorUITests;
-			productName = BitCoinPredictorUITests;
-			productReference = 7881AD24268DF1DB00C319CF /* BitCoinPredictorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -331,10 +293,6 @@
 						CreatedOnToolsVersion = 12.5.1;
 					};
 					7881AD18268DF1DB00C319CF = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 7881AD02268DF1D800C319CF;
-					};
-					7881AD23268DF1DB00C319CF = {
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 7881AD02268DF1D800C319CF;
 					};
@@ -355,7 +313,6 @@
 			targets = (
 				7881AD02268DF1D800C319CF /* BitCoinPredictor */,
 				7881AD18268DF1DB00C319CF /* BitCoinPredictorTests */,
-				7881AD23268DF1DB00C319CF /* BitCoinPredictorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -374,13 +331,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7881AD17268DF1DB00C319CF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7881AD22268DF1DB00C319CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -468,45 +418,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D3CDCF2A1E9A3827DE9E618 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BitCoinPredictor-BitCoinPredictorUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BE5460C428BC9CB9B1758BCB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -549,13 +460,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7881AD20268DF1DB00C319CF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -563,11 +467,6 @@
 			isa = PBXTargetDependency;
 			target = 7881AD02268DF1D800C319CF /* BitCoinPredictor */;
 			targetProxy = 7881AD1A268DF1DB00C319CF /* PBXContainerItemProxy */;
-		};
-		7881AD26268DF1DB00C319CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7881AD02268DF1D800C319CF /* BitCoinPredictor */;
-			targetProxy = 7881AD25268DF1DB00C319CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -785,48 +684,6 @@
 			};
 			name = Release;
 		};
-		7881AD34268DF1DB00C319CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A316FA7044BB183FB301166 /* Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UKH67U3TZ4;
-				INFOPLIST_FILE = BitCoinPredictorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BitCoinPredictor;
-			};
-			name = Debug;
-		};
-		7881AD35268DF1DB00C319CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A49D3C207005686841615893 /* Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UKH67U3TZ4;
-				INFOPLIST_FILE = BitCoinPredictorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BitCoinPredictor;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -853,15 +710,6 @@
 			buildConfigurations = (
 				7881AD31268DF1DB00C319CF /* Debug */,
 				7881AD32268DF1DB00C319CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7881AD33268DF1DB00C319CF /* Build configuration list for PBXNativeTarget "BitCoinPredictorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7881AD34268DF1DB00C319CF /* Debug */,
-				7881AD35268DF1DB00C319CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
