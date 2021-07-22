@@ -11,7 +11,6 @@ import XCTest
 class BitCoinPredictorTests: XCTestCase {
 
     let predictViewModel = PredictViewModel()
-        
     override func setUpWithError() throws {
     }
 
