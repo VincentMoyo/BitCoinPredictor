@@ -11,11 +11,11 @@ class PredictedPriceData {
     
     private var initialPredictedPrice = 0.0
     var currentPrice: Double {
-        set{
-            initialPredictedPrice = newValue
-        }
         get {
             return initialPredictedPrice
+        }
+        set {
+            initialPredictedPrice = newValue
         }
     }
 }

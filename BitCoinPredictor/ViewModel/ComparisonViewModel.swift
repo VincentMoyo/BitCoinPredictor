@@ -37,7 +37,6 @@ class ComparisonViewModel {
                 let newPrice = try result.get()
                 self.database.insertPriceToDatabase(newPrice)
                 self.priceData.price = Double(newPrice)!
-                print("hwll;o")
             } catch {
                 
             }

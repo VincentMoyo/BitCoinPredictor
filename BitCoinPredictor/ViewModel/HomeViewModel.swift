@@ -32,19 +32,17 @@ class HomeViewModel {
                 let newPrice = try result.get()
                 self.database.insertPriceToDatabase(newPrice)
                 self.priceData.price = Double(newPrice)!
-                print("hwll;o")
             } catch {
                 
             }
         }
     }
     
-    private func loadPricesFromDatabse() {
+    func loadPricesFromDatabse() {
         database.loadPricesFromDatabse { result in
             do {
                 let newList = try result.get()
                 self.priceList = newList
-                print("geerg \(self.priceList.count)")
             } catch {
                 
             }

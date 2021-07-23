@@ -20,8 +20,6 @@ struct DatabaseManager {
             .addSnapshotListener { (querySnapshot, error) in
                 var priceList: [PriceListModel] = []
                 if let err = error {
-                    let message = "There was an issue retrieving data from firestorem: \(err)"
-                    delegateError?.showUserErrorMessageDidInitiate(message)
                     completion(.failure(err))
                 } else {
                     if let snapshotDocument = querySnapshot?.documents {
