@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Charts
 
 class HomeViewModel {
     
@@ -47,20 +46,5 @@ class HomeViewModel {
                 
             }
         }
-    }
-    
-    func setChartEntries() -> [ChartDataEntry] {
-        var entries = [ChartDataEntry]()
-        for price in priceList {
-            entries.append(ChartDataEntry(x: Double(price.date)!,
-                                          y: Double(price.rate)!))
-        }
-        return entries
-    }
-    
-    func setPropertiesOfSet(_ set: LineChartDataSet) {
-        set.colors = ChartColorTemplates.liberty()
-        set.drawValuesEnabled = false
-        set.label = "Bitcoin Graph"
     }
 }

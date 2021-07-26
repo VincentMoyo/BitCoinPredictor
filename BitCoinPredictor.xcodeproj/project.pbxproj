@@ -176,6 +176,7 @@
 		7881AD38268DF4F200C319CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7881AD47268DF65C00C319CF /* APIManager.swift */,
 				7881AD3D268DF64800C319CF /* DateFormat.swift */,
 				78C16B6226A0590900E49A9F /* PredictedPriceData.swift */,
 				7881AD4B268DF74100C319CF /* DatabaseManager.swift */,
@@ -217,7 +218,6 @@
 				789F756C26A0472800A01183 /* NewsTableModel.swift */,
 				789F756E26A048A400A01183 /* PriceListModel.swift */,
 				78E5146026A5F9B2004B9F71 /* HomeViewModel.swift */,
-				7881AD47268DF65C00C319CF /* APIManager.swift */,
 				781796AE26A6CEF100413317 /* ComparisonViewModel.swift */,
 				781796B026A6DF0000413317 /* PredictViewModel.swift */,
 				7871481A268F13C5001CB255 /* BitcoinAPI.swift */,

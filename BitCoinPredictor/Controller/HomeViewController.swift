@@ -62,8 +62,8 @@ extension HomeViewController: ChartViewDelegate {
         setChartFrame()
         liveGraphView.addSubview(lineChart)
         
-        let set = LineChartDataSet(entries: homeViewModel.setChartEntries())
-        homeViewModel.setPropertiesOfSet(set)
+        let set = LineChartDataSet(entries: setChartEntries())
+        setPropertiesOfSet(set)
         
         let data = LineChartData(dataSet: set)
         lineChart.data =  data
@@ -74,5 +74,20 @@ extension HomeViewController: ChartViewDelegate {
                                  width: self.liveGraphView.frame.size.width,
                                  height: self.liveGraphView.frame.size.height)
         lineChart.xAxis.drawLabelsEnabled = false
+    }
+    
+    func setChartEntries() -> [ChartDataEntry] {
+        var entries = [ChartDataEntry]()
+        for price in homeViewModel.priceList {
+            entries.append(ChartDataEntry(x: Double(price.date)!,
+                                          y: Double(price.rate)!))
+        }
+        return entries
+    }
+    
+    func setPropertiesOfSet(_ set: LineChartDataSet) {
+        set.colors = ChartColorTemplates.liberty()
+        set.drawValuesEnabled = false
+        set.label = "Bitcoin Graph"
     }
 }

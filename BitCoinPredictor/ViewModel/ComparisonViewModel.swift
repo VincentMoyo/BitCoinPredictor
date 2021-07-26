@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Charts
 
 class ComparisonViewModel {
     
@@ -18,7 +17,7 @@ class ComparisonViewModel {
     var predictedPriceData = PredictedPriceData()
     lazy var predictedPrice = 0.0
     lazy var predictedTime = 0.0
-    var delegate: ShowUserErrorDelegate?
+    weak var delegate: ShowUserErrorDelegate?
     
     func updateTimer() {
         if timerSeconds % 5 == 0 {
@@ -67,28 +66,4 @@ class ComparisonViewModel {
             }
         }
     }
-    
-    func setChartEntries() -> [ChartDataEntry] {
-        var entries = [ChartDataEntry]()
-        for price in priceList {
-            entries.append(ChartDataEntry(x: Double(price.date)!,
-                                          y: Double(price.rate)!))
-        }
-        return entries
-    }
-    
-    func setPropertiesOfSet1(_ set: LineChartDataSet) {
-        set.colors = ChartColorTemplates.colorful()
-        set.drawValuesEnabled = false
-    }
-    
-    func setPropertiesOfSet2(_ set2: LineChartDataSet) {
-        set2.highlightEnabled = true
-        set2.highlightColor = .red
-        set2.highlightLineWidth = 4
-        set2.highlightLineDashLengths = [4, 2]
-        set2.drawHorizontalHighlightIndicatorEnabled = true
-        set2.drawVerticalHighlightIndicatorEnabled = true
-    }
-    
 }

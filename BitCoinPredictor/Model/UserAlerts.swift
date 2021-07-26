@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol ShowUserErrorDelegate {
+protocol ShowUserErrorDelegate: AnyObject {
     func showUserErrorMessageDidInitiate(_ message: String)
 }
 
-protocol ShowUserSucessDelegate {
+protocol ShowUserSucessDelegate: AnyObject {
     func showUserSucessMessageDidInitiate(_ message: String)
 }

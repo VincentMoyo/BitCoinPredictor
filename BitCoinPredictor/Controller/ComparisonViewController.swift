@@ -15,10 +15,7 @@ class ComparisonViewController: UIViewController {
     @IBOutlet weak var chartComparisonPrices: UIView!
     
     let comparisonViewModel = ComparisonViewModel()
-    let apiClass = BitcoinAPI()
     var database = DatabaseManager()
-    lazy var timerSeconds = 0
-    lazy var priceList: [PriceListModel] = []
     var lineChart = LineChartView()
     var timer = Timer()
     lazy var predictedPrice = 0.0
@@ -53,49 +50,6 @@ class ComparisonViewController: UIViewController {
         }
         lineChart.delegate = self
     }
-    
-    func getBitcoinPrincUsingAPI() {
-        apiClass.getAPI { result in
-            do {
-                let newPrice = try result.get()
-                DispatchQueue.main.async {
-                    self.actualPriceLabel.text = newPrice
-                    self.database.insertPriceToDatabase(newPrice)
-                }
-            } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.showUserErrorMessageDidInitiate(message)
-            }
-        }
-    }
-    
-    func loadPricesFromDatabse() {
-        database.loadPricesFromDatabse { result in
-            do {
-                let newList = try result.get()
-                self.priceList = newList
-            } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.showUserErrorMessageDidInitiate(message)
-            }
-        }
-    }
-    
-    func loadPredictedPricesFromDatabse() {
-        database.loadPredictedPriceFromDatabase { result in
-            do {
-                let newPredictedPrice = try result.get()
-                self.predictedPrice = Double(newPredictedPrice.price)!
-                self.predictedTime = Double(newPredictedPrice.date)!
-                DispatchQueue.main.async {
-                    self.predictedPricelLabel.text = newPredictedPrice.price
-                }
-            } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.showUserErrorMessageDidInitiate(message)
-            }
-        }
-    }
 }
 
 // MARK: - User Alert section
@@ -114,14 +68,14 @@ extension ComparisonViewController: ChartViewDelegate {
         super.viewDidLayoutSubviews()
         chartComparisonPrices.addSubview(lineChart)
         setChartFrame()
-        let set = LineChartDataSet(entries: comparisonViewModel.setChartEntries())
+        let set = LineChartDataSet(entries: setChartEntries())
         let set2 = LineChartDataSet(entries: [
             ChartDataEntry(x: comparisonViewModel.predictedPriceData.currentDate,
                            y: comparisonViewModel.predictedPriceData.currentPrice)
         ])
         
-        comparisonViewModel.setPropertiesOfSet1(set)
-        comparisonViewModel.setPropertiesOfSet2(set2)
+        setPropertiesOfSet1(set)
+        setPropertiesOfSet2(set2)
         
         let data = LineChartData(dataSet: set)
         data.addDataSet(set2)
@@ -133,5 +87,28 @@ extension ComparisonViewController: ChartViewDelegate {
                                  width: self.chartComparisonPrices.frame.size.width,
                                  height: self.chartComparisonPrices.frame.size.height)
         lineChart.xAxis.drawLabelsEnabled = false
+    }
+    
+    func setChartEntries() -> [ChartDataEntry] {
+        var entries = [ChartDataEntry]()
+        for price in comparisonViewModel.priceList {
+            entries.append(ChartDataEntry(x: Double(price.date)!,
+                                          y: Double(price.rate)!))
+        }
+        return entries
+    }
+    
+    func setPropertiesOfSet1(_ set: LineChartDataSet) {
+        set.colors = ChartColorTemplates.colorful()
+        set.drawValuesEnabled = false
+    }
+    
+    func setPropertiesOfSet2(_ set2: LineChartDataSet) {
+        set2.highlightEnabled = true
+        set2.highlightColor = .red
+        set2.highlightLineWidth = 4
+        set2.highlightLineDashLengths = [4, 2]
+        set2.drawHorizontalHighlightIndicatorEnabled = true
+        set2.drawVerticalHighlightIndicatorEnabled = true
     }
 }
