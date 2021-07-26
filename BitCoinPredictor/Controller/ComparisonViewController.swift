@@ -30,10 +30,6 @@ class ComparisonViewController: UIViewController {
         timer.invalidate()
     }
     
-    @IBAction func refreshButtonPressed(_ sender: UIButton) {
-        updateTimer()
-    }
-    
     @IBAction func liveGraphSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,

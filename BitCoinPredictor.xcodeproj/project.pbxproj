@@ -29,6 +29,7 @@
 		7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD48268DF65D00C319CF /* PriceList.swift */; };
 		7881AD4C268DF74100C319CF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD4B268DF74100C319CF /* DatabaseManager.swift */; };
 		7881AD4E268DFB4B00C319CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */; };
+		78895FF726AEF19500E4C6DF /* bitcoinBackground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 78895FF626AEF19500E4C6DF /* bitcoinBackground.jpeg */; };
 		789F756B26A040D100A01183 /* NewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F756A26A040D100A01183 /* NewsList.swift */; };
 		789F756D26A0472800A01183 /* NewsTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F756C26A0472800A01183 /* NewsTableModel.swift */; };
 		789F756F26A048A400A01183 /* PriceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F756E26A048A400A01183 /* PriceListModel.swift */; };
@@ -80,6 +81,7 @@
 		7881AD48268DF65D00C319CF /* PriceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceList.swift; sourceTree = "<group>"; };
 		7881AD4B268DF74100C319CF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78895FF626AEF19500E4C6DF /* bitcoinBackground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bitcoinBackground.jpeg; sourceTree = "<group>"; };
 		789F756A26A040D100A01183 /* NewsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsList.swift; sourceTree = "<group>"; };
 		789F756C26A0472800A01183 /* NewsTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableModel.swift; sourceTree = "<group>"; };
 		789F756E26A048A400A01183 /* PriceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListModel.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				7881AD0F268DF1DB00C319CF /* Assets.xcassets */,
 				7881AD11268DF1DB00C319CF /* LaunchScreen.storyboard */,
 				7881AD14268DF1DB00C319CF /* Info.plist */,
+				78895FF626AEF19500E4C6DF /* bitcoinBackground.jpeg */,
 			);
 			path = BitCoinPredictor;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				7881AD13268DF1DB00C319CF /* LaunchScreen.storyboard in Resources */,
 				7881AD4E268DFB4B00C319CF /* GoogleService-Info.plist in Resources */,
+				78895FF726AEF19500E4C6DF /* bitcoinBackground.jpeg in Resources */,
 				780AB359269C7977003BD7C9 /* NewsTableViewCell.xib in Resources */,
 				7881AD10268DF1DB00C319CF /* Assets.xcassets in Resources */,
 				7881AD3C268DF55F00C319CF /* Main.storyboard in Resources */,
