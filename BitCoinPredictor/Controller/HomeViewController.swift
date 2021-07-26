@@ -14,17 +14,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var bitCoinLabel: UILabel!
     @IBOutlet weak var chartViewPrices: UIView!
     @IBOutlet weak var liveGraphView: UIView!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
-    var database = DatabaseManager()
     var lineChart = LineChartView()
     var timer = Timer()
     var homeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        database.delegateError = self
-        timer.invalidate()
+        
+        activateActivityIndicatorView()
         updateTimer()
+        loadScreenView()
+        timer.invalidate()
     }
     
     @IBAction func liveGraphChanged(_ sender: UISwitch) {
@@ -37,12 +39,26 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func updateTimer() {
-        homeViewModel.updateTimer()
-        DispatchQueue.main.async {
-            self.bitCoinLabel.text = String(self.homeViewModel.priceData.price)
+    private func loadScreenView() {
+        homeViewModel.didHomeViewModelLoad = { result in
+            if result {
+                DispatchQueue.main.async {
+                    self.bitCoinLabel.text = String(self.homeViewModel.priceData.price)
+                    self.lineChart.delegate = self
+                    self.activityLoader.stopAnimating()
+                }
+            }
         }
-        lineChart.delegate = self
+    }
+    
+    @objc func updateTimer() {
+        bindViewModelError()
+        homeViewModel.updateTimer()
+    }
+    
+    private func activateActivityIndicatorView() {
+        activityLoader.hidesWhenStopped = true
+        activityLoader.startAnimating()
     }
 }
 
@@ -52,6 +68,12 @@ extension HomeViewController: ShowUserErrorDelegate {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true)
+    }
+    
+    private func bindViewModelError() {
+        homeViewModel.homeViewModelError = { result in
+            self.showUserErrorMessageDidInitiate(result.localizedDescription)
+        }
     }
 }
 
@@ -76,7 +98,7 @@ extension HomeViewController: ChartViewDelegate {
         lineChart.xAxis.drawLabelsEnabled = false
     }
     
-    func setChartEntries() -> [ChartDataEntry] {
+    private func setChartEntries() -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         for price in homeViewModel.priceList {
             entries.append(ChartDataEntry(x: Double(price.date)!,
@@ -85,9 +107,9 @@ extension HomeViewController: ChartViewDelegate {
         return entries
     }
     
-    func setPropertiesOfSet(_ set: LineChartDataSet) {
+    private func setPropertiesOfSet(_ set: LineChartDataSet) {
         set.colors = ChartColorTemplates.liberty()
-        set.drawValuesEnabled = false
+        set.drawValuesEnabled = false 
         set.label = "Bitcoin Graph"
     }
 }

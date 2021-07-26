@@ -9,11 +9,13 @@ import Foundation
 
 class HomeViewModel {
     
-    let apiClass = BitcoinAPI()
-    let database = DatabaseManager()
-    lazy var timerSeconds = 0
+    private let apiClass = BitcoinAPI()
+    private let database = DatabaseManager()
+    private lazy var timerSeconds = 0
     var priceList: [PriceListModel] = []
     var priceData = PriceData()
+    var didHomeViewModelLoad: ((Bool) -> Void)?
+    var homeViewModelError: ((Error) -> Void)?
     
     func updateTimer() {
         if timerSeconds % 5 == 0 {
@@ -31,19 +33,21 @@ class HomeViewModel {
                 let newPrice = try result.get()
                 self.database.insertPriceToDatabase(newPrice)
                 self.priceData.price = Double(newPrice)!
+                self.didHomeViewModelLoad?(true)
             } catch {
-                
+                self.homeViewModelError?(error)
             }
         }
     }
     
-    func loadPricesFromDatabse() {
+    private func loadPricesFromDatabse() {
         database.loadPricesFromDatabse { result in
             do {
                 let newList = try result.get()
                 self.priceList = newList
+                self.didHomeViewModelLoad?(true)
             } catch {
-                
+                self.homeViewModelError?(error)
             }
         }
     }

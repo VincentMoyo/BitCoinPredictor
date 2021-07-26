@@ -90,6 +90,12 @@
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwN-Qb-BK8" userLabel="LiveGraphView">
                                                 <rect key="frame" x="0.0" y="41" width="335" height="339"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="lEU-bY-dfq">
+                                                        <rect key="frame" x="142" y="102" width="51" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
@@ -128,6 +134,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="BitCoin Predictor" id="EU5-Kn-X3D"/>
                     <connections>
+                        <outlet property="activityLoader" destination="lEU-bY-dfq" id="2e0-Lf-lGy"/>
                         <outlet property="bitCoinLabel" destination="G2Y-QS-G6b" id="KKJ-eL-IDL"/>
                         <outlet property="chartViewPrices" destination="rbf-xD-mmF" id="W3E-hM-vgl"/>
                         <outlet property="liveGraphView" destination="fwN-Qb-BK8" id="CPK-9c-29c"/>
@@ -135,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326.63551401869159" y="124.40604751619871"/>
+            <point key="canvasLocation" x="325.60000000000002" y="123.68815592203899"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="1bV-xp-vOo">
@@ -691,6 +698,12 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnD-Cw-2gD">
                                         <rect key="frame" x="0.0" y="281.5" width="375" height="272.5"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="pJb-7d-H1x">
+                                                <rect key="frame" x="158" y="104" width="59" height="63"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </activityIndicatorView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -708,6 +721,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="BitCoin Predictor" id="7zd-DF-sMy"/>
                     <connections>
+                        <outlet property="activityLoader" destination="pJb-7d-H1x" id="o4f-6z-j06"/>
                         <outlet property="actualPriceLabel" destination="UJI-8j-AW9" id="GX3-Sz-wDy"/>
                         <outlet property="chartComparisonPrices" destination="HnD-Cw-2gD" id="mGz-Ss-rak"/>
                         <outlet property="predictedPricelLabel" destination="g1m-fi-7yP" id="HHp-WS-1Ol"/>

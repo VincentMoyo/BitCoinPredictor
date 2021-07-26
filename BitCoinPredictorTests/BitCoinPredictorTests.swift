@@ -25,13 +25,6 @@ class BitCoinPredictorTests: XCTestCase {
         XCTAssertEqual(negIncrement, 0.0)
     }
     
-    func testIfDatabseLoadsProperly() {
-        var priceList: [PriceListModel] = []
-        homeViewModel.loadPricesFromDatabse()
-        priceList = homeViewModel.priceList
-        XCTAssert(priceList.isEmpty)
-    }
-    
     func testPerformanceExample() throws {
         self.measure {
 

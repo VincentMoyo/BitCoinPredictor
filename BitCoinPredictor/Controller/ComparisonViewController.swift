@@ -13,19 +13,21 @@ class ComparisonViewController: UIViewController {
     @IBOutlet weak var actualPriceLabel: UILabel!
     @IBOutlet weak var predictedPricelLabel: UILabel!
     @IBOutlet weak var chartComparisonPrices: UIView!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
-    let comparisonViewModel = ComparisonViewModel()
-    var database = DatabaseManager()
-    var lineChart = LineChartView()
-    var timer = Timer()
-    lazy var predictedPrice = 0.0
-    lazy var predictedTime = 0.0
+    private let comparisonViewModel = ComparisonViewModel()
+    private var lineChart = LineChartView()
+    private var timer = Timer()
+    private lazy var predictedPrice = 0.0
+    private lazy var predictedTime = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        database.delegateError = self
-        timer.invalidate()
+        
+        activateActivityIndicatorView()
         updateTimer()
+        loadScreenView()
+        timer.invalidate()
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIButton) {
@@ -42,13 +44,27 @@ class ComparisonViewController: UIViewController {
         }
     }
     
-    @objc func updateTimer() {
-        comparisonViewModel.updateTimer()
-        DispatchQueue.main.async {
-            self.actualPriceLabel.text = String(self.comparisonViewModel.priceData.price)
-            self.predictedPricelLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
+    private func loadScreenView() {
+        comparisonViewModel.didComparisonViewModelLoad = { result in
+            if result {
+                DispatchQueue.main.async {
+                    self.actualPriceLabel.text = String(self.comparisonViewModel.priceData.price)
+                    self.predictedPricelLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
+                    self.lineChart.delegate = self
+                    self.activityLoader.stopAnimating()
+                }
+            }
         }
-        lineChart.delegate = self
+    }
+    
+    @objc func updateTimer() {
+        bindViewModelError()
+        comparisonViewModel.updateTimer()
+    }
+    
+    private func activateActivityIndicatorView() {
+        activityLoader.hidesWhenStopped = true
+        activityLoader.startAnimating()
     }
 }
 
@@ -58,6 +74,12 @@ extension ComparisonViewController: ShowUserErrorDelegate {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true)
+    }
+    
+    private func bindViewModelError() {
+        comparisonViewModel.comparisonViewModelError = { result in
+            self.showUserErrorMessageDidInitiate(result.localizedDescription)
+        }
     }
 }
 
@@ -89,7 +111,7 @@ extension ComparisonViewController: ChartViewDelegate {
         lineChart.xAxis.drawLabelsEnabled = false
     }
     
-    func setChartEntries() -> [ChartDataEntry] {
+    private func setChartEntries() -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         for price in comparisonViewModel.priceList {
             entries.append(ChartDataEntry(x: Double(price.date)!,
@@ -98,12 +120,12 @@ extension ComparisonViewController: ChartViewDelegate {
         return entries
     }
     
-    func setPropertiesOfSet1(_ set: LineChartDataSet) {
+    private func setPropertiesOfSet1(_ set: LineChartDataSet) {
         set.colors = ChartColorTemplates.colorful()
         set.drawValuesEnabled = false
     }
     
-    func setPropertiesOfSet2(_ set2: LineChartDataSet) {
+    private func setPropertiesOfSet2(_ set2: LineChartDataSet) {
         set2.highlightEnabled = true
         set2.highlightColor = .red
         set2.highlightLineWidth = 4

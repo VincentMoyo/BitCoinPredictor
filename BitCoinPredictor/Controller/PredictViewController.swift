@@ -9,10 +9,10 @@ import UIKit
 
 class PredictViewController: UIViewController {
     
-    var priceData = PredictedPriceData()
-    var predictViewModel = PredictViewModel()
-    let bitcoinAPI = BitcoinAPI()
-    var database = DatabaseManager()
+    private var priceData = PredictedPriceData()
+    private var predictViewModel = PredictViewModel()
+    private let bitcoinAPI = BitcoinAPI()
+    private var database = DatabaseManager()
     
     lazy private var crementValue = 0.0
     lazy private var curent = 0.0

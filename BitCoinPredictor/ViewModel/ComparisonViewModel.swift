@@ -9,15 +9,14 @@ import Foundation
 
 class ComparisonViewModel {
     
-    let apiClass = BitcoinAPI()
-    let database = DatabaseManager()
-    lazy var timerSeconds = 0
+    private let apiClass = BitcoinAPI()
+    private let database = DatabaseManager()
+    private lazy var timerSeconds = 0
     var priceList: [PriceListModel] = []
     var priceData = PriceData()
     var predictedPriceData = PredictedPriceData()
-    lazy var predictedPrice = 0.0
-    lazy var predictedTime = 0.0
-    weak var delegate: ShowUserErrorDelegate?
+    var didComparisonViewModelLoad: ((Bool) -> Void)?
+    var comparisonViewModelError: ((Error) -> Void)?
     
     func updateTimer() {
         if timerSeconds % 5 == 0 {
@@ -36,21 +35,22 @@ class ComparisonViewModel {
                 let newPrice = try result.get()
                 self.database.insertPriceToDatabase(newPrice)
                 self.priceData.price = Double(newPrice)!
+                self.didComparisonViewModelLoad?(true)
             } catch {
-                
+                self.comparisonViewModelError?(error)
             }
         }
     }
     
-    func loadPredictedPricesFromDatabse() {
+    private func loadPredictedPricesFromDatabse() {
         database.loadPredictedPriceFromDatabase { result in
             do {
                 let newPredictedPrice = try result.get()
                 self.predictedPriceData.currentPrice = Double(newPredictedPrice.price)!
                 self.predictedPriceData.currentDate = Double(newPredictedPrice.date)!
+                self.didComparisonViewModelLoad?(true)
             } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.delegate!.showUserErrorMessageDidInitiate(message)
+                self.comparisonViewModelError?(error)
             }
         }
     }
@@ -60,9 +60,9 @@ class ComparisonViewModel {
             do {
                 let newList = try result.get()
                 self.priceList = newList
+                self.didComparisonViewModelLoad?(true)
             } catch {
-                let message = "there is an error \(error.localizedDescription)"
-                self.delegate!.showUserErrorMessageDidInitiate(message)
+                self.comparisonViewModelError?(error)
             }
         }
     }
