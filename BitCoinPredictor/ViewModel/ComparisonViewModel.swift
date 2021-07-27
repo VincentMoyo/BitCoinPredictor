@@ -66,4 +66,10 @@ class ComparisonViewModel {
             }
         }
     }
+    
+    func loadReleventAmountOfData() {
+        while priceList.count > 7 {
+            priceList.removeFirst()
+        }
+    }
 }
