@@ -13,6 +13,9 @@ class PredictViewController: UIViewController {
     private var predictViewModel = PredictViewModel()
     private let bitcoinAPI = BitcoinAPI()
     private var database = DatabaseManager()
+    private var tradeDate = PriceData()
+    private var predictDate = PredictedPriceData()
+    var homeViewModel = HomeViewModel()
     
     lazy private var crementValue = 0.0
     lazy private var curent = 0.0

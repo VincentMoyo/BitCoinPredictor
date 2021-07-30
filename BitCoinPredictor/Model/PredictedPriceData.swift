@@ -32,12 +32,23 @@ class PredictedPriceData {
 
 class PriceData {
     private var initialPrice = 0.0
+    private var initialDate = 0.0
+    
     var price: Double {
         get {
             return initialPrice
         }
         set {
             initialPrice = newValue
+        }
+    }
+    
+    var date: Double {
+        get {
+            return initialDate
+        }
+        set {
+            initialDate = newValue
         }
     }
 }

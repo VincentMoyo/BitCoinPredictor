@@ -14,6 +14,8 @@ class APIManager {
     let apiKey2 = "6FE19785-42B1-4D8E-92B3-EC4FDBE3DB75"
     let apiKey3 = "4ADA8654-C36C-448C-A383-3A2B2E5FE169"
     let apiKey4 = "ED0E63CD-0577-4190-8C24-BC1F2A276C21"
+    let apiKey5 = "30EEDBD2-1710-4A2F-97E6-1EF66EF32F47"
+    let apiKey6 = "279DBB07-FF50-4819-94DB-579005BD3BCD"
     
     func getCoinPrice(for currency: String, completion: @escaping (Result<(String), Error>) -> Void) {
         

@@ -16,6 +16,7 @@ class HomeViewModel {
     var priceData = PriceData()
     var didHomeViewModelLoad: ((Bool) -> Void)?
     var homeViewModelError: ((Error) -> Void)?
+    var predictedDate = PredictedPriceData()
     
     func updateTimer() {
         if timerSeconds % 5 == 0 {

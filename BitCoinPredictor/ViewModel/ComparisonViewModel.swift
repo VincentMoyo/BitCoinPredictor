@@ -47,7 +47,7 @@ class ComparisonViewModel {
             do {
                 let newPredictedPrice = try result.get()
                 self.predictedPriceData.currentPrice = Double(newPredictedPrice.price)!
-                self.predictedPriceData.currentDate = Double(newPredictedPrice.date)!
+                self.predictedPriceData.currentDate = Double(newPredictedPrice.date)! + 5
                 self.didComparisonViewModelLoad?(true)
             } catch {
                 self.comparisonViewModelError?(error)

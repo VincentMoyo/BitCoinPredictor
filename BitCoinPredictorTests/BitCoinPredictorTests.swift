@@ -25,6 +25,11 @@ class BitCoinPredictorTests: XCTestCase {
         XCTAssertEqual(negIncrement, 0.0)
     }
     
+    func testNegativePriceValue() {
+        let negPrice = predictViewModel.incrementByInterval(-50000, 1, true)
+        XCTAssertEqual(negPrice, 0.0)
+    }
+    
     func testPerformanceExample() throws {
         self.measure {
 

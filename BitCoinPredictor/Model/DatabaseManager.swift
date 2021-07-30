@@ -63,8 +63,24 @@ struct DatabaseManager {
         database.collection(Constants.Database.kPredictedPriceDatabaseName)
             .document(Constants.Database.kPredictedPriceDocumentName)
             .updateData([
-                Constants.Database.kPrice: predictedPrice,
-                Constants.Database.kDate: String(Date().timeIntervalSince1970 + 30)
+                Constants.Database.kPrice: predictedPrice
+            ]) { (error) in
+                if let err = error {
+                    let message = "There was an issue with Firestore, \(err)"
+                    delegateError?.showUserErrorMessageDidInitiate(message)
+                } else {
+                    let message = "Successfully saved data"
+                    delegateSucess?.showUserSucessMessageDidInitiate(message)
+                }
+            }
+    }
+    
+    func updatePredictedDateIntoDatabase(_ predictedDate: String) {
+        
+        database.collection(Constants.Database.kPredictedPriceDatabaseName)
+            .document(Constants.Database.kPredictedPriceDocumentName)
+            .updateData([
+                Constants.Database.kDate: predictedDate
             ]) { (error) in
                 if let err = error {
                     let message = "There was an issue with Firestore, \(err)"

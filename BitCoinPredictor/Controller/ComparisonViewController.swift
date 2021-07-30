@@ -16,21 +16,19 @@ class ComparisonViewController: UIViewController {
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
     private let comparisonViewModel = ComparisonViewModel()
-    private var lineChart = LineChartView()
-    var candleChart = CandleStickChartView()
+    var candleChart1 = CandleStickChartView()
     private var timer = Timer()
     private lazy var predictedPrice = 0.0
     private lazy var predictedTime = 0.0
-    var prevPrice = 0.0
-    var count = 0
+    var prevPrice = 600000.12
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         activateActivityIndicatorView()
         updateTimer()
         loadScreenView()
         timer.invalidate()
+        print("first: \(comparisonViewModel.predictedPriceData.currentDate)")
     }
     
     @IBAction func liveGraphSwitchChanged(_ sender: UISwitch) {
@@ -47,10 +45,10 @@ class ComparisonViewController: UIViewController {
         comparisonViewModel.didComparisonViewModelLoad = { result in
             if result {
                 DispatchQueue.main.async {
+                    self.comparisonViewModel.priceData.date = 0
                     self.actualPriceLabel.text = String(self.comparisonViewModel.priceData.price)
                     self.predictedPricelLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
-                    self.lineChart.delegate = self
-                    self.candleChart.delegate = self
+                    self.candleChart1.delegate = self
                     self.modifyChart()
                     self.activityLoader.stopAnimating()
                 }
@@ -69,10 +67,15 @@ class ComparisonViewController: UIViewController {
     }
     
     func modifyChart() {
-        candleChart.dragEnabled = false
-        candleChart.setScaleEnabled(true)
-        candleChart.pinchZoomEnabled = true
+        candleChart1.dragEnabled = true
+        candleChart1.setScaleEnabled(true)
+        candleChart1.pinchZoomEnabled = true
     }
+    
+    @IBAction func zoomOut(_ sender: Any) {
+        candleChart1.zoomOut()
+    }
+    
 }
 
 // MARK: - User Alert section
@@ -95,12 +98,11 @@ extension ComparisonViewController: ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        chartComparisonPrices.addSubview(candleChart)
-        candleChart.addSubview(lineChart)
+        chartComparisonPrices.addSubview(candleChart1)
         setChartFrame()
         let set = CandleChartDataSet(entries: setChartEntries())
         let set2 = CandleChartDataSet(entries: [
-            CandleChartDataEntry(x: Double(count + 5),
+            CandleChartDataEntry(x: comparisonViewModel.predictedPriceData.currentDate,
                                  shadowH: comparisonViewModel.predictedPriceData.currentPrice,
                                  shadowL: comparisonViewModel.predictedPriceData.currentPrice,
                                  open: comparisonViewModel.predictedPriceData.currentPrice,
@@ -112,21 +114,21 @@ extension ComparisonViewController: ChartViewDelegate {
         
         let data = CandleChartData(dataSet: set)
          data.addDataSet(set2)
-        candleChart.data =  data
+        candleChart1.data =  data
     }
     
     private func setChartFrame() {
-        candleChart.frame = CGRect(x: 0, y: 0,
+        candleChart1.frame = CGRect(x: 0, y: 0,
                                  width: self.chartComparisonPrices.frame.size.width,
                                  height: self.chartComparisonPrices.frame.size.height)
-        candleChart.xAxis.drawLabelsEnabled = false
+        candleChart1.xAxis.drawLabelsEnabled = false
     }
     
     private func setChartEntries() -> [CandleChartDataEntry] {
         var entries = [CandleChartDataEntry]()
-        comparisonViewModel.loadReleventAmountOfData()
         comparisonViewModel.priceList.forEach { price in
-            entries.append(CandleChartDataEntry(x: Double(count + 1),
+            comparisonViewModel.priceData.date += 1
+            entries.append(CandleChartDataEntry(x: comparisonViewModel.priceData.date,
                                                 shadowH: Double(price.rate)! > prevPrice ? ((Double(price.rate)! - prevPrice) / 5) +  Double(price.rate)! :
                                                     ((prevPrice - Double(price.rate)!) / 5) + prevPrice,
                                                 shadowL: Double(price.rate)! > prevPrice ? prevPrice - ((Double(price.rate)! - prevPrice) / 5):
@@ -134,7 +136,6 @@ extension ComparisonViewController: ChartViewDelegate {
                                                 open: prevPrice,
                                                 close: Double(price.rate)!))
             prevPrice = Double(price.rate)!
-            count += 1
         }
         return entries
     }

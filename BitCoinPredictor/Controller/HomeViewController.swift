@@ -15,16 +15,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var chartViewPrices: UIView!
     @IBOutlet weak var liveGraphView: UIView!
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
-    
+     
     var candleChart = CandleStickChartView()
     var timer = Timer()
     var homeViewModel = HomeViewModel()
-    var prevPrice = 0.0
-    var count = 0
+    var prevPrice = 500000.0
+    var database = DatabaseManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         activateActivityIndicatorView()
         updateTimer()
         loadScreenView()
@@ -33,7 +32,7 @@ class HomeViewController: UIViewController {
     }
     
     func modifyChart() {
-        candleChart.dragEnabled = false
+        candleChart.dragEnabled = true
         candleChart.setScaleEnabled(true)
         candleChart.pinchZoomEnabled = true
     }
@@ -44,6 +43,7 @@ class HomeViewController: UIViewController {
                                          selector: #selector(updateTimer), userInfo: nil, repeats: true)
             
         } else {
+            database.updatePredictedDateIntoDatabase(String(homeViewModel.priceList.count + 1))
             timer.invalidate()
         }
     }
@@ -56,9 +56,14 @@ class HomeViewController: UIViewController {
                     self.candleChart.delegate = self
                     self.modifyChart()
                     self.activityLoader.stopAnimating()
+                    self.candleChart.pinchZoomEnabled = true
                 }
             }
         }
+    }
+    
+    @IBAction func zoom(_ sender: Any) {
+        candleChart.zoomOut()
     }
     
     @objc func updateTimer() {
@@ -70,6 +75,7 @@ class HomeViewController: UIViewController {
         activityLoader.hidesWhenStopped = true
         activityLoader.startAnimating()
     }
+    
 }
 
 // MARK: - User Alerts
@@ -93,7 +99,7 @@ extension HomeViewController: ChartViewDelegate {
         super.viewDidLayoutSubviews()
         setChartFrame()
         liveGraphView.addSubview(candleChart)
-        
+        candleChart.pinchZoomEnabled = true
         let set = CandleChartDataSet(entries: setChartEntries())
         setPropertiesOfSet(set)
         
@@ -110,9 +116,9 @@ extension HomeViewController: ChartViewDelegate {
     
     private func setChartEntries() -> [CandleChartDataEntry] {
         var entries = [CandleChartDataEntry]()
-        homeViewModel.loadReleventAmountOfData()
         homeViewModel.priceList.forEach { price in
-            entries.append(CandleChartDataEntry(x: Double(count + 1),
+            homeViewModel.priceData.date += 1
+            entries.append(CandleChartDataEntry(x: homeViewModel.priceData.date,
                                                 shadowH: Double(price.rate)! > prevPrice ? ((Double(price.rate)! - prevPrice) / 5) +  Double(price.rate)! :
                                                     ((prevPrice - Double(price.rate)!) / 5) + prevPrice,
                                                 shadowL: Double(price.rate)! > prevPrice ? prevPrice - ((Double(price.rate)! - prevPrice) / 5):
@@ -120,7 +126,6 @@ extension HomeViewController: ChartViewDelegate {
                                                 open: prevPrice,
                                                 close: Double(price.rate)!))
             prevPrice = Double(price.rate)!
-            count += 1
         }
         return entries
     }

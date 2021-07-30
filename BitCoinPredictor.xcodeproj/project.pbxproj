@@ -152,9 +152,9 @@
 		7881AD05268DF1D800C319CF /* BitCoinPredictor */ = {
 			isa = PBXGroup;
 			children = (
-				789F756926A03B9900A01183 /* ViewModel */,
-				7881AD3A268DF50200C319CF /* Controller */,
 				7881AD39268DF4FB00C319CF /* View */,
+				7881AD3A268DF50200C319CF /* Controller */,
+				789F756926A03B9900A01183 /* ViewModel */,
 				7881AD38268DF4F200C319CF /* Model */,
 				7881AD06268DF1D800C319CF /* AppDelegate.swift */,
 				7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */,
