@@ -14,6 +14,8 @@ struct DatabaseManager {
     var delegateError: ShowUserErrorDelegate?
     var delegateSucess: ShowUserSucessDelegate?
     
+// MARK: - Bytecoin Database
+    
     func loadPricesFromDatabse(completion: @escaping (Result<[PriceListModel], Error>) -> Void) {
         database.collection(Constants.Database.kBitCoinDatabaseName)
             .order(by: Constants.Database.kDate)
@@ -36,6 +38,22 @@ struct DatabaseManager {
                 completion(.success(priceList))
             }
     }
+    
+    func insertPriceToDatabase(_ price: String) {
+        database.collection(Constants.Database.kBitCoinDatabaseName).addDocument(data: [
+            Constants.Database.kRate: price,
+            Constants.Database.kDate: String(Date().timeIntervalSince1970)
+        ]) { (error) in
+            if let err = error {
+                let message = "There was an issue with Firestore, \(err)"
+                delegateError?.showUserErrorMessageDidInitiate(message)
+            } else {
+                print("Successfully saved data")
+            }
+        }
+    }
+    
+// MARK: - Predicted Price Database
     
     func loadPredictedPriceFromDatabase(completion: @escaping (Result<(price: String, date: String), Error>) -> Void) {
         database.collection(Constants.Database.kPredictedPriceDatabaseName)
@@ -92,19 +110,23 @@ struct DatabaseManager {
             }
     }
     
-    func insertPriceToDatabase(_ price: String) {
-        database.collection(Constants.Database.kBitCoinDatabaseName).addDocument(data: [
-            Constants.Database.kRate: price,
-            Constants.Database.kDate: String(Date().timeIntervalSince1970)
+// MARK: - Account Balance Database
+    
+    func insertIntoAccountBalceDatabase(_ balance: String, _ equity: String, _ freeMargin: String, _ bitcoin: String) {
+        database.collection("AccountBalanceDatabase").document("balances").setData([
+            "balance": balance,
+            "equity": equity,
+            "freeMargin": freeMargin,
+            "bitboin": bitcoin
         ]) { (error) in
             if let err = error {
-                let message = "There was an issue with Firestore, \(err)"
-                delegateError?.showUserErrorMessageDidInitiate(message)
+                print("There was an issue with Firestore, \(err)")
             } else {
                 print("Successfully saved data")
             }
         }
     }
+            
 }
 
 // MARK: - Create PredictedPriceTable

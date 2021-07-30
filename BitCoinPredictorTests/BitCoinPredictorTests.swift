@@ -13,6 +13,7 @@ class BitCoinPredictorTests: XCTestCase {
     let predictViewModel = PredictViewModel()
     let comparisonViewModel = ComparisonViewModel()
     let homeViewModel = HomeViewModel()
+    var priceList: [PriceListModel] = []
     
     override func setUpWithError() throws {
     }
@@ -28,6 +29,10 @@ class BitCoinPredictorTests: XCTestCase {
     func testNegativePriceValue() {
         let negPrice = predictViewModel.incrementByInterval(-50000, 1, true)
         XCTAssertEqual(negPrice, 0.0)
+    }
+    
+    func testPriceList() {
+        
     }
     
     func testPerformanceExample() throws {

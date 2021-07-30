@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var chartViewPrices: UIView!
     @IBOutlet weak var liveGraphView: UIView!
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
-     
+    
     var candleChart = CandleStickChartView()
     var timer = Timer()
     var homeViewModel = HomeViewModel()

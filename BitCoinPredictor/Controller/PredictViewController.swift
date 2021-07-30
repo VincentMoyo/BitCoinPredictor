@@ -17,6 +17,11 @@ class PredictViewController: UIViewController {
     private var predictDate = PredictedPriceData()
     var homeViewModel = HomeViewModel()
     
+    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var equityLabel: UILabel!
+    @IBOutlet weak var freeMarginLabel: UILabel!
+    @IBOutlet weak var bitcoinLabel: UILabel!
+    
     lazy private var crementValue = 0.0
     lazy private var curent = 0.0
     
