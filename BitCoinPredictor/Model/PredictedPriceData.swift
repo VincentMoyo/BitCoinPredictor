@@ -52,3 +52,46 @@ class PriceData {
         }
     }
 }
+
+class BalanceData {
+    private var initialBalance = 0.0
+    private var initialEquity = 0.0
+    private var initialFreemargin = 0.0
+    private var initialBitcoin = 0.0
+    
+    var balance: Double {
+        get {
+            return initialBalance
+        }
+        set {
+            initialBalance = newValue
+        }
+    }
+    
+    var equity: Double {
+        get {
+            return initialEquity
+        }
+        set {
+            initialEquity = newValue
+        }
+    }
+    
+    var freeMargin: Double {
+        get {
+            return initialFreemargin
+        }
+        set {
+            initialFreemargin = newValue
+        }
+    }
+    
+    var bitcoin: Double {
+        get {
+            return initialBitcoin
+        }
+        set {
+            initialBitcoin = newValue
+        }
+    }
+}

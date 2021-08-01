@@ -25,6 +25,13 @@ struct Constants {
         static let kDate = "date"
         static let kRate = "rate"
         static let kPrice = "price"
+        
+        static let kBalanceDatabaseName = "AccountBalanceDatabase"
+        static let kBalanceDocumentName = "balances"
+        static let kBalance = "balance"
+        static let kEquity = "equity"
+        static let kFreeMargin = "freeMargin"
+        static let kBitboin = "bitboin"
     }
     
     struct Authentication {

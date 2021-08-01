@@ -13,7 +13,9 @@
 		781796AF26A6CEF100413317 /* ComparisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781796AE26A6CEF100413317 /* ComparisonViewModel.swift */; };
 		781796B126A6DF0000413317 /* PredictViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781796B026A6DF0000413317 /* PredictViewModel.swift */; };
 		784B13C226985C4500453A1A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784B13C126985C4500453A1A /* Constants.swift */; };
+		784D0E5426B6B77700E161C3 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D0E5326B6B77700E161C3 /* BalanceViewModel.swift */; };
 		7871481B268F13C5001CB255 /* BitcoinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7871481A268F13C5001CB255 /* BitcoinAPI.swift */; };
+		78775D2026B5DB7700058214 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78775D1F26B5DB7700058214 /* BalanceViewController.swift */; };
 		78817812269DB268003F18C1 /* UserAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78817811269DB268003F18C1 /* UserAlerts.swift */; };
 		7881AD07268DF1D800C319CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD06268DF1D800C319CF /* AppDelegate.swift */; };
 		7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD08268DF1D800C319CF /* SceneDelegate.swift */; };
@@ -63,7 +65,9 @@
 		781796AE26A6CEF100413317 /* ComparisonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonViewModel.swift; sourceTree = "<group>"; };
 		781796B026A6DF0000413317 /* PredictViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictViewModel.swift; sourceTree = "<group>"; };
 		784B13C126985C4500453A1A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		784D0E5326B6B77700E161C3 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
 		7871481A268F13C5001CB255 /* BitcoinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAPI.swift; sourceTree = "<group>"; };
+		78775D1F26B5DB7700058214 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		78817811269DB268003F18C1 /* UserAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlerts.swift; sourceTree = "<group>"; };
 		7881AD03268DF1D800C319CF /* BitCoinPredictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinPredictor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7881AD06268DF1D800C319CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				780AB34F269C5E1E003BD7C9 /* NewsTableViewController.swift */,
 				78C16B6826A0637D00E49A9F /* RegisterViewController.swift */,
 				78C16B6626A0636E00E49A9F /* LoginViewController.swift */,
+				78775D1F26B5DB7700058214 /* BalanceViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				781796B026A6DF0000413317 /* PredictViewModel.swift */,
 				7871481A268F13C5001CB255 /* BitcoinAPI.swift */,
 				78D4F55426B484B600C98F1D /* BalanceListModel.swift */,
+				784D0E5326B6B77700E161C3 /* BalanceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -453,10 +459,12 @@
 				78C16B6326A0590900E49A9F /* PredictedPriceData.swift in Sources */,
 				7881AD07268DF1D800C319CF /* AppDelegate.swift in Sources */,
 				789F756F26A048A400A01183 /* PriceListModel.swift in Sources */,
+				78775D2026B5DB7700058214 /* BalanceViewController.swift in Sources */,
 				78817812269DB268003F18C1 /* UserAlerts.swift in Sources */,
 				7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */,
 				7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */,
 				780AB350269C5E1E003BD7C9 /* NewsTableViewController.swift in Sources */,
+				784D0E5426B6B77700E161C3 /* BalanceViewModel.swift in Sources */,
 				78D4F55526B484B600C98F1D /* BalanceListModel.swift in Sources */,
 				7881AD4A268DF65D00C319CF /* PriceList.swift in Sources */,
 				781796AF26A6CEF100413317 /* ComparisonViewModel.swift in Sources */,

@@ -9,13 +9,12 @@ import UIKit
 
 class PredictViewController: UIViewController {
     
-    private var priceData = PredictedPriceData()
+    var priceData = PredictedPriceData()
     private var predictViewModel = PredictViewModel()
     private let bitcoinAPI = BitcoinAPI()
     private var database = DatabaseManager()
     private var tradeDate = PriceData()
     private var predictDate = PredictedPriceData()
-    var homeViewModel = HomeViewModel()
     
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var equityLabel: UILabel!
@@ -24,18 +23,33 @@ class PredictViewController: UIViewController {
     
     lazy private var crementValue = 0.0
     lazy private var curent = 0.0
+    var pricelistLength = 0
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var predictPriceLabel: UILabel!
     @IBOutlet weak var tenIncrementButton: UIButton!
     @IBOutlet weak var hundredIncrementButton: UIButton!
     @IBOutlet weak var thousandIncrementButton: UIButton!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         database.delegateError = self
         database.delegateSucess = self
         getBitcoinPrincUsingAPI()
+        activateActivityIndicatorView()
+        predictViewModel.loadPricesFromDatabse()
+        loadScreenView()
+    }
+    
+    private func loadScreenView() {
+        predictViewModel.didPredictViewModelLoad = { result in
+            if result {
+                    self.pricelistLength = self.predictViewModel.priceList.count + 5
+                print("hgellllo")
+                    self.activityLoader.stopAnimating()
+            }
+        }
     }
     
     @IBAction func incrementPriceButtonPressed(_ sender: UIButton) {
@@ -60,6 +74,7 @@ class PredictViewController: UIViewController {
     
     @IBAction func predictButtonPressed(_ sender: UIButton) {
         database.updatePredictedPriceIntoDatabase(String(curent))
+        database.updatePredictedDateIntoDatabase(String(pricelistLength))
     }
     
     func getBitcoinPrincUsingAPI() {
@@ -76,6 +91,11 @@ class PredictViewController: UIViewController {
                 self.showUserErrorMessageDidInitiate(message)
             }
         }
+    }
+    
+    private func activateActivityIndicatorView() {
+        activityLoader.hidesWhenStopped = true
+        activityLoader.startAnimating()
     }
 }
 

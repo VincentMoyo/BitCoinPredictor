@@ -112,19 +112,52 @@ struct DatabaseManager {
     
 // MARK: - Account Balance Database
     
-    func insertIntoAccountBalceDatabase(_ balance: String, _ equity: String, _ freeMargin: String, _ bitcoin: String) {
-        database.collection("AccountBalanceDatabase").document("balances").setData([
-            "balance": balance,
-            "equity": equity,
-            "freeMargin": freeMargin,
-            "bitboin": bitcoin
-        ]) { (error) in
-            if let err = error {
-                print("There was an issue with Firestore, \(err)")
-            } else {
-                print("Successfully saved data")
+    func loadBalanceFromDatabase(completion: @escaping (Result<[BalanceListModel], Error>) -> Void) {
+        database.collection(Constants.Database.kBalanceDatabaseName)
+            .addSnapshotListener { (querySnapshot, error) in
+                var balanceList: [BalanceListModel] = []
+                if let err = error {
+                    let message = "There was an issue retrieving data from firestorem: \(err)"
+                    delegateError?.showUserErrorMessageDidInitiate(message)
+                    completion(.failure(err))
+                } else {
+                    if let snapshotDocument = querySnapshot?.documents {
+                        for doc in snapshotDocument {
+                            let data = doc.data()
+                            if let newBalance = data[Constants.Database.kBalance] as? String,
+                               let newEquity = data[Constants.Database.kEquity] as? String,
+                               let newFreeMargin = data[Constants.Database.kFreeMargin] as? String,
+                               let newBitcoin = data[Constants.Database.kBitboin] as? String {
+                                let newBalanceList = BalanceListModel(balanceList: BalanceList(balance: newBalance,
+                                                                                               equity: newEquity,
+                                                                                               freemargin: newFreeMargin,
+                                                                                               bitcoin: newBitcoin))
+                                balanceList.append(newBalanceList)
+                            }
+                        }
+                    }
+                }
+                completion(.success(balanceList))
             }
-        }
+    }
+    
+    func updateAccountBalceDatabase(_ balance: String, _ equity: String, _ freeMargin: String, _ bitcoin: String) {
+        database.collection(Constants.Database.kBalanceDatabaseName)
+            .document(Constants.Database.kBalanceDocumentName)
+            .updateData([
+                Constants.Database.kBalance: balance,
+                Constants.Database.kEquity: equity,
+                Constants.Database.kFreeMargin: freeMargin,
+                Constants.Database.kBitboin: bitcoin
+            ]) { (error) in
+                if let err = error {
+                    let message = "There was an issue with Firestore, \(err)"
+                    delegateError?.showUserErrorMessageDidInitiate(message)
+                } else {
+                    let message = "Successfully saved data"
+                    delegateSucess?.showUserSucessMessageDidInitiate(message)
+                }
+            }
     }
             
 }
