@@ -61,7 +61,7 @@ class BalanceViewModel {
     private func loadPredictedPricesFromDatabse() {
         database.loadPredictedPriceFromDatabase { result in
             do {
-               
+                
                 let newPredictedPrice = try result.get()
                 self.predictedPrice.currentPrice = Double(newPredictedPrice.price)!
                 self.didBalanceViewModelLoad?(true)

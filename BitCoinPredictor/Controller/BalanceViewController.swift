@@ -8,15 +8,15 @@
 import UIKit
 
 class BalanceViewController: UIViewController {
-
+    
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var equityLabel: UILabel!
     @IBOutlet weak var freeMargin: UILabel!
     @IBOutlet weak var bitcoinLabel: UILabel!
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
-    var balanceViewModel = BalanceViewModel()
-    var timer = Timer()
+    private var balanceViewModel = BalanceViewModel()
+    private var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class BalanceViewController: UIViewController {
         loadScreenView()
     }
     
-    func startTimer() {
+    private func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
                                      selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
@@ -57,7 +57,7 @@ class BalanceViewController: UIViewController {
         activityLoader.hidesWhenStopped = true
         activityLoader.startAnimating()
     }
-
+    
 }
 
 // MARK: - User Alerts

@@ -14,7 +14,7 @@ struct DatabaseManager {
     var delegateError: ShowUserErrorDelegate?
     var delegateSucess: ShowUserSucessDelegate?
     
-// MARK: - Bytecoin Database
+    // MARK: - Bytecoin Database
     
     func loadPricesFromDatabse(completion: @escaping (Result<[PriceListModel], Error>) -> Void) {
         database.collection(Constants.Database.kBitCoinDatabaseName)
@@ -53,7 +53,7 @@ struct DatabaseManager {
         }
     }
     
-// MARK: - Predicted Price Database
+    // MARK: - Predicted Price Database
     
     func loadPredictedPriceFromDatabase(completion: @escaping (Result<(price: String, date: String), Error>) -> Void) {
         database.collection(Constants.Database.kPredictedPriceDatabaseName)
@@ -110,7 +110,7 @@ struct DatabaseManager {
             }
     }
     
-// MARK: - Account Balance Database
+    // MARK: - Account Balance Database
     
     func loadBalanceFromDatabase(completion: @escaping (Result<[BalanceListModel], Error>) -> Void) {
         database.collection(Constants.Database.kBalanceDatabaseName)
@@ -159,7 +159,7 @@ struct DatabaseManager {
                 }
             }
     }
-            
+    
 }
 
 // MARK: - Create PredictedPriceTable

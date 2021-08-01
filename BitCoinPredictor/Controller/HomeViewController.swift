@@ -16,11 +16,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var liveGraphView: UIView!
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
-    var candleChart = CandleStickChartView()
-    var timer = Timer()
-    var homeViewModel = HomeViewModel()
-    var prevPrice = 500000.0
-    var database = DatabaseManager()
+    private var candleChart = CandleStickChartView()
+    private var timer = Timer()
+    private var homeViewModel = HomeViewModel()
+    private var prevPrice = 600000.0
+    private var database = DatabaseManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
         modifyChart()
     }
     
-    func modifyChart() {
+    private func modifyChart() {
         candleChart.dragEnabled = true
         candleChart.setScaleEnabled(true)
         candleChart.pinchZoomEnabled = true

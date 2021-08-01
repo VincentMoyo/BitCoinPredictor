@@ -53,7 +53,7 @@ class HomeViewModel {
         }
     }
     
-    func loadReleventAmountOfData() {
+    private func loadReleventAmountOfData() {
         while priceList.count > 7 {
             priceList.removeFirst()
         }

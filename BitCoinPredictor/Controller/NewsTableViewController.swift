@@ -11,7 +11,7 @@ import SafariServices
 
 class NewsTableViewController: UITableViewController {
     
-    let newsAPI = NewsAPI(apiKey: Constants.News.kApiKey)
+    private let newsAPI = NewsAPI(apiKey: Constants.News.kApiKey)
     lazy private var articles = [NewsArticle]()
     lazy private var viewModels = [NewsTableModel]()
     

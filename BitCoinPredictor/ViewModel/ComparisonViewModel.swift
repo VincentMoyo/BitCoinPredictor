@@ -31,13 +31,13 @@ class ComparisonViewModel {
         }
     }
     
-    func checkBitcoin (_ bitcoinPrice: Double, _ balance: Double) -> Double {
+    private func checkBitcoin (_ bitcoinPrice: Double, _ balance: Double) -> Double {
         return round((balance/bitcoinPrice)*100) / 100
     }
     
-    func checkEquity() {
+    private func checkEquity() {
         loadBalancesFromDatabse()
-
+        
         let newCount = priceList.count
         if let lastPrice = priceList.last {
             if Double(newCount) < predictedPriceData.currentDate {
@@ -46,14 +46,14 @@ class ComparisonViewModel {
             } else if Double(newCount) == predictedPriceData.currentDate {
                 balanceData.balance += Double(lastPrice.rate)!
                 balanceData.equity = balanceData.balance
-               insertIntoBalanceDatabase()
+                insertIntoBalanceDatabase()
             } else {
-               insertIntoBalanceDatabase()
+                insertIntoBalanceDatabase()
             }
         }
     }
     
-    func insertIntoBalanceDatabase() {
+    private func insertIntoBalanceDatabase() {
         database.updateAccountBalceDatabase(String(balanceData.balance),
                                             String(balanceData.equity),
                                             String(balanceData.freeMargin),
@@ -115,7 +115,7 @@ class ComparisonViewModel {
         }
     }
     
-    func loadReleventAmountOfData() {
+    private func loadReleventAmountOfData() {
         while priceList.count > 7 {
             priceList.removeFirst()
         }

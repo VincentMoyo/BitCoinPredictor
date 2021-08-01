@@ -16,11 +16,11 @@ class ComparisonViewController: UIViewController {
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
     private let comparisonViewModel = ComparisonViewModel()
-    var candleChart1 = CandleStickChartView()
+    private var candleChart1 = CandleStickChartView()
     private var timer = Timer()
     private lazy var predictedPrice = 0.0
     private lazy var predictedTime = 0.0
-    var prevPrice = 600000.12
+    private var prevPrice = 600000.12
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ class ComparisonViewController: UIViewController {
         updateTimer()
         loadScreenView()
         timer.invalidate()
-        print("first: \(comparisonViewModel.predictedPriceData.currentDate)")
     }
     
     @IBAction func liveGraphSwitchChanged(_ sender: UISwitch) {
@@ -66,7 +65,7 @@ class ComparisonViewController: UIViewController {
         activityLoader.startAnimating()
     }
     
-    func modifyChart() {
+    private func modifyChart() {
         candleChart1.dragEnabled = true
         candleChart1.setScaleEnabled(true)
         candleChart1.pinchZoomEnabled = true
@@ -113,14 +112,14 @@ extension ComparisonViewController: ChartViewDelegate {
         setPropertiesOfSet2(set2)
         
         let data = CandleChartData(dataSet: set)
-         data.addDataSet(set2)
+        data.addDataSet(set2)
         candleChart1.data =  data
     }
     
     private func setChartFrame() {
         candleChart1.frame = CGRect(x: 0, y: 0,
-                                 width: self.chartComparisonPrices.frame.size.width,
-                                 height: self.chartComparisonPrices.frame.size.height)
+                                    width: self.chartComparisonPrices.frame.size.width,
+                                    height: self.chartComparisonPrices.frame.size.height)
         candleChart1.xAxis.drawLabelsEnabled = false
     }
     

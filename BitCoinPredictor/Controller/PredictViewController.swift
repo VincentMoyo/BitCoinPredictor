@@ -23,7 +23,7 @@ class PredictViewController: UIViewController {
     
     lazy private var crementValue = 0.0
     lazy private var curent = 0.0
-    var pricelistLength = 0
+    private var pricelistLength = 0
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var predictPriceLabel: UILabel!
@@ -45,9 +45,9 @@ class PredictViewController: UIViewController {
     private func loadScreenView() {
         predictViewModel.didPredictViewModelLoad = { result in
             if result {
-                    self.pricelistLength = self.predictViewModel.priceList.count + 5
+                self.pricelistLength = self.predictViewModel.priceList.count + 5
                 print("hgellllo")
-                    self.activityLoader.stopAnimating()
+                self.activityLoader.stopAnimating()
             }
         }
     }
@@ -77,7 +77,7 @@ class PredictViewController: UIViewController {
         database.updatePredictedDateIntoDatabase(String(pricelistLength))
     }
     
-    func getBitcoinPrincUsingAPI() {
+    private func getBitcoinPrincUsingAPI() {
         bitcoinAPI.getAPI { result in
             do {
                 let newPrice = try result.get()
