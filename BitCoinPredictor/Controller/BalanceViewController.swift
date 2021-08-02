@@ -22,29 +22,30 @@ class BalanceViewController: UIViewController {
         super.viewDidLoad()
         activateActivityIndicatorView()
         startTimer()
-        loadScreenView()
-        
+        bindBalanceViewModel()
     }
     
     @objc func updateTimer() {
-        bindViewModelError()
+        bindBalanceViewModelErrors()
         balanceViewModel.updateTimer()
-        loadScreenView()
+        bindBalanceViewModel()
     }
     
     private func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
-                                     selector: #selector(updateTimer), userInfo: nil, repeats: true)
+                                     selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
     }
     
-    private func loadScreenView() {
+    private func bindBalanceViewModel() {
         balanceViewModel.didBalanceViewModelLoad = { result in
             if result {
                 self.balanceViewModel.balanceList.forEach { accountBalance in
                     DispatchQueue.main.async {
                         self.balanceLabel.text = accountBalance.balance
                         self.equityLabel.text = accountBalance.equity
-                        self.freeMargin.text = accountBalance.freemargin
+                        self.freeMargin.text = accountBalance.freeMargin
                         self.bitcoinLabel.text = accountBalance.bitcoin
                         self.activityLoader.stopAnimating()
                     }
@@ -58,17 +59,7 @@ class BalanceViewController: UIViewController {
         activityLoader.startAnimating()
     }
     
-}
-
-// MARK: - User Alerts
-extension BalanceViewController: ShowUserErrorDelegate {
-    func showUserErrorMessageDidInitiate(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
-    }
-    
-    private func bindViewModelError() {
+    private func bindBalanceViewModelErrors() {
         balanceViewModel.balanceViewModelError = { result in
             self.showUserErrorMessageDidInitiate(result.localizedDescription)
         }

@@ -10,9 +10,9 @@ import Foundation
 struct DateFormat {
     func getCurrentDate() -> Date {
         let date = Date()
-        Constants.dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let result = Constants.dateFormatterGet.string(from: date)
-        let newDate = Constants.dateFormatterGet.date(from: result)
+        Constants.FormatForDate.dateFormatterGet.dateFormat = Constants.FormatForDate.DateFormate
+        let result = Constants.FormatForDate.dateFormatterGet.string(from: date)
+        let newDate = Constants.FormatForDate.dateFormatterGet.date(from: result)
         return newDate!
     }
 }

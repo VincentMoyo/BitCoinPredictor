@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PredictedPriceData {
+struct PredictedPriceData {
     private var initialPredictedPrice = 0.0
     private var initialPredictedDate = 0.0
     
@@ -26,72 +26,6 @@ class PredictedPriceData {
         }
         set {
             initialPredictedDate = newValue
-        }
-    }
-}
-
-class PriceData {
-    private var initialPrice = 0.0
-    private var initialDate = 0.0
-    
-    var price: Double {
-        get {
-            return initialPrice
-        }
-        set {
-            initialPrice = newValue
-        }
-    }
-    
-    var date: Double {
-        get {
-            return initialDate
-        }
-        set {
-            initialDate = newValue
-        }
-    }
-}
-
-class BalanceData {
-    private var initialBalance = 0.0
-    private var initialEquity = 0.0
-    private var initialFreemargin = 0.0
-    private var initialBitcoin = 0.0
-    
-    var balance: Double {
-        get {
-            return initialBalance
-        }
-        set {
-            initialBalance = newValue
-        }
-    }
-    
-    var equity: Double {
-        get {
-            return initialEquity
-        }
-        set {
-            initialEquity = newValue
-        }
-    }
-    
-    var freeMargin: Double {
-        get {
-            return initialFreemargin
-        }
-        set {
-            initialFreemargin = newValue
-        }
-    }
-    
-    var bitcoin: Double {
-        get {
-            return initialBitcoin
-        }
-        set {
-            initialBitcoin = newValue
         }
     }
 }

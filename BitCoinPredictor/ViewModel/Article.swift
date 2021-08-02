@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NewsTableModel {
+class Article {
     let title: String
     let subtile: String
     let imageURL: URL?

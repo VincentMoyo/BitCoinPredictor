@@ -11,43 +11,42 @@ import Charts
 class ComparisonViewController: UIViewController {
     
     @IBOutlet weak var actualPriceLabel: UILabel!
-    @IBOutlet weak var predictedPricelLabel: UILabel!
+    @IBOutlet weak var predictedPriceLabel: UILabel!
     @IBOutlet weak var chartComparisonPrices: UIView!
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
     private let comparisonViewModel = ComparisonViewModel()
-    private var candleChart1 = CandleStickChartView()
+    private var candleChart = CandleStickChartView()
     private var timer = Timer()
-    private lazy var predictedPrice = 0.0
-    private lazy var predictedTime = 0.0
-    private var prevPrice = 600000.12
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activateActivityIndicatorView()
         updateTimer()
-        loadScreenView()
+        bindComparisonViewModel()
         timer.invalidate()
     }
     
     @IBAction func liveGraphSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
-                                         selector: #selector(updateTimer), userInfo: nil, repeats: true)
+                                         selector: #selector(updateTimer),
+                                         userInfo: nil,
+                                         repeats: true)
             
         } else {
             timer.invalidate()
         }
     }
     
-    private func loadScreenView() {
+    private func bindComparisonViewModel() {
         comparisonViewModel.didComparisonViewModelLoad = { result in
             if result {
                 DispatchQueue.main.async {
                     self.comparisonViewModel.priceData.date = 0
                     self.actualPriceLabel.text = String(self.comparisonViewModel.priceData.price)
-                    self.predictedPricelLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
-                    self.candleChart1.delegate = self
+                    self.predictedPriceLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
+                    self.candleChart.delegate = self
                     self.modifyChart()
                     self.activityLoader.stopAnimating()
                 }
@@ -56,7 +55,7 @@ class ComparisonViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        bindViewModelError()
+        bindComparisonViewModelErrors()
         comparisonViewModel.updateTimer()
     }
     
@@ -66,26 +65,16 @@ class ComparisonViewController: UIViewController {
     }
     
     private func modifyChart() {
-        candleChart1.dragEnabled = true
-        candleChart1.setScaleEnabled(true)
-        candleChart1.pinchZoomEnabled = true
+        candleChart.dragEnabled = true
+        candleChart.setScaleEnabled(true)
+        candleChart.pinchZoomEnabled = true
     }
     
     @IBAction func zoomOut(_ sender: Any) {
-        candleChart1.zoomOut()
+        candleChart.zoomOut()
     }
     
-}
-
-// MARK: - User Alert section
-extension ComparisonViewController: ShowUserErrorDelegate {
-    func showUserErrorMessageDidInitiate(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
-    }
-    
-    private func bindViewModelError() {
+    private func bindComparisonViewModelErrors() {
         comparisonViewModel.comparisonViewModelError = { result in
             self.showUserErrorMessageDidInitiate(result.localizedDescription)
         }
@@ -97,69 +86,80 @@ extension ComparisonViewController: ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        chartComparisonPrices.addSubview(candleChart1)
+        chartComparisonPrices.addSubview(candleChart)
         setChartFrame()
-        let set = CandleChartDataSet(entries: setChartEntries())
-        let set2 = CandleChartDataSet(entries: [
-            CandleChartDataEntry(x: comparisonViewModel.predictedPriceData.currentDate,
-                                 shadowH: comparisonViewModel.predictedPriceData.currentPrice,
-                                 shadowL: comparisonViewModel.predictedPriceData.currentPrice,
-                                 open: comparisonViewModel.predictedPriceData.currentPrice,
-                                 close: comparisonViewModel.predictedPriceData.currentPrice)
-        ])
+        let firstSet = CandleChartDataSet(entries: chartEntriesForFirstSet())
+        let secondSet = CandleChartDataSet(entries: chartEntriesForSecondSet())
         
-        setPropertiesOfSet1(set)
-        setPropertiesOfSet2(set2)
+        setPropertiesForFirstSet(firstSet)
+        setPropertiesForSecondSet(secondSet)
         
-        let data = CandleChartData(dataSet: set)
-        data.addDataSet(set2)
-        candleChart1.data =  data
+        let data = CandleChartData(dataSet: firstSet)
+        data.addDataSet(secondSet)
+        candleChart.data =  data
     }
     
     private func setChartFrame() {
-        candleChart1.frame = CGRect(x: 0, y: 0,
-                                    width: self.chartComparisonPrices.frame.size.width,
-                                    height: self.chartComparisonPrices.frame.size.height)
-        candleChart1.xAxis.drawLabelsEnabled = false
+        candleChart.frame = CGRect(x: 0, y: 0,
+                                   width: self.chartComparisonPrices.frame.size.width,
+                                   height: self.chartComparisonPrices.frame.size.height)
+        candleChart.xAxis.drawLabelsEnabled = false
     }
     
-    private func setChartEntries() -> [CandleChartDataEntry] {
+    private func chartEntriesForFirstSet() -> [CandleChartDataEntry] {
         var entries = [CandleChartDataEntry]()
         comparisonViewModel.priceList.forEach { price in
             comparisonViewModel.priceData.date += 1
             entries.append(CandleChartDataEntry(x: comparisonViewModel.priceData.date,
-                                                shadowH: Double(price.rate)! > prevPrice ? ((Double(price.rate)! - prevPrice) / 5) +  Double(price.rate)! :
-                                                    ((prevPrice - Double(price.rate)!) / 5) + prevPrice,
-                                                shadowL: Double(price.rate)! > prevPrice ? prevPrice - ((Double(price.rate)! - prevPrice) / 5):
-                                                    Double(price.rate)! - ((prevPrice - Double(price.rate)!) / 5),
-                                                open: prevPrice,
+                                                shadowH: setShadowHigh(for: Double(price.rate)!),
+                                                shadowL: setShadowLow(for: Double(price.rate)!),
+                                                open: comparisonViewModel.previousPrice,
                                                 close: Double(price.rate)!))
-            prevPrice = Double(price.rate)!
+            comparisonViewModel.previousPrice = Double(price.rate)!
         }
         return entries
     }
     
-    private func setPropertiesOfSet1(_ set1: CandleChartDataSet) {
-        set1.drawValuesEnabled = false
-        set1.label = "Bitcoin Graph"
-        set1.axisDependency = .left
-        set1.setColor(UIColor(white: 80/255, alpha: 1))
-        set1.drawIconsEnabled = false
-        set1.shadowColor = .darkGray
-        set1.shadowWidth = 1
-        set1.decreasingColor = .red
-        set1.decreasingFilled = true
-        set1.increasingColor = .green
-        set1.increasingFilled = true
-        set1.neutralColor = .blue
+    private func chartEntriesForSecondSet() -> [CandleChartDataEntry] {
+        return [CandleChartDataEntry(x: comparisonViewModel.predictedPriceData.currentDate,
+                                     shadowH: comparisonViewModel.predictedPriceData.currentPrice,
+                                     shadowL: comparisonViewModel.predictedPriceData.currentPrice,
+                                     open: comparisonViewModel.predictedPriceData.currentPrice,
+                                     close: comparisonViewModel.predictedPriceData.currentPrice)]
     }
     
-    private func setPropertiesOfSet2(_ set2: CandleChartDataSet) {
-        set2.highlightEnabled = true
-        set2.highlightColor = .red
-        set2.highlightLineWidth = 4
-        set2.highlightLineDashLengths = [4, 2]
-        set2.drawHorizontalHighlightIndicatorEnabled = true
-        set2.drawVerticalHighlightIndicatorEnabled = true
+    private func setPropertiesForFirstSet(_ firstSet: CandleChartDataSet) {
+        firstSet.drawValuesEnabled = false
+        firstSet.label = NSLocalizedString("BITCOIN_GRAPH", comment: "")
+        firstSet.axisDependency = .left
+        firstSet.setColor(UIColor(white: 80/255, alpha: 1))
+        firstSet.drawIconsEnabled = false
+        firstSet.shadowColor = .darkGray
+        firstSet.shadowWidth = 1
+        firstSet.decreasingColor = .red
+        firstSet.decreasingFilled = true
+        firstSet.increasingColor = .green
+        firstSet.increasingFilled = true
+        firstSet.neutralColor = .blue
+    }
+    
+    private func setPropertiesForSecondSet(_ secondSet: CandleChartDataSet) {
+        secondSet.label = nil
+        secondSet.highlightEnabled = true
+        secondSet.highlightColor = .red
+        secondSet.highlightLineWidth = 4
+        secondSet.highlightLineDashLengths = [4, 2]
+        secondSet.drawHorizontalHighlightIndicatorEnabled = true
+        secondSet.drawVerticalHighlightIndicatorEnabled = true
+    }
+    
+    private func setShadowHigh(for price: Double) -> Double {
+        return price > comparisonViewModel.previousPrice ? ((price - comparisonViewModel.previousPrice) / 5) +  price :
+            ((comparisonViewModel.previousPrice - price) / 5) + comparisonViewModel.previousPrice
+    }
+    
+    private func setShadowLow(for price: Double) -> Double {
+        return price > comparisonViewModel.previousPrice ? comparisonViewModel.previousPrice - ((price - comparisonViewModel.previousPrice) / 5):
+            price - ((comparisonViewModel.previousPrice - price) / 5)
     }
 }

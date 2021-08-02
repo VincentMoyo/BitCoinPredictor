@@ -12,11 +12,11 @@ struct DatabaseManager {
     
     private let database = Firestore.firestore()
     var delegateError: ShowUserErrorDelegate?
-    var delegateSucess: ShowUserSucessDelegate?
+    var delegateSuccess: ShowUserSuccessDelegate?
     
     // MARK: - Bytecoin Database
     
-    func loadPricesFromDatabse(completion: @escaping (Result<[PriceListModel], Error>) -> Void) {
+    func loadPricesFromDatabase(completion: @escaping (Result<[PriceListModel], Error>) -> Void) {
         database.collection(Constants.Database.kBitCoinDatabaseName)
             .order(by: Constants.Database.kDate)
             .addSnapshotListener { (querySnapshot, error) in
@@ -27,9 +27,9 @@ struct DatabaseManager {
                     if let snapshotDocument = querySnapshot?.documents {
                         for doc in snapshotDocument {
                             let data = doc.data()
-                            if let priceOfByteCoin = data[Constants.Database.kRate] as? String,
-                               let date = data[Constants.Database.kDate] as? String {
-                                let newPrice = PriceListModel(priceList: PriceList(rate: priceOfByteCoin, date: date))
+                            if let priceOfBitcoin = data[Constants.Database.kRate] as? String,
+                               let dateOfBitcoinPrice = data[Constants.Database.kDate] as? String {
+                                let newPrice = PriceListModel(priceList: PriceList(rate: priceOfBitcoin, date: dateOfBitcoinPrice))
                                 priceList.append(newPrice)
                             }
                         }
@@ -45,10 +45,7 @@ struct DatabaseManager {
             Constants.Database.kDate: String(Date().timeIntervalSince1970)
         ]) { (error) in
             if let err = error {
-                let message = "There was an issue with Firestore, \(err)"
-                delegateError?.showUserErrorMessageDidInitiate(message)
-            } else {
-                print("Successfully saved data")
+                delegateError?.showUserErrorMessageDidInitiate(NSLocalizedString("FIREBASE_ERROR", comment: "") + "\(err)")
             }
         }
     }
@@ -59,8 +56,6 @@ struct DatabaseManager {
         database.collection(Constants.Database.kPredictedPriceDatabaseName)
             .addSnapshotListener { (querySnapshot, error) in
                 if let err = error {
-                    let message = "There was an issue retrieving data from firestorem: \(err)"
-                    delegateError?.showUserErrorMessageDidInitiate(message)
                     completion(.failure(err))
                 } else {
                     if let snapshotDocument = querySnapshot?.documents {
@@ -76,36 +71,17 @@ struct DatabaseManager {
             }
     }
     
-    func updatePredictedPriceIntoDatabase(_ predictedPrice: String) {
-        
+    func updatePredictedPriceIntoDatabase(_ predictedPrice: String, _ predictedDate: String) {
         database.collection(Constants.Database.kPredictedPriceDatabaseName)
             .document(Constants.Database.kPredictedPriceDocumentName)
             .updateData([
-                Constants.Database.kPrice: predictedPrice
-            ]) { (error) in
-                if let err = error {
-                    let message = "There was an issue with Firestore, \(err)"
-                    delegateError?.showUserErrorMessageDidInitiate(message)
-                } else {
-                    let message = "Successfully saved data"
-                    delegateSucess?.showUserSucessMessageDidInitiate(message)
-                }
-            }
-    }
-    
-    func updatePredictedDateIntoDatabase(_ predictedDate: String) {
-        
-        database.collection(Constants.Database.kPredictedPriceDatabaseName)
-            .document(Constants.Database.kPredictedPriceDocumentName)
-            .updateData([
+                Constants.Database.kPrice: predictedPrice,
                 Constants.Database.kDate: predictedDate
             ]) { (error) in
                 if let err = error {
-                    let message = "There was an issue with Firestore, \(err)"
-                    delegateError?.showUserErrorMessageDidInitiate(message)
+                    delegateError?.showUserErrorMessageDidInitiate(NSLocalizedString("FIREBASE_ERROR", comment: "") + "\(err)")
                 } else {
-                    let message = "Successfully saved data"
-                    delegateSucess?.showUserSucessMessageDidInitiate(message)
+                    delegateSuccess?.showUserSuccessMessageDidInitiate(NSLocalizedString("SUCCESS_DATA_SAVED", comment: ""))
                 }
             }
     }
@@ -117,8 +93,6 @@ struct DatabaseManager {
             .addSnapshotListener { (querySnapshot, error) in
                 var balanceList: [BalanceListModel] = []
                 if let err = error {
-                    let message = "There was an issue retrieving data from firestorem: \(err)"
-                    delegateError?.showUserErrorMessageDidInitiate(message)
                     completion(.failure(err))
                 } else {
                     if let snapshotDocument = querySnapshot?.documents {
@@ -127,10 +101,10 @@ struct DatabaseManager {
                             if let newBalance = data[Constants.Database.kBalance] as? String,
                                let newEquity = data[Constants.Database.kEquity] as? String,
                                let newFreeMargin = data[Constants.Database.kFreeMargin] as? String,
-                               let newBitcoin = data[Constants.Database.kBitboin] as? String {
+                               let newBitcoin = data[Constants.Database.kBitcoin] as? String {
                                 let newBalanceList = BalanceListModel(balanceList: BalanceList(balance: newBalance,
                                                                                                equity: newEquity,
-                                                                                               freemargin: newFreeMargin,
+                                                                                               freeMargin: newFreeMargin,
                                                                                                bitcoin: newBitcoin))
                                 balanceList.append(newBalanceList)
                             }
@@ -148,14 +122,12 @@ struct DatabaseManager {
                 Constants.Database.kBalance: balance,
                 Constants.Database.kEquity: equity,
                 Constants.Database.kFreeMargin: freeMargin,
-                Constants.Database.kBitboin: bitcoin
+                Constants.Database.kBitcoin: bitcoin
             ]) { (error) in
                 if let err = error {
-                    let message = "There was an issue with Firestore, \(err)"
-                    delegateError?.showUserErrorMessageDidInitiate(message)
+                    delegateError?.showUserErrorMessageDidInitiate(NSLocalizedString("FIREBASE_ERROR", comment: "") + "\(err)")
                 } else {
-                    let message = "Successfully saved data"
-                    delegateSucess?.showUserSucessMessageDidInitiate(message)
+                    delegateSuccess?.showUserSuccessMessageDidInitiate(NSLocalizedString("SUCCESS_DATA_SAVED", comment: ""))
                 }
             }
     }

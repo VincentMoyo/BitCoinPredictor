@@ -12,23 +12,23 @@ class HomeViewModel {
     private let apiClass = BitcoinAPI()
     private let database = DatabaseManager()
     private lazy var timerSeconds = 0
+    var previousPrice = 600000.0
     var priceList: [PriceListModel] = []
     var priceData = PriceData()
     var didHomeViewModelLoad: ((Bool) -> Void)?
     var homeViewModelError: ((Error) -> Void)?
-    var predictedDate = PredictedPriceData()
     
     func updateTimer() {
         if timerSeconds % 5 == 0 {
             timerSeconds += 1
-            getBitcoinPrincUsingAPI()
-            loadPricesFromDatabse()
+            getBitcoinPriceUsingAPI()
+            loadPricesFromDatabase()
         } else {
             timerSeconds += 1
         }
     }
     
-    private func getBitcoinPrincUsingAPI() {
+    private func getBitcoinPriceUsingAPI() {
         apiClass.getAPI { result in
             do {
                 let newPrice = try result.get()
@@ -41,8 +41,8 @@ class HomeViewModel {
         }
     }
     
-    private func loadPricesFromDatabse() {
-        database.loadPricesFromDatabse { result in
+    private func loadPricesFromDatabase() {
+        database.loadPricesFromDatabase { result in
             do {
                 let newList = try result.get()
                 self.priceList = newList
@@ -50,12 +50,6 @@ class HomeViewModel {
             } catch {
                 self.homeViewModelError?(error)
             }
-        }
-    }
-    
-    private func loadReleventAmountOfData() {
-        while priceList.count > 7 {
-            priceList.removeFirst()
         }
     }
 }

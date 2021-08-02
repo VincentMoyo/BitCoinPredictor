@@ -13,6 +13,9 @@ class ComparisonViewModel {
     private let database = DatabaseManager()
     var balanceData = BalanceData()
     private lazy var timerSeconds = 0
+    lazy var predictedPrice = 0.0
+    lazy var predictedTime = 0.0
+    var previousPrice = 600000.12
     var priceList: [PriceListModel] = []
     var priceData = PriceData()
     var predictedPriceData = PredictedPriceData()
@@ -22,9 +25,9 @@ class ComparisonViewModel {
     func updateTimer() {
         if timerSeconds % 5 == 0 {
             timerSeconds += 1
-            getBitcoinPrincUsingAPI()
-            loadPricesFromDatabse()
-            loadPredictedPricesFromDatabse()
+            bitcoinPriceUsingAPI()
+            loadPricesFromDatabase()
+            loadPredictedPricesFromDatabase()
             checkEquity()
         } else {
             timerSeconds += 1
@@ -36,12 +39,11 @@ class ComparisonViewModel {
     }
     
     private func checkEquity() {
-        loadBalancesFromDatabse()
-        
+        loadBalancesFromDatabase()
         let newCount = priceList.count
         if let lastPrice = priceList.last {
             if Double(newCount) < predictedPriceData.currentDate {
-                balanceData.equity =  balanceData.balance + Double(lastPrice.rate)!
+                balanceData.equity = balanceData.balance + Double(lastPrice.rate)!
                 insertIntoBalanceDatabase()
             } else if Double(newCount) == predictedPriceData.currentDate {
                 balanceData.balance += Double(lastPrice.rate)!
@@ -60,14 +62,14 @@ class ComparisonViewModel {
                                             String(checkBitcoin(priceData.price, balanceData.balance)))
     }
     
-    private func loadBalancesFromDatabse() {
+    private func loadBalancesFromDatabase() {
         database.loadBalanceFromDatabase { result in
             do {
                 let newList = try result.get()
                 newList.forEach { accountBalance in
                     self.balanceData.balance = Double(accountBalance.balance)!
                     self.balanceData.equity = Double(accountBalance.equity)!
-                    self.balanceData.freeMargin = Double(accountBalance.freemargin)!
+                    self.balanceData.freeMargin = Double(accountBalance.freeMargin)!
                     self.balanceData.bitcoin = Double(accountBalance.bitcoin)!
                 }
                 self.didComparisonViewModelLoad?(true)
@@ -77,7 +79,7 @@ class ComparisonViewModel {
         }
     }
     
-    private func getBitcoinPrincUsingAPI() {
+    private func bitcoinPriceUsingAPI() {
         apiClass.getAPI { result in
             do {
                 let newPrice = try result.get()
@@ -90,7 +92,7 @@ class ComparisonViewModel {
         }
     }
     
-    private func loadPredictedPricesFromDatabse() {
+    private func loadPredictedPricesFromDatabase() {
         database.loadPredictedPriceFromDatabase { result in
             do {
                 let newPredictedPrice = try result.get()
@@ -103,8 +105,8 @@ class ComparisonViewModel {
         }
     }
     
-    private func loadPricesFromDatabse() {
-        database.loadPricesFromDatabse { result in
+    private func loadPricesFromDatabase() {
+        database.loadPricesFromDatabase { result in
             do {
                 let newList = try result.get()
                 self.priceList = newList
@@ -112,12 +114,6 @@ class ComparisonViewModel {
             } catch {
                 self.comparisonViewModelError?(error)
             }
-        }
-    }
-    
-    private func loadReleventAmountOfData() {
-        while priceList.count > 7 {
-            priceList.removeFirst()
         }
     }
 }

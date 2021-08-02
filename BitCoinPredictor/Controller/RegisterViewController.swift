@@ -6,34 +6,51 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
-    weak var delegateError: ShowUserErrorDelegate?
+    var registerViewModel = RegisterViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        activityLoader.isHidden = true
+        bindRegisterViewModel()
+        bindRegisterViewModelErrors()
+    }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().createUser(withEmail: email, password: password) { _, error in
-                if let err = error {
-                    let message = "\(err.localizedDescription)"
-                    self.showUserErrorMessageDidInitiate(message)
-                } else {
+        if let email = emailTextField.text,
+           let password = passwordTextField.text {
+            registerViewModel.registerUser(email, password)
+            activateActivityIndicatorView()
+        }
+    }
+    
+    private func bindRegisterViewModel() {
+        registerViewModel.didRegisterUserLoad = { result in
+            if result {
+                DispatchQueue.main.async {
                     self.performSegue(withIdentifier: Constants.Authentication.kRegisterSegue, sender: self)
+                    self.activityLoader.stopAnimating()
                 }
-                
             }
         }
     }
-}
-
-extension RegisterViewController: ShowUserErrorDelegate {
-    func showUserErrorMessageDidInitiate(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
+    
+    private func activateActivityIndicatorView() {
+        activityLoader.isHidden = false
+        activityLoader.hidesWhenStopped = true
+        activityLoader.startAnimating()
+    }
+    
+    private func bindRegisterViewModelErrors() {
+        registerViewModel.registerViewModelError = { result in
+            self.showUserErrorMessageDidInitiate(result.localizedDescription)
+            self.activityLoader.stopAnimating()
+        }
     }
 }

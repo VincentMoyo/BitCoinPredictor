@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  BitCoinPredictor
+
+  Created by Vincent Moyo on 2021/08/02.
+  
+*/
+
+"CURRENT_NEWS_NO_SUBJECT" = "There are no news for the current subject: ";
+"NEWS_API_ERROR" = "Something went wrong in trying to retrieve the news: ";
+"NO_DESCRIPTION" = "No Description";
+
+"BITCOIN_GRAPH" = "Bitcoin Graph";
+
+"ERROR" = "Error";
+"SUCCESS" = "Success";
+"OK" = "Okay";
+
+"FIREBASE_ERROR" = "There was an issue with Firestore, ";
+"SUCCESS_DATA_SAVED" = "Successfully saved data";

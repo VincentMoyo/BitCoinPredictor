@@ -10,6 +10,6 @@ import Foundation
 struct BalanceList {
     let balance: String
     let equity: String
-    let freemargin: String
+    let freeMargin: String
     let bitcoin: String
 }

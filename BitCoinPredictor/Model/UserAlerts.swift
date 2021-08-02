@@ -11,6 +11,6 @@ protocol ShowUserErrorDelegate: AnyObject {
     func showUserErrorMessageDidInitiate(_ message: String)
 }
 
-protocol ShowUserSucessDelegate: AnyObject {
-    func showUserSucessMessageDidInitiate(_ message: String)
+protocol ShowUserSuccessDelegate: AnyObject {
+    func showUserSuccessMessageDidInitiate(_ message: String)
 }

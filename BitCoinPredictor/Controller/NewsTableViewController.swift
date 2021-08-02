@@ -13,7 +13,8 @@ class NewsTableViewController: UITableViewController {
     
     private let newsAPI = NewsAPI(apiKey: Constants.News.kApiKey)
     lazy private var articles = [NewsArticle]()
-    lazy private var viewModels = [NewsTableModel]()
+    lazy private var viewModels = [Article]()
+    private var initialErrorMessage = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +25,15 @@ class NewsTableViewController: UITableViewController {
             case .success(let headlines):
                 if headlines.isEmpty {
                     DispatchQueue.main.async {
-                        let message = "There are no news for the current subject: \(Constants.News.kHeadline)"
-                        self?.showUserErrorMessageDidInitiate(message)
+                        self!.errorMessage = NSLocalizedString("CURRENT_NEWS_NO_SUBJECT", comment: "") + "\(Constants.News.kHeadline)"
+                        self?.showUserErrorMessageDidInitiate(self!.errorMessage)
                     }
                 } else {
                     self?.articles = headlines
                     self?.viewModels = headlines.compactMap({
-                        NewsTableModel(
+                        Article(
                             newsList: NewsList(title: $0.title,
-                                               subtile: $0.articleDescription ?? "No Description",
+                                               subtile: $0.articleDescription ?? NSLocalizedString("NO_DESCRIPTION", comment: ""),
                                                imageURL: $0.urlToImage)
                         )
                     })
@@ -42,7 +43,7 @@ class NewsTableViewController: UITableViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    let message = "Something went wrong in trying to retrieve the news: \(error)"
+                    let message =  NSLocalizedString("NEWS_API_ERROR", comment: "") + "\(error)"
                     self?.showUserErrorMessageDidInitiate(message)
                 }
             }
@@ -54,30 +55,32 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.News.kIdentifier, for: indexPath)
-                as? NewsTableViewCell else {
-            fatalError()
-        }
-        cell.configure(with: viewModels[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.News.kIdentifier, for: indexPath) as? NewsTableViewCell
+        cell?.configure(with: viewModels[indexPath.row])
         
-        return cell
+        return cell ?? NewsTableViewCell.init()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let article = articles[indexPath.row]
-        
         let vcc = SFSafariViewController(url: article.url)
+        
         present(vcc, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
-    func showUserErrorMessageDidInitiate(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
+}
+
+extension NewsTableViewController {
+    var errorMessage: String {
+        get {
+            return initialErrorMessage
+        }
+        set {
+            initialErrorMessage = newValue
+        }
     }
 }

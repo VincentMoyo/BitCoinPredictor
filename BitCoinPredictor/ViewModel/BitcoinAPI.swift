@@ -13,7 +13,7 @@ class BitcoinAPI {
     lazy var currentPrice = PredictedPriceData()
     
     func getAPI(completion: @escaping (Result<(String), Error>) -> Void) {
-        dataManager.getCoinPrice(for: "ZAR") { result in
+        dataManager.getCoinPrice(for: Constants.APIS.kCurrency) { result in
             do {
                 let currencyInfo = try result.get()
                 completion(.success(currencyInfo))

@@ -6,31 +6,51 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    
+    var loginViewModel = LoginViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        activityLoader.isHidden = true
+        bindLoginViewModel()
+        bindLoginViewModelErrors()
+    }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password) { _, error in
-                if let err = error {
-                    let message = "\(err.localizedDescription)"
-                    self.showUserErrorMessageDidInitiate(message)
-                } else {
+        if let email = self.emailTextField.text,
+           let password = self.passwordTextField.text {
+            loginViewModel.authenticateUser(email, password)
+            activateActivityIndicatorView()
+        }
+    }
+    
+    private func bindLoginViewModel() {
+        loginViewModel.didAuthenticateUserLoad = { result in
+            if result {
+                DispatchQueue.main.async {
                     self.performSegue(withIdentifier: Constants.Authentication.kLoginSegue, sender: self)
+                    self.activityLoader.stopAnimating()
                 }
             }
         }
     }
-}
-
-extension LoginViewController: ShowUserErrorDelegate {
-    func showUserErrorMessageDidInitiate(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
+    
+    private func activateActivityIndicatorView() {
+        activityLoader.isHidden = false
+        activityLoader.hidesWhenStopped = true
+        activityLoader.startAnimating()
+    }
+    
+    private func bindLoginViewModelErrors() {
+        loginViewModel.loginViewModelError = { result in
+            self.showUserErrorMessageDidInitiate(result.localizedDescription)
+            self.activityLoader.stopAnimating()
+        }
     }
 }

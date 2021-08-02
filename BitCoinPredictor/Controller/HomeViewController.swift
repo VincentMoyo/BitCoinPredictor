@@ -19,14 +19,12 @@ class HomeViewController: UIViewController {
     private var candleChart = CandleStickChartView()
     private var timer = Timer()
     private var homeViewModel = HomeViewModel()
-    private var prevPrice = 600000.0
-    private var database = DatabaseManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activateActivityIndicatorView()
         updateTimer()
-        loadScreenView()
+        bindHomeViewModel()
         timer.invalidate()
         modifyChart()
     }
@@ -40,15 +38,16 @@ class HomeViewController: UIViewController {
     @IBAction func liveGraphChanged(_ sender: UISwitch) {
         if sender.isOn {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
-                                         selector: #selector(updateTimer), userInfo: nil, repeats: true)
+                                         selector: #selector(updateTimer),
+                                         userInfo: nil,
+                                         repeats: true)
             
         } else {
-            database.updatePredictedDateIntoDatabase(String(homeViewModel.priceList.count + 1))
             timer.invalidate()
         }
     }
     
-    private func loadScreenView() {
+    private func bindHomeViewModel() {
         homeViewModel.didHomeViewModelLoad = { result in
             if result {
                 DispatchQueue.main.async {
@@ -56,7 +55,6 @@ class HomeViewController: UIViewController {
                     self.candleChart.delegate = self
                     self.modifyChart()
                     self.activityLoader.stopAnimating()
-                    self.candleChart.pinchZoomEnabled = true
                 }
             }
         }
@@ -67,7 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        bindViewModelError()
+        bindHomeViewModelErrors()
         homeViewModel.updateTimer()
     }
     
@@ -76,17 +74,7 @@ class HomeViewController: UIViewController {
         activityLoader.startAnimating()
     }
     
-}
-
-// MARK: - User Alerts
-extension HomeViewController: ShowUserErrorDelegate {
-    func showUserErrorMessageDidInitiate(_ message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
-    }
-    
-    private func bindViewModelError() {
+    private func bindHomeViewModelErrors() {
         homeViewModel.homeViewModelError = { result in
             self.showUserErrorMessageDidInitiate(result.localizedDescription)
         }
@@ -99,9 +87,8 @@ extension HomeViewController: ChartViewDelegate {
         super.viewDidLayoutSubviews()
         setChartFrame()
         liveGraphView.addSubview(candleChart)
-        candleChart.pinchZoomEnabled = true
         let set = CandleChartDataSet(entries: setChartEntries())
-        setPropertiesOfSet(set)
+        setPropertiesOfSet(for: set)
         
         let data = CandleChartData(dataSet: set)
         candleChart.data = data
@@ -119,20 +106,18 @@ extension HomeViewController: ChartViewDelegate {
         homeViewModel.priceList.forEach { price in
             homeViewModel.priceData.date += 1
             entries.append(CandleChartDataEntry(x: homeViewModel.priceData.date,
-                                                shadowH: Double(price.rate)! > prevPrice ? ((Double(price.rate)! - prevPrice) / 5) +  Double(price.rate)! :
-                                                    ((prevPrice - Double(price.rate)!) / 5) + prevPrice,
-                                                shadowL: Double(price.rate)! > prevPrice ? prevPrice - ((Double(price.rate)! - prevPrice) / 5):
-                                                    Double(price.rate)! - ((prevPrice - Double(price.rate)!) / 5),
-                                                open: prevPrice,
+                                                shadowH: setShadowHigh(for: Double(price.rate)!),
+                                                shadowL: setShadowLow(for: Double(price.rate)!),
+                                                open: homeViewModel.previousPrice,
                                                 close: Double(price.rate)!))
-            prevPrice = Double(price.rate)!
+            homeViewModel.previousPrice = Double(price.rate)!
         }
         return entries
     }
     
-    private func setPropertiesOfSet(_ set1: CandleChartDataSet) {
+    private func setPropertiesOfSet(for set1: CandleChartDataSet) {
         set1.drawValuesEnabled = false
-        set1.label = "Bitcoin Graph"
+        set1.label = NSLocalizedString("BITCOIN_GRAPH", comment: "")
         set1.axisDependency = .left
         set1.setColor(UIColor(white: 80/255, alpha: 1))
         set1.drawIconsEnabled = false
@@ -143,5 +128,42 @@ extension HomeViewController: ChartViewDelegate {
         set1.increasingColor = .green
         set1.increasingFilled = true
         set1.neutralColor = .blue
+    }
+    
+    private func setShadowHigh(for price: Double) -> Double {
+        return price > homeViewModel.previousPrice ? ((price - homeViewModel.previousPrice) / 5) +  price :
+            ((homeViewModel.previousPrice - price) / 5) + homeViewModel.previousPrice
+    }
+    
+    private func setShadowLow(for price: Double) -> Double {
+        return price > homeViewModel.previousPrice ? homeViewModel.previousPrice - ((price - homeViewModel.previousPrice) / 5):
+            price - ((homeViewModel.previousPrice - price) / 5)
+    }
+}
+
+// MARK: - User Alerts
+extension UIViewController {
+    func showUserErrorMessageDidInitiate(_ message: String) {
+        let alertController = UIAlertController(title: NSLocalizedString("ERROR", comment: ""),
+                                                message: message,
+                                                preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+                                                style: .default,
+                                                handler: nil))
+        
+        present(alertController, animated: true)
+    }
+    
+    func showUserSuccessMessageDidInitiate(_ message: String) {
+        let alertController = UIAlertController(title: NSLocalizedString("SUCCESS", comment: ""),
+                                                message: message,
+                                                preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+                                                style: .default,
+                                                handler: nil))
+        
+        present(alertController, animated: true)
     }
 }

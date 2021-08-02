@@ -9,7 +9,6 @@ import Foundation
 
 class BalanceViewModel {
     
-    private let apiClass = BitcoinAPI()
     private let database = DatabaseManager()
     var predictedPrice = PredictedPriceData()
     var balanceData = BalanceData()
@@ -21,17 +20,15 @@ class BalanceViewModel {
     
     func updateTimer() {
         if timerSeconds % 7 == 0 {
-            loadPredictedPricesFromDatabse()
             timerSeconds += 1
-            loadBalancesFromDatabse()
+            loadPredictedPricesFromDatabase()
+            loadBalancesFromDatabase()
         } else {
             timerSeconds += 1
         }
     }
     
-    private func loadBalancesFromDatabse() {
-        print("prev \(previousPrediction)")
-        print("predi \(predictedPrice.currentPrice)")
+    private func loadBalancesFromDatabase() {
         if previousPrediction == predictedPrice.currentPrice {
             database.loadBalanceFromDatabase { result in
                 do {
@@ -40,9 +37,8 @@ class BalanceViewModel {
                     newList.forEach { accountBalance in
                         self.balanceData.balance = Double(accountBalance.balance)!.rounded()
                         self.balanceData.equity = Double(accountBalance.equity)!.rounded()
-                        self.balanceData.freeMargin = Double(accountBalance.freemargin)!.rounded()
+                        self.balanceData.freeMargin = Double(accountBalance.freeMargin)!.rounded()
                         self.balanceData.bitcoin = Double(accountBalance.bitcoin)!.rounded()
-                        
                     }
                     self.didBalanceViewModelLoad?(true)
                 } catch {
@@ -51,17 +47,21 @@ class BalanceViewModel {
             }
         } else {
             balanceData.balance -= predictedPrice.currentPrice
-            database.updateAccountBalceDatabase(String(balanceData.balance), String(balanceData.equity), String(balanceData.freeMargin), String(balanceData.bitcoin))
+            updateBalanceDatabase()
         }
         previousPrediction = predictedPrice.currentPrice
-        print("new Balance \(balanceData.balance)")
-        
     }
     
-    private func loadPredictedPricesFromDatabse() {
+    private func updateBalanceDatabase() {
+        database.updateAccountBalceDatabase(String(balanceData.balance),
+                                            String(balanceData.equity),
+                                            String(balanceData.freeMargin),
+                                            String(balanceData.bitcoin))
+    }
+    
+    private func loadPredictedPricesFromDatabase() {
         database.loadPredictedPriceFromDatabase { result in
             do {
-                
                 let newPredictedPrice = try result.get()
                 self.predictedPrice.currentPrice = Double(newPredictedPrice.price)!
                 self.didBalanceViewModelLoad?(true)
