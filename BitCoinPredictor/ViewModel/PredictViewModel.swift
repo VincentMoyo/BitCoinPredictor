@@ -14,6 +14,7 @@ class PredictViewModel {
     var priceList: [PriceListModel] = []
     var bitcoinPrice = PriceData()
     var predictedBitcoinPrice = PredictedPriceData()
+    var balanceData = BalanceData()
     lazy var intervalValue = 0.0
     var didPredictViewModelLoad: ((Bool) -> Void)?
     var predictViewModelError: ((Error) -> Void)?
@@ -33,14 +34,32 @@ class PredictViewModel {
     func loadPriceData() {
         bitcoinPrinceUsingAPI()
         loadPricesFromDatabase()
+        loadBalancesFromDatabase()
     }
     
-    func insertPredictedPriceIntoDatabase(_ delegateError: ShowUserErrorDelegate, _ delegateSuccess: ShowUserSuccessDelegate?) {
+    func insertPredictedPriceIntoDatabase(_ delegateSuccess: ShowUserSuccessDelegate?, _ delegateError: ShowUserErrorDelegate) {
         database.updatePredictedPriceIntoDatabase(String(predictedBitcoinPrice.currentPrice),
                                                   String(priceList.count + 5))
         
-        database.delegateError = delegateError
+        subtractBalanceFromPredictedPrice(predictedBitcoinPrice.currentPrice)
         database.delegateSuccess = delegateSuccess
+        database.delegateError = delegateError
+    }
+    
+    func subtractBalanceFromPredictedPrice(_ predictedPrice: Double) {
+        balanceData.balance -= predictedPrice
+        insertIntoBalanceDatabase()
+    }
+    
+    private func insertIntoBalanceDatabase() {
+        database.updateAccountBalceDatabase(String(balanceData.balance),
+                                            String(balanceData.equity),
+                                            String(balanceData.freeMargin),
+                                            String(checkBitcoin(bitcoinPrice.price, balanceData.balance)))
+    }
+    
+    private func checkBitcoin (_ bitcoinPrice: Double, _ balance: Double) -> Double {
+        return round((balance/bitcoinPrice)*100) / 100
     }
     
     private func bitcoinPrinceUsingAPI() {
@@ -48,6 +67,23 @@ class PredictViewModel {
             do {
                 let newPrice = try result.get()
                 self.bitcoinPrice.price = Double(newPrice)!
+                self.didPredictViewModelLoad?(true)
+            } catch {
+                self.predictViewModelError?(error)
+            }
+        }
+    }
+    
+    private func loadBalancesFromDatabase() {
+        database.loadBalanceFromDatabase { result in
+            do {
+                let newList = try result.get()
+                newList.forEach { accountBalance in
+                    self.balanceData.balance = Double(accountBalance.balance)!
+                    self.balanceData.equity = Double(accountBalance.equity)!
+                    self.balanceData.freeMargin = Double(accountBalance.freeMargin)!
+                    self.balanceData.bitcoin = Double(accountBalance.bitcoin)!
+                }
                 self.didPredictViewModelLoad?(true)
             } catch {
                 self.predictViewModelError?(error)

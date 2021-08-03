@@ -43,8 +43,8 @@ class NewsTableViewController: UITableViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    let message =  NSLocalizedString("NEWS_API_ERROR", comment: "") + "\(error)"
-                    self?.showUserErrorMessageDidInitiate(message)
+                    self!.errorMessage =  NSLocalizedString("NEWS_API_ERROR", comment: "") + "\(error)"
+                    self?.showUserErrorMessageDidInitiate(self!.errorMessage)
                 }
             }
         }

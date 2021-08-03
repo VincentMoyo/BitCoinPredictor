@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  BitCoinPredictor
-
-  Created by Vincent Moyo on 2021/08/02.
-  
-*/
+ Localizable.strings
+ BitCoinPredictor
+ 
+ Created by Vincent Moyo on 2021/08/02.
+ 
+ */
 
 "CURRENT_NEWS_NO_SUBJECT" = "There are no news for the current subject: ";
 "NEWS_API_ERROR" = "Something went wrong in trying to retrieve the news: ";
@@ -18,3 +18,4 @@
 
 "FIREBASE_ERROR" = "There was an issue with Firestore, ";
 "SUCCESS_DATA_SAVED" = "Successfully saved data";
+"ERROR_SIGNING_OUT" = "Error signing out: ";

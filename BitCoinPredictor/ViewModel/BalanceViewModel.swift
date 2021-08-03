@@ -29,27 +29,21 @@ class BalanceViewModel {
     }
     
     private func loadBalancesFromDatabase() {
-        if previousPrediction == predictedPrice.currentPrice {
-            database.loadBalanceFromDatabase { result in
-                do {
-                    let newList = try result.get()
-                    self.balanceList = newList
-                    newList.forEach { accountBalance in
-                        self.balanceData.balance = Double(accountBalance.balance)!.rounded()
-                        self.balanceData.equity = Double(accountBalance.equity)!.rounded()
-                        self.balanceData.freeMargin = Double(accountBalance.freeMargin)!.rounded()
-                        self.balanceData.bitcoin = Double(accountBalance.bitcoin)!.rounded()
-                    }
-                    self.didBalanceViewModelLoad?(true)
-                } catch {
-                    self.balanceViewModelError?(error)
+        database.loadBalanceFromDatabase { result in
+            do {
+                let newList = try result.get()
+                self.balanceList = newList
+                newList.forEach { accountBalance in
+                    self.balanceData.balance = Double(accountBalance.balance)!.rounded()
+                    self.balanceData.equity = Double(accountBalance.equity)!.rounded()
+                    self.balanceData.freeMargin = Double(accountBalance.freeMargin)!.rounded()
+                    self.balanceData.bitcoin = Double(accountBalance.bitcoin)!.rounded()
                 }
+                self.didBalanceViewModelLoad?(true)
+            } catch {
+                self.balanceViewModelError?(error)
             }
-        } else {
-            balanceData.balance -= predictedPrice.currentPrice
-            updateBalanceDatabase()
         }
-        previousPrediction = predictedPrice.currentPrice
     }
     
     private func updateBalanceDatabase() {

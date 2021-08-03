@@ -11,7 +11,7 @@ struct APIManager {
     
     func getCoinPrice(for currency: String, completion: @escaping (Result<(String), Error>) -> Void) {
         
-        let urlString = "\(Constants.APIS.kBaseURL)/\(currency)?apikey=\(Constants.APIS.kApiKey6)"
+        let urlString = "\(Constants.APIS.kBaseURL)/\(currency)?apikey=\(Constants.APIS.kApiKey4)"
         
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)

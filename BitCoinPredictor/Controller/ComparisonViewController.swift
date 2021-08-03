@@ -21,22 +21,17 @@ class ComparisonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activateActivityIndicatorView()
-        updateTimer()
-        bindComparisonViewModel()
         timer.invalidate()
+        activateActivityIndicatorView()
+        startUpdateTimer()
+        bindComparisonViewModel()
     }
     
-    @IBAction func liveGraphSwitchChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
-                                         selector: #selector(updateTimer),
-                                         userInfo: nil,
-                                         repeats: true)
-            
-        } else {
-            timer.invalidate()
-        }
+    func startUpdateTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                     selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
     }
     
     private func bindComparisonViewModel() {
@@ -70,10 +65,13 @@ class ComparisonViewController: UIViewController {
         candleChart.pinchZoomEnabled = true
     }
     
+    @IBAction func zoomIn(_ sender: Any) {
+        candleChart.zoomIn()
+    }
+    
     @IBAction func zoomOut(_ sender: Any) {
         candleChart.zoomOut()
     }
-    
     private func bindComparisonViewModelErrors() {
         comparisonViewModel.comparisonViewModelError = { result in
             self.showUserErrorMessageDidInitiate(result.localizedDescription)

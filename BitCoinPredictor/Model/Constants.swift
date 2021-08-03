@@ -35,6 +35,7 @@ struct Constants {
     struct Authentication {
         static let kRegisterSegue = "register"
         static let kLoginSegue = "login"
+        static let kWelcomeSegue = "welcome"
     }
     
     struct APIS {

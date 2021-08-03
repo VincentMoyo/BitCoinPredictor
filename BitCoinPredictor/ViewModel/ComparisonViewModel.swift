@@ -15,16 +15,18 @@ class ComparisonViewModel {
     private lazy var timerSeconds = 0
     lazy var predictedPrice = 0.0
     lazy var predictedTime = 0.0
-    var previousPrice = 600000.12
+    var previousPrice = 570000.12
     var priceList: [PriceListModel] = []
     var priceData = PriceData()
     var predictedPriceData = PredictedPriceData()
+    var counter = 0
     var didComparisonViewModelLoad: ((Bool) -> Void)?
     var comparisonViewModelError: ((Error) -> Void)?
     
     func updateTimer() {
-        if timerSeconds % 5 == 0 {
+        if timerSeconds % 5 == 0 && counter < 20 {
             timerSeconds += 1
+            counter += 1
             bitcoinPriceUsingAPI()
             loadPricesFromDatabase()
             loadPredictedPricesFromDatabase()

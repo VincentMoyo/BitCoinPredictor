@@ -12,15 +12,17 @@ class HomeViewModel {
     private let apiClass = BitcoinAPI()
     private let database = DatabaseManager()
     private lazy var timerSeconds = 0
-    var previousPrice = 600000.0
+    var previousPrice = 570000.0
     var priceList: [PriceListModel] = []
     var priceData = PriceData()
     var didHomeViewModelLoad: ((Bool) -> Void)?
     var homeViewModelError: ((Error) -> Void)?
+    var counter = 0
     
     func updateTimer() {
-        if timerSeconds % 5 == 0 {
+        if timerSeconds % 5 == 0 && counter < 10 {
             timerSeconds += 1
+            counter += 1
             getBitcoinPriceUsingAPI()
             loadPricesFromDatabase()
         } else {

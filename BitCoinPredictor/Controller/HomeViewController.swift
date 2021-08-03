@@ -22,29 +22,23 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activateActivityIndicatorView()
-        updateTimer()
-        bindHomeViewModel()
         timer.invalidate()
-        modifyChart()
+        activateActivityIndicatorView()
+        startUpdateTimer()
+        bindHomeViewModel()
+    }
+    
+    func startUpdateTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                     selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
     }
     
     private func modifyChart() {
         candleChart.dragEnabled = true
         candleChart.setScaleEnabled(true)
         candleChart.pinchZoomEnabled = true
-    }
-    
-    @IBAction func liveGraphChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
-                                         selector: #selector(updateTimer),
-                                         userInfo: nil,
-                                         repeats: true)
-            
-        } else {
-            timer.invalidate()
-        }
     }
     
     private func bindHomeViewModel() {
@@ -60,8 +54,12 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func zoom(_ sender: Any) {
+    @IBAction func zoomOut(_ sender: UIButton) {
         candleChart.zoomOut()
+    }
+    
+    @IBAction func zoomIn(_ sender: Any) {
+        candleChart.zoomIn()
     }
     
     @objc func updateTimer() {
