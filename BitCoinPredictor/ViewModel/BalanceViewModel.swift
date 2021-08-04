@@ -28,8 +28,8 @@ class BalanceViewModel {
         }
     }
     
-    private func loadBalancesFromDatabase() {
-        database.loadBalanceFromDatabase { result in
+    func loadBalancesFromDatabase() {
+        database.loadBalances { result in
             do {
                 let newList = try result.get()
                 self.balanceList = newList
@@ -47,14 +47,14 @@ class BalanceViewModel {
     }
     
     private func updateBalanceDatabase() {
-        database.updateAccountBalceDatabase(String(balanceData.balance),
+        database.updateAccountBalance(String(balanceData.balance),
                                             String(balanceData.equity),
                                             String(balanceData.freeMargin),
                                             String(balanceData.bitcoin))
     }
     
-    private func loadPredictedPricesFromDatabase() {
-        database.loadPredictedPriceFromDatabase { result in
+    func loadPredictedPricesFromDatabase() {
+        database.loadPredictedPrice { result in
             do {
                 let newPredictedPrice = try result.get()
                 self.predictedPrice.currentPrice = Double(newPredictedPrice.price)!

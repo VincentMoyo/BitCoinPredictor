@@ -16,7 +16,7 @@ struct SettingsViewModel {
     func signOutUser() {
         let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth.signOut()
+           try firebaseAuth.signOut()
             didSignOutUserLoad?(true)
         } catch let signOutError as NSError {
             signOutViewModelError?(signOutError)

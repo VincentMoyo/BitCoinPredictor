@@ -23,7 +23,6 @@
 		7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD08268DF1D800C319CF /* SceneDelegate.swift */; };
 		7881AD10268DF1DB00C319CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD0F268DF1DB00C319CF /* Assets.xcassets */; };
 		7881AD13268DF1DB00C319CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD11268DF1DB00C319CF /* LaunchScreen.storyboard */; };
-		7881AD1E268DF1DB00C319CF /* BitCoinPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */; };
 		7881AD3C268DF55F00C319CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD3B268DF55F00C319CF /* Main.storyboard */; };
 		7881AD42268DF64B00C319CF /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3D268DF64800C319CF /* DateFormat.swift */; };
 		7881AD43268DF64B00C319CF /* ComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD3E268DF64900C319CF /* ComparisonViewController.swift */; };
@@ -50,6 +49,13 @@
 		78D4F55526B484B600C98F1D /* BalanceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4F55426B484B600C98F1D /* BalanceListModel.swift */; };
 		78DDD48A26B9358E0004306D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DDD48926B9358E0004306D /* SettingsViewController.swift */; };
 		78E5146126A5F9B2004B9F71 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E5146026A5F9B2004B9F71 /* HomeViewModel.swift */; };
+		78F9755A26BA9121003AAE97 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9755926BA9121003AAE97 /* HomeViewModelTests.swift */; };
+		78F9755C26BA9191003AAE97 /* BalanceViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */; };
+		78F9755E26BA91EB003AAE97 /* ComparisonViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */; };
+		78F9756026BA9240003AAE97 /* PredictViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */; };
+		78F9756426BA9345003AAE97 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9756326BA9345003AAE97 /* LoginViewModelTests.swift */; };
+		78F9756626BA9397003AAE97 /* RegisterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9756526BA9397003AAE97 /* RegisterViewModelTests.swift */; };
+		78F9756826BA93C0003AAE97 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9756726BA93C0003AAE97 /* SettingsViewModelTests.swift */; };
 		9BF1C014C11E191D29D0EC1F /* Pods_BitCoinPredictor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2568784E3D81D7F5363B616 /* Pods_BitCoinPredictor.framework */; };
 		CFDAEADDDBE14873905DCB89 /* Pods_BitCoinPredictorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0339AEE8114E31AC939E1E59 /* Pods_BitCoinPredictorTests.framework */; };
 /* End PBXBuildFile section */
@@ -86,7 +92,6 @@
 		7881AD12268DF1DB00C319CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7881AD14268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7881AD19268DF1DB00C319CF /* BitCoinPredictorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinPredictorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinPredictorTests.swift; sourceTree = "<group>"; };
 		7881AD1F268DF1DB00C319CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7881AD3B268DF55F00C319CF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7881AD3D268DF64800C319CF /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
@@ -115,6 +120,13 @@
 		78D4F55426B484B600C98F1D /* BalanceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceListModel.swift; sourceTree = "<group>"; };
 		78DDD48926B9358E0004306D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		78E5146026A5F9B2004B9F71 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		78F9755926BA9121003AAE97 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModelTests.swift; sourceTree = "<group>"; };
+		78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonViewModelTests.swift; sourceTree = "<group>"; };
+		78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictViewModelTests.swift; sourceTree = "<group>"; };
+		78F9756326BA9345003AAE97 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		78F9756526BA9397003AAE97 /* RegisterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModelTests.swift; sourceTree = "<group>"; };
+		78F9756726BA93C0003AAE97 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		8C59E6CE50DADC690015015C /* Pods-BitCoinPredictorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A316FA7044BB183FB301166 /* Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A49D3C207005686841615893 /* Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,8 +207,14 @@
 		7881AD1C268DF1DB00C319CF /* BitCoinPredictorTests */ = {
 			isa = PBXGroup;
 			children = (
-				7881AD1D268DF1DB00C319CF /* BitCoinPredictorTests.swift */,
 				7881AD1F268DF1DB00C319CF /* Info.plist */,
+				78F9755926BA9121003AAE97 /* HomeViewModelTests.swift */,
+				78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */,
+				78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */,
+				78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */,
+				78F9756326BA9345003AAE97 /* LoginViewModelTests.swift */,
+				78F9756526BA9397003AAE97 /* RegisterViewModelTests.swift */,
+				78F9756726BA93C0003AAE97 /* SettingsViewModelTests.swift */,
 			);
 			path = BitCoinPredictorTests;
 			sourceTree = "<group>";
@@ -223,7 +241,6 @@
 		7881AD39268DF4FB00C319CF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				780AB356269C7977003BD7C9 /* NewsTableViewCell.swift */,
 				7881AD3B268DF55F00C319CF /* Main.storyboard */,
 				780AB357269C7977003BD7C9 /* NewsTableViewCell.xib */,
 			);
@@ -233,6 +250,7 @@
 		7881AD3A268DF50200C319CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				780AB356269C7977003BD7C9 /* NewsTableViewCell.swift */,
 				78C16B6426A0636000E49A9F /* WelcomeViewController.swift */,
 				7881AD3E268DF64900C319CF /* ComparisonViewController.swift */,
 				7881AD40268DF64A00C319CF /* HomeViewController.swift */,
@@ -510,7 +528,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7881AD1E268DF1DB00C319CF /* BitCoinPredictorTests.swift in Sources */,
+				78F9755C26BA9191003AAE97 /* BalanceViewModelTests.swift in Sources */,
+				78F9756626BA9397003AAE97 /* RegisterViewModelTests.swift in Sources */,
+				78F9755A26BA9121003AAE97 /* HomeViewModelTests.swift in Sources */,
+				78F9756026BA9240003AAE97 /* PredictViewModelTests.swift in Sources */,
+				78F9756426BA9345003AAE97 /* LoginViewModelTests.swift in Sources */,
+				78F9755E26BA91EB003AAE97 /* ComparisonViewModelTests.swift in Sources */,
+				78F9756826BA93C0003AAE97 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

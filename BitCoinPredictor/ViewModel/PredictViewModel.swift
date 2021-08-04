@@ -38,7 +38,7 @@ class PredictViewModel {
     }
     
     func insertPredictedPriceIntoDatabase(_ delegateSuccess: ShowUserSuccessDelegate?, _ delegateError: ShowUserErrorDelegate) {
-        database.updatePredictedPriceIntoDatabase(String(predictedBitcoinPrice.currentPrice),
+        database.updatePredictedPrice(String(predictedBitcoinPrice.currentPrice),
                                                   String(priceList.count + 5))
         
         subtractBalanceFromPredictedPrice(predictedBitcoinPrice.currentPrice)
@@ -52,7 +52,7 @@ class PredictViewModel {
     }
     
     private func insertIntoBalanceDatabase() {
-        database.updateAccountBalceDatabase(String(balanceData.balance),
+        database.updateAccountBalance(String(balanceData.balance),
                                             String(balanceData.equity),
                                             String(balanceData.freeMargin),
                                             String(checkBitcoin(bitcoinPrice.price, balanceData.balance)))
@@ -62,7 +62,7 @@ class PredictViewModel {
         return round((balance/bitcoinPrice)*100) / 100
     }
     
-    private func bitcoinPrinceUsingAPI() {
+    func bitcoinPrinceUsingAPI() {
         bitcoinAPI.getAPI { result in
             do {
                 let newPrice = try result.get()
@@ -74,8 +74,8 @@ class PredictViewModel {
         }
     }
     
-    private func loadBalancesFromDatabase() {
-        database.loadBalanceFromDatabase { result in
+    func loadBalancesFromDatabase() {
+        database.loadBalances { result in
             do {
                 let newList = try result.get()
                 newList.forEach { accountBalance in
@@ -91,8 +91,8 @@ class PredictViewModel {
         }
     }
     
-    private func loadPricesFromDatabase() {
-        database.loadPricesFromDatabase { result in
+    func loadPricesFromDatabase() {
+        database.loadPrices { result in
             do {
                 let newList = try result.get()
                 self.priceList = newList

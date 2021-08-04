@@ -160,10 +160,10 @@
                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rbf-xD-mmF" secondAttribute="trailing" constant="20" id="4dK-Wb-W7t"/>
-                            <constraint firstItem="rbf-xD-mmF" firstAttribute="top" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="231.66666666666663" id="9rH-2h-zDA"/>
                             <constraint firstItem="rbf-xD-mmF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BNc-2d-OVA"/>
                             <constraint firstItem="rbf-xD-mmF" firstAttribute="top" secondItem="82h-ya-415" secondAttribute="bottom" constant="7.9999999999999432" id="GDa-hZ-kcn"/>
                             <constraint firstItem="82h-ya-415" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HcE-DF-8ca"/>
+                            <constraint firstItem="qPn-Ae-YtX" firstAttribute="top" secondItem="82h-ya-415" secondAttribute="bottom" constant="-135.66666666666666" id="M1u-Yk-22s"/>
                             <constraint firstItem="qPn-Ae-YtX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NdZ-Md-Wee"/>
                             <constraint firstItem="qPn-Ae-YtX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Zhp-R7-dxS"/>
                             <constraint firstItem="rbf-xD-mmF" firstAttribute="centerX" secondItem="qPn-Ae-YtX" secondAttribute="centerX" id="aYC-dI-GO2"/>
@@ -1468,7 +1468,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="19G-y7-nRh"/>
-        <segue reference="S6A-aS-ysl"/>
+        <segue reference="a7y-Fh-Kr8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NicePng_badminton-icon-png_3671905" width="370" height="370"/>

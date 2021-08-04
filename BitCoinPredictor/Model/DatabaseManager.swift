@@ -16,7 +16,7 @@ struct DatabaseManager {
     
     // MARK: - Bytecoin Database
     
-    func loadPricesFromDatabase(completion: @escaping (Result<[PriceListModel], Error>) -> Void) {
+    func loadPrices(completion: @escaping (Result<[PriceListModel], Error>) -> Void) {
         database.collection(Constants.Database.kBitCoinDatabaseName)
             .order(by: Constants.Database.kDate)
             .addSnapshotListener { (querySnapshot, error) in
@@ -39,7 +39,7 @@ struct DatabaseManager {
             }
     }
     
-    func insertPriceToDatabase(_ price: String) {
+    func insertPrice(_ price: String) {
         database.collection(Constants.Database.kBitCoinDatabaseName).addDocument(data: [
             Constants.Database.kRate: price,
             Constants.Database.kDate: String(Date().timeIntervalSince1970)
@@ -52,7 +52,7 @@ struct DatabaseManager {
     
     // MARK: - Predicted Price Database
     
-    func loadPredictedPriceFromDatabase(completion: @escaping (Result<(price: String, date: String), Error>) -> Void) {
+    func loadPredictedPrice(completion: @escaping (Result<(price: String, date: String), Error>) -> Void) {
         database.collection(Constants.Database.kPredictedPriceDatabaseName)
             .addSnapshotListener { (querySnapshot, error) in
                 if let err = error {
@@ -71,7 +71,7 @@ struct DatabaseManager {
             }
     }
     
-    func updatePredictedPriceIntoDatabase(_ predictedPrice: String, _ predictedDate: String) {
+    func updatePredictedPrice(_ predictedPrice: String, _ predictedDate: String) {
         database.collection(Constants.Database.kPredictedPriceDatabaseName)
             .document(Constants.Database.kPredictedPriceDocumentName)
             .updateData([
@@ -88,7 +88,7 @@ struct DatabaseManager {
     
     // MARK: - Account Balance Database
     
-    func loadBalanceFromDatabase(completion: @escaping (Result<[BalanceListModel], Error>) -> Void) {
+    func loadBalances(completion: @escaping (Result<[BalanceListModel], Error>) -> Void) {
         database.collection(Constants.Database.kBalanceDatabaseName)
             .addSnapshotListener { (querySnapshot, error) in
                 var balanceList: [BalanceListModel] = []
@@ -115,7 +115,7 @@ struct DatabaseManager {
             }
     }
     
-    func updateAccountBalceDatabase(_ balance: String, _ equity: String, _ freeMargin: String, _ bitcoin: String) {
+    func updateAccountBalance(_ balance: String, _ equity: String, _ freeMargin: String, _ bitcoin: String) {
         database.collection(Constants.Database.kBalanceDatabaseName)
             .document(Constants.Database.kBalanceDocumentName)
             .updateData([

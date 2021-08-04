@@ -36,8 +36,13 @@ class ComparisonViewModel {
         }
     }
     
-    private func checkBitcoin (_ bitcoinPrice: Double, _ balance: Double) -> Double {
-        return round((balance/bitcoinPrice)*100) / 100
+    func checkBitcoin (_ bitcoinPrice: Double, _ balance: Double) -> Double {
+        if bitcoinPrice <= 0 {
+            return 0.0
+        } else {
+            return round((balance/bitcoinPrice)*100) / 100
+        }
+       
     }
     
     private func checkEquity() {
@@ -58,14 +63,14 @@ class ComparisonViewModel {
     }
     
     private func insertIntoBalanceDatabase() {
-        database.updateAccountBalceDatabase(String(balanceData.balance),
+        database.updateAccountBalance(String(balanceData.balance),
                                             String(balanceData.equity),
                                             String(balanceData.freeMargin),
                                             String(checkBitcoin(priceData.price, balanceData.balance)))
     }
     
-    private func loadBalancesFromDatabase() {
-        database.loadBalanceFromDatabase { result in
+    func loadBalancesFromDatabase() {
+        database.loadBalances { result in
             do {
                 let newList = try result.get()
                 newList.forEach { accountBalance in
@@ -81,11 +86,11 @@ class ComparisonViewModel {
         }
     }
     
-    private func bitcoinPriceUsingAPI() {
+    func bitcoinPriceUsingAPI() {
         apiClass.getAPI { result in
             do {
                 let newPrice = try result.get()
-                self.database.insertPriceToDatabase(newPrice)
+                self.database.insertPrice(newPrice)
                 self.priceData.price = Double(newPrice)!
                 self.didComparisonViewModelLoad?(true)
             } catch {
@@ -94,8 +99,8 @@ class ComparisonViewModel {
         }
     }
     
-    private func loadPredictedPricesFromDatabase() {
-        database.loadPredictedPriceFromDatabase { result in
+    func loadPredictedPricesFromDatabase() {
+        database.loadPredictedPrice { result in
             do {
                 let newPredictedPrice = try result.get()
                 self.predictedPriceData.currentPrice = Double(newPredictedPrice.price)!
@@ -107,8 +112,8 @@ class ComparisonViewModel {
         }
     }
     
-    private func loadPricesFromDatabase() {
-        database.loadPricesFromDatabase { result in
+    func loadPricesFromDatabase() {
+        database.loadPrices { result in
             do {
                 let newList = try result.get()
                 self.priceList = newList

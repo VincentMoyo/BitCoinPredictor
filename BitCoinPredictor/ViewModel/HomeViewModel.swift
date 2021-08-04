@@ -23,18 +23,18 @@ class HomeViewModel {
         if timerSeconds % 5 == 0 && counter < 10 {
             timerSeconds += 1
             counter += 1
-            getBitcoinPriceUsingAPI()
+            bitcoinPriceUsingAPI()
             loadPricesFromDatabase()
         } else {
             timerSeconds += 1
         }
     }
     
-    private func getBitcoinPriceUsingAPI() {
+    func bitcoinPriceUsingAPI() {
         apiClass.getAPI { result in
             do {
                 let newPrice = try result.get()
-                self.database.insertPriceToDatabase(newPrice)
+                self.database.insertPrice(newPrice)
                 self.priceData.price = Double(newPrice)!
                 self.didHomeViewModelLoad?(true)
             } catch {
@@ -43,8 +43,8 @@ class HomeViewModel {
         }
     }
     
-    private func loadPricesFromDatabase() {
-        database.loadPricesFromDatabase { result in
+    func loadPricesFromDatabase() {
+        database.loadPrices { result in
             do {
                 let newList = try result.get()
                 self.priceList = newList

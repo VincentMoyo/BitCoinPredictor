@@ -59,7 +59,10 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func zoomIn(_ sender: Any) {
-        candleChart.zoomIn()
+        let priceValues = homeViewModel.priceList.last
+        let xValue = CGFloat(homeViewModel.priceList.count)
+        let yValue = CGFloat(Double(priceValues!.rate)!)
+        candleChart.zoom(scaleX: 2, scaleY: 2, x: xValue, y: yValue)
     }
     
     @objc func updateTimer() {
