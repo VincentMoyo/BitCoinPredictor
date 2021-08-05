@@ -53,9 +53,6 @@
 		78F9755C26BA9191003AAE97 /* BalanceViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */; };
 		78F9755E26BA91EB003AAE97 /* ComparisonViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */; };
 		78F9756026BA9240003AAE97 /* PredictViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */; };
-		78F9756426BA9345003AAE97 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9756326BA9345003AAE97 /* LoginViewModelTests.swift */; };
-		78F9756626BA9397003AAE97 /* RegisterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9756526BA9397003AAE97 /* RegisterViewModelTests.swift */; };
-		78F9756826BA93C0003AAE97 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F9756726BA93C0003AAE97 /* SettingsViewModelTests.swift */; };
 		9BF1C014C11E191D29D0EC1F /* Pods_BitCoinPredictor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2568784E3D81D7F5363B616 /* Pods_BitCoinPredictor.framework */; };
 		CFDAEADDDBE14873905DCB89 /* Pods_BitCoinPredictorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0339AEE8114E31AC939E1E59 /* Pods_BitCoinPredictorTests.framework */; };
 /* End PBXBuildFile section */
@@ -124,9 +121,6 @@
 		78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModelTests.swift; sourceTree = "<group>"; };
 		78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonViewModelTests.swift; sourceTree = "<group>"; };
 		78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictViewModelTests.swift; sourceTree = "<group>"; };
-		78F9756326BA9345003AAE97 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
-		78F9756526BA9397003AAE97 /* RegisterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModelTests.swift; sourceTree = "<group>"; };
-		78F9756726BA93C0003AAE97 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		8C59E6CE50DADC690015015C /* Pods-BitCoinPredictorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictorTests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictorTests/Pods-BitCoinPredictorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A316FA7044BB183FB301166 /* Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A49D3C207005686841615893 /* Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; path = "Target Support Files/Pods-BitCoinPredictor-BitCoinPredictorUITests/Pods-BitCoinPredictor-BitCoinPredictorUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,9 +206,6 @@
 				78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */,
 				78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */,
 				78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */,
-				78F9756326BA9345003AAE97 /* LoginViewModelTests.swift */,
-				78F9756526BA9397003AAE97 /* RegisterViewModelTests.swift */,
-				78F9756726BA93C0003AAE97 /* SettingsViewModelTests.swift */,
 			);
 			path = BitCoinPredictorTests;
 			sourceTree = "<group>";
@@ -529,12 +520,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				78F9755C26BA9191003AAE97 /* BalanceViewModelTests.swift in Sources */,
-				78F9756626BA9397003AAE97 /* RegisterViewModelTests.swift in Sources */,
 				78F9755A26BA9121003AAE97 /* HomeViewModelTests.swift in Sources */,
 				78F9756026BA9240003AAE97 /* PredictViewModelTests.swift in Sources */,
-				78F9756426BA9345003AAE97 /* LoginViewModelTests.swift in Sources */,
 				78F9755E26BA91EB003AAE97 /* ComparisonViewModelTests.swift in Sources */,
-				78F9756826BA93C0003AAE97 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
