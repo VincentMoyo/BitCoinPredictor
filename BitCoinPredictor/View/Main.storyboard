@@ -67,13 +67,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwN-Qb-BK8" userLabel="LiveGraphView">
                                         <rect key="frame" x="0.0" y="43" width="388" height="563"/>
                                         <subviews>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lEU-bY-dfq">
-                                                <rect key="frame" x="175.66666666666666" y="143.99999999999994" width="37" height="37"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lEU-bY-dfq">
+                                                <rect key="frame" x="175.66666666666666" y="263" width="37" height="37"/>
                                                 <color key="color" red="0.039215686270000001" green="0.015686274510000001" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="lEU-bY-dfq" firstAttribute="centerX" secondItem="fwN-Qb-BK8" secondAttribute="centerX" id="2gm-lm-FjH"/>
+                                            <constraint firstItem="lEU-bY-dfq" firstAttribute="centerY" secondItem="fwN-Qb-BK8" secondAttribute="centerY" id="UTh-YV-uL8"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
