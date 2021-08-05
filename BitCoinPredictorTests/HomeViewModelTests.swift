@@ -31,6 +31,6 @@ class HomeViewModelTests: XCTestCase {
                 waitingForCompletionException.fulfill()
             }
         }
-        wait(for: [waitingForCompletionException], timeout: 5)
+        wait(for: [waitingForCompletionException], timeout: 10)
     }
 }
