@@ -16,7 +16,7 @@ class ComparisonViewModel {
     lazy var predictedPrice = 0.0
     lazy var predictedTime = 0.0
     var previousPrice = 570000.12
-    var priceList: [PriceListModel] = []
+    var priceArray: [PriceArrayModel] = []
     var priceData = PriceData()
     var predictedPriceData = PredictedPriceData()
     var counter = 0
@@ -47,8 +47,8 @@ class ComparisonViewModel {
     
     private func checkEquity() {
         loadBalancesFromDatabase()
-        let newCount = priceList.count
-        if let lastPrice = priceList.last {
+        let newCount = priceArray.count
+        if let lastPrice = priceArray.last {
             if Double(newCount) < predictedPriceData.currentDate {
                 balanceData.equity = balanceData.balance + Double(lastPrice.rate)!
                 insertIntoBalanceDatabase()
@@ -116,7 +116,7 @@ class ComparisonViewModel {
         database.loadPrices { result in
             do {
                 let newList = try result.get()
-                self.priceList = newList
+                self.priceArray = newList
                 self.didComparisonViewModelLoad?(true)
             } catch {
                 self.comparisonViewModelError?(error)

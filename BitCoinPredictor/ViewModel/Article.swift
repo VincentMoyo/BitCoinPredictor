@@ -13,7 +13,7 @@ class Article {
     let imageURL: URL?
     
     init(
-        newsList: NewsList
+        newsList: NewsArray
     ) {
         self.title = newsList.title
         self.subtile = newsList.subtile

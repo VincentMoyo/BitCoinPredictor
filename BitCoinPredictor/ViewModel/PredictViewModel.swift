@@ -11,7 +11,7 @@ class PredictViewModel {
     
     private var database = DatabaseManager()
     private let bitcoinAPI = BitcoinAPI()
-    var priceList: [PriceListModel] = []
+    var priceArray: [PriceArrayModel] = []
     var bitcoinPrice = PriceData()
     var predictedBitcoinPrice = PredictedPriceData()
     var balanceData = BalanceData()
@@ -37,9 +37,9 @@ class PredictViewModel {
         loadBalancesFromDatabase()
     }
     
-    func insertPredictedPriceIntoDatabase(_ delegateSuccess: ShowUserSuccessDelegate?, _ delegateError: ShowUserErrorDelegate) {
+    func insertPredictedPriceIntoDatabase(_ delegateSuccess: DisplayingSuccessMessage?, _ delegateError: ErrorReporting) {
         database.updatePredictedPrice(String(predictedBitcoinPrice.currentPrice),
-                                                  String(priceList.count + 5))
+                                                  String(priceArray.count + 5))
         
         subtractBalanceFromPredictedPrice(predictedBitcoinPrice.currentPrice)
         database.delegateSuccess = delegateSuccess
@@ -95,7 +95,7 @@ class PredictViewModel {
         database.loadPrices { result in
             do {
                 let newList = try result.get()
-                self.priceList = newList
+                self.priceArray = newList
                 self.didPredictViewModelLoad?(true)
             } catch {
                 self.predictViewModelError?(error)

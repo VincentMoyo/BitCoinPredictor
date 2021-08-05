@@ -32,7 +32,7 @@ class NewsTableViewController: UITableViewController {
                     self?.articles = headlines
                     self?.viewModels = headlines.compactMap({
                         Article(
-                            newsList: NewsList(title: $0.title,
+                            newsList: NewsArray(title: $0.title,
                                                subtile: $0.articleDescription ?? NSLocalizedString("NO_DESCRIPTION", comment: ""),
                                                imageURL: $0.urlToImage)
                         )

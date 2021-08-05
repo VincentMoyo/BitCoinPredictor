@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BalanceList {
+struct BalanceArray {
     let balance: String
     let equity: String
     let freeMargin: String

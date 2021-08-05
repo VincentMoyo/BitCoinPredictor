@@ -59,8 +59,8 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func zoomIn(_ sender: Any) {
-        let priceValues = homeViewModel.priceList.last
-        let xValue = CGFloat(homeViewModel.priceList.count)
+        let priceValues = homeViewModel.priceArray.last
+        let xValue = CGFloat(homeViewModel.priceArray.count)
         let yValue = CGFloat(Double(priceValues!.rate)!)
         candleChart.zoom(scaleX: 2, scaleY: 2, x: xValue, y: yValue)
     }
@@ -104,7 +104,7 @@ extension HomeViewController: ChartViewDelegate {
     
     private func setChartEntries() -> [CandleChartDataEntry] {
         var entries = [CandleChartDataEntry]()
-        homeViewModel.priceList.forEach { price in
+        homeViewModel.priceArray.forEach { price in
             homeViewModel.priceData.date += 1
             entries.append(CandleChartDataEntry(x: homeViewModel.priceData.date,
                                                 shadowH: setShadowHigh(for: Double(price.rate)!),

@@ -11,7 +11,7 @@ struct APIManager {
     
     func getCoinPrice(for currency: String, completion: @escaping (Result<(String), Error>) -> Void) {
         
-        let urlString = "\(Constants.APIS.kBaseURL)/\(currency)?apikey=\(Constants.APIS.kApiKey5)"
+        let urlString = "\(Constants.APIS.kBaseURL)/\(currency)?apikey=\(Constants.APIS.kApiKey1)"
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, _, error) in
@@ -30,7 +30,7 @@ struct APIManager {
         }
     }
     
-    func parseJSON(_ data: Data) -> Double? {
+    private func parseJSON(_ data: Data) -> Double? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(CoinData.self, from: data)

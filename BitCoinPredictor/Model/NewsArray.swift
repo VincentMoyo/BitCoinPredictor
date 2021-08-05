@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NewsList {
+struct NewsArray {
     let title: String
     let subtile: String
     let imageURL: URL?

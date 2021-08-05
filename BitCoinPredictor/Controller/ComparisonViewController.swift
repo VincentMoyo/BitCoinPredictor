@@ -106,7 +106,7 @@ extension ComparisonViewController: ChartViewDelegate {
     
     private func chartEntriesForFirstSet() -> [CandleChartDataEntry] {
         var entries = [CandleChartDataEntry]()
-        comparisonViewModel.priceList.forEach { price in
+        comparisonViewModel.priceArray.forEach { price in
             comparisonViewModel.priceData.date += 1
             entries.append(CandleChartDataEntry(x: comparisonViewModel.priceData.date,
                                                 shadowH: setShadowHigh(for: Double(price.rate)!),

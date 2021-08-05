@@ -13,7 +13,7 @@ class BalanceViewModel {
     var predictedPrice = PredictedPriceData()
     var balanceData = BalanceData()
     private lazy var timerSeconds = 0
-    var balanceList: [BalanceListModel] = []
+    var balanceArray: [BalanceArrayModel] = []
     var previousPrediction = 0.0
     var didBalanceViewModelLoad: ((Bool) -> Void)?
     var balanceViewModelError: ((Error) -> Void)?
@@ -32,7 +32,7 @@ class BalanceViewModel {
         database.loadBalances { result in
             do {
                 let newList = try result.get()
-                self.balanceList = newList
+                self.balanceArray = newList
                 newList.forEach { accountBalance in
                     self.balanceData.balance = Double(accountBalance.balance)!.rounded()
                     self.balanceData.equity = Double(accountBalance.equity)!.rounded()

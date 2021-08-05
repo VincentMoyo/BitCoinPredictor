@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PredictViewController: UIViewController, ShowUserErrorDelegate, ShowUserSuccessDelegate {
+class PredictViewController: UIViewController, ErrorReporting, DisplayingSuccessMessage {
     
     private var predictViewModel = PredictViewModel()
     

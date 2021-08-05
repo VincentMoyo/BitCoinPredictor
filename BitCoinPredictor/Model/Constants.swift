@@ -39,6 +39,7 @@ struct Constants {
     }
     
     struct APIS {
+        static let kCurrency = "ZAR"
         static let kBaseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
         static let kApiKey1 = "4645E475-133C-458A-AA48-2EB70A347301"
         static let kApiKey2 = "6FE19785-42B1-4D8E-92B3-EC4FDBE3DB75"
@@ -47,13 +48,10 @@ struct Constants {
         static let kApiKey5 = "30EEDBD2-1710-4A2F-97E6-1EF66EF32F47"
         static let kApiKey6 = "279DBB07-FF50-4819-94DB-579005BD3BCD"
         static let kApiKey7 = "CDD3FE7D-2AE7-47F3-85CE-B9904F8EE477"
-        
-        static let kCurrency = "ZAR"
     }
     
     struct FormatForDate {
         static let dateFormatterGet = DateFormatter()
         static let DateFormate = "yyyy-MM-dd HH:mm:ss"
     }
-    
 }

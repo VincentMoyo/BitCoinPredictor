@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct BalanceListModel {
+struct BalanceArrayModel {
     let balance: String
     let equity: String
     let freeMargin: String
     let bitcoin: String
     
-    init(balanceList: BalanceList) {
+    init(balanceList: BalanceArray) {
         self.balance = balanceList.balance
         self.equity = balanceList.equity
         self.freeMargin = balanceList.freeMargin

@@ -41,7 +41,7 @@ class BalanceViewController: UIViewController {
     private func bindBalanceViewModel() {
         balanceViewModel.didBalanceViewModelLoad = { result in
             if result {
-                self.balanceViewModel.balanceList.forEach { accountBalance in
+                self.balanceViewModel.balanceArray.forEach { accountBalance in
                     DispatchQueue.main.async {
                         self.balanceLabel.text = accountBalance.balance
                         self.equityLabel.text = accountBalance.equity

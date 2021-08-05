@@ -11,16 +11,16 @@ import FirebaseFirestore
 struct DatabaseManager {
     
     private let database = Firestore.firestore()
-    var delegateError: ShowUserErrorDelegate?
-    var delegateSuccess: ShowUserSuccessDelegate?
+    var delegateError: ErrorReporting?
+    var delegateSuccess: DisplayingSuccessMessage?
     
     // MARK: - Bytecoin Database
     
-    func loadPrices(completion: @escaping (Result<[PriceListModel], Error>) -> Void) {
+    func loadPrices(completion: @escaping (Result<[PriceArrayModel], Error>) -> Void) {
         database.collection(Constants.Database.kBitCoinDatabaseName)
             .order(by: Constants.Database.kDate)
             .addSnapshotListener { (querySnapshot, error) in
-                var priceList: [PriceListModel] = []
+                var priceList: [PriceArrayModel] = []
                 if let err = error {
                     completion(.failure(err))
                 } else {
@@ -29,7 +29,7 @@ struct DatabaseManager {
                             let data = doc.data()
                             if let priceOfBitcoin = data[Constants.Database.kRate] as? String,
                                let dateOfBitcoinPrice = data[Constants.Database.kDate] as? String {
-                                let newPrice = PriceListModel(priceList: PriceList(rate: priceOfBitcoin, date: dateOfBitcoinPrice))
+                                let newPrice = PriceArrayModel(priceList: PriceArray(rate: priceOfBitcoin, date: dateOfBitcoinPrice))
                                 priceList.append(newPrice)
                             }
                         }
@@ -88,10 +88,10 @@ struct DatabaseManager {
     
     // MARK: - Account Balance Database
     
-    func loadBalances(completion: @escaping (Result<[BalanceListModel], Error>) -> Void) {
+    func loadBalances(completion: @escaping (Result<[BalanceArrayModel], Error>) -> Void) {
         database.collection(Constants.Database.kBalanceDatabaseName)
             .addSnapshotListener { (querySnapshot, error) in
-                var balanceList: [BalanceListModel] = []
+                var balanceList: [BalanceArrayModel] = []
                 if let err = error {
                     completion(.failure(err))
                 } else {
@@ -102,7 +102,7 @@ struct DatabaseManager {
                                let newEquity = data[Constants.Database.kEquity] as? String,
                                let newFreeMargin = data[Constants.Database.kFreeMargin] as? String,
                                let newBitcoin = data[Constants.Database.kBitcoin] as? String {
-                                let newBalanceList = BalanceListModel(balanceList: BalanceList(balance: newBalance,
+                                let newBalanceList = BalanceArrayModel(balanceList: BalanceArray(balance: newBalance,
                                                                                                equity: newEquity,
                                                                                                freeMargin: newFreeMargin,
                                                                                                bitcoin: newBitcoin))

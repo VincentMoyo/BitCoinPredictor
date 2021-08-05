@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PriceList {
+struct PriceArray {
     let rate: String
     let date: String
 }

@@ -13,7 +13,7 @@ class HomeViewModel {
     private let database = DatabaseManager()
     private lazy var timerSeconds = 0
     var previousPrice = 570000.0
-    var priceList: [PriceListModel] = []
+    var priceArray: [PriceArrayModel] = []
     var priceData = PriceData()
     var didHomeViewModelLoad: ((Bool) -> Void)?
     var homeViewModelError: ((Error) -> Void)?
@@ -47,7 +47,7 @@ class HomeViewModel {
         database.loadPrices { result in
             do {
                 let newList = try result.get()
-                self.priceList = newList
+                self.priceArray = newList
                 self.didHomeViewModelLoad?(true)
             } catch {
                 self.homeViewModelError?(error)

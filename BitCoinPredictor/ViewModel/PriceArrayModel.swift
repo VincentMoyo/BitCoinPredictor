@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct PriceListModel {
+struct PriceArrayModel {
     let rate: String
     let date: String
     
-    init(priceList: PriceList) {
+    init(priceList: PriceArray) {
         self.rate = priceList.rate
         self.date = priceList.date
     }
