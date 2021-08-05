@@ -32,6 +32,9 @@
 		7881AD4A268DF65D00C319CF /* PriceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD48268DF65D00C319CF /* PriceArray.swift */; };
 		7881AD4C268DF74100C319CF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD4B268DF74100C319CF /* DatabaseManager.swift */; };
 		7881AD4E268DFB4B00C319CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */; };
+		788959C026BC202B003FBD6C /* RegisterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788959BF26BC202B003FBD6C /* RegisterViewModelTests.swift */; };
+		788959C226BC2032003FBD6C /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788959C126BC2032003FBD6C /* LoginViewModelTests.swift */; };
+		788959C426BC2036003FBD6C /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788959C326BC2036003FBD6C /* SettingsViewModelTests.swift */; };
 		78895FF726AEF19500E4C6DF /* bitcoinBackground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 78895FF626AEF19500E4C6DF /* bitcoinBackground.jpeg */; };
 		7897DABC26B8329E0066CDEF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897DABB26B8329E0066CDEF /* LoginViewModel.swift */; };
 		7897DABE26B839AC0066CDEF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897DABD26B839AC0066CDEF /* RegisterViewModel.swift */; };
@@ -99,6 +102,9 @@
 		7881AD48268DF65D00C319CF /* PriceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceArray.swift; sourceTree = "<group>"; };
 		7881AD4B268DF74100C319CF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		7881AD4D268DFB4B00C319CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		788959BF26BC202B003FBD6C /* RegisterViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModelTests.swift; sourceTree = "<group>"; };
+		788959C126BC2032003FBD6C /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		788959C326BC2036003FBD6C /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		78895FF626AEF19500E4C6DF /* bitcoinBackground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bitcoinBackground.jpeg; sourceTree = "<group>"; };
 		7897DABB26B8329E0066CDEF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7897DABD26B839AC0066CDEF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -205,6 +211,9 @@
 				78F9755926BA9121003AAE97 /* HomeViewModelTests.swift */,
 				78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */,
 				78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */,
+				788959C326BC2036003FBD6C /* SettingsViewModelTests.swift */,
+				788959C126BC2032003FBD6C /* LoginViewModelTests.swift */,
+				788959BF26BC202B003FBD6C /* RegisterViewModelTests.swift */,
 				78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */,
 			);
 			path = BitCoinPredictorTests;
@@ -519,7 +528,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				788959C226BC2032003FBD6C /* LoginViewModelTests.swift in Sources */,
+				788959C026BC202B003FBD6C /* RegisterViewModelTests.swift in Sources */,
 				78F9755C26BA9191003AAE97 /* BalanceViewModelTests.swift in Sources */,
+				788959C426BC2036003FBD6C /* SettingsViewModelTests.swift in Sources */,
 				78F9755A26BA9121003AAE97 /* HomeViewModelTests.swift in Sources */,
 				78F9756026BA9240003AAE97 /* PredictViewModelTests.swift in Sources */,
 				78F9755E26BA91EB003AAE97 /* ComparisonViewModelTests.swift in Sources */,

@@ -48,6 +48,7 @@ class PredictViewModel {
     
     func subtractBalanceFromPredictedPrice(_ predictedPrice: Double) {
         balanceData.balance -= predictedPrice
+        balanceData.freeMargin = balanceData.equity - predictedPrice
         insertIntoBalanceDatabase()
     }
     

@@ -12,8 +12,8 @@ import SafariServices
 class NewsTableViewController: UITableViewController {
     
     private let newsAPI = NewsAPI(apiKey: Constants.News.kApiKey)
-    lazy private var articles = [NewsArticle]()
-    lazy private var viewModels = [Article]()
+    lazy private var newsArticleViewModel = [NewsArticle]()
+    lazy private var article = [Article]()
     private var initialErrorMessage = ""
     
     override func viewDidLoad() {
@@ -29,8 +29,8 @@ class NewsTableViewController: UITableViewController {
                         self?.showUserErrorMessageDidInitiate(self!.errorMessage)
                     }
                 } else {
-                    self?.articles = headlines
-                    self?.viewModels = headlines.compactMap({
+                    self?.newsArticleViewModel = headlines
+                    self?.article = headlines.compactMap({
                         Article(
                             newsList: NewsArray(title: $0.title,
                                                subtile: $0.articleDescription ?? NSLocalizedString("NO_DESCRIPTION", comment: ""),
@@ -51,19 +51,19 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels.count
+        return article.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.News.kIdentifier, for: indexPath) as? NewsTableViewCell
-        cell?.configure(with: viewModels[indexPath.row])
+        cell?.configure(with: article[indexPath.row])
         
         return cell ?? NewsTableViewCell.init()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let article = articles[indexPath.row]
+        let article = newsArticleViewModel[indexPath.row]
         let vcc = SFSafariViewController(url: article.url)
         
         present(vcc, animated: true, completion: nil)

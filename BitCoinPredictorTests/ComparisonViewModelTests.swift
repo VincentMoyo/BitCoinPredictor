@@ -49,15 +49,4 @@ class ComparisonViewModelTests: XCTestCase {
         }
         wait(for: [waitingForCompletionException], timeout: 5)
     }
-    
-    func testBitcoinAPI() {
-        let waitingForCompletionException = expectation(description: "Waiting for database to load retrieve bitcoin prices from prices")
-        comparisonViewModel.bitcoinPriceUsingAPI()
-        comparisonViewModel.didComparisonViewModelLoad = { result in
-            if result {
-                waitingForCompletionException.fulfill()
-            }
-        }
-        wait(for: [waitingForCompletionException], timeout: 5)
-    }
 }

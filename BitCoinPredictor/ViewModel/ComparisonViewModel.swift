@@ -27,7 +27,6 @@ class ComparisonViewModel {
         if timerSeconds % 5 == 0 && counter < 20 {
             timerSeconds += 1
             counter += 1
-            bitcoinPriceUsingAPI()
             loadPricesFromDatabase()
             loadPredictedPricesFromDatabase()
             checkEquity()
@@ -51,10 +50,12 @@ class ComparisonViewModel {
         if let lastPrice = priceArray.last {
             if Double(newCount) < predictedPriceData.currentDate {
                 balanceData.equity = balanceData.balance + Double(lastPrice.rate)!
+                balanceData.freeMargin = balanceData.equity - Double(lastPrice.rate)!
                 insertIntoBalanceDatabase()
             } else if Double(newCount) == predictedPriceData.currentDate {
                 balanceData.balance += Double(lastPrice.rate)!
                 balanceData.equity = balanceData.balance
+                balanceData.freeMargin = balanceData.equity - Double(lastPrice.rate)!
                 insertIntoBalanceDatabase()
             } else {
                 insertIntoBalanceDatabase()
@@ -86,19 +87,6 @@ class ComparisonViewModel {
         }
     }
     
-    func bitcoinPriceUsingAPI() {
-        apiClass.getAPI { result in
-            do {
-                let newPrice = try result.get()
-                self.database.insertPrice(newPrice)
-                self.priceData.price = Double(newPrice)!
-                self.didComparisonViewModelLoad?(true)
-            } catch {
-                self.comparisonViewModelError?(error)
-            }
-        }
-    }
-    
     func loadPredictedPricesFromDatabase() {
         database.loadPredictedPrice { result in
             do {
@@ -117,6 +105,8 @@ class ComparisonViewModel {
             do {
                 let newList = try result.get()
                 self.priceArray = newList
+                let newPrice = newList.last
+                self.priceData.price = Double(newPrice!.rate)!
                 self.didComparisonViewModelLoad?(true)
             } catch {
                 self.comparisonViewModelError?(error)

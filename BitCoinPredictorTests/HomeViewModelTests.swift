@@ -23,14 +23,14 @@ class HomeViewModelTests: XCTestCase {
         wait(for: [waitingForCompletionException], timeout: 5)
     }
     
-//    func testPricesLoadTimeOnDatabase() {
-//        let waitingForCompletionException = expectation(description: "Waiting for database to load bitcoin prices")
-//        homeViewModel.loadPricesFromDatabase()
-//        homeViewModel.didHomeViewModelLoad = { result in
-//            if result {
-//                waitingForCompletionException.fulfill()
-//            }
-//        }
-//        wait(for: [waitingForCompletionException], timeout: 5)
-//    }
+    func testPricesLoadTimeOnDatabase() {
+        let waitingForCompletionException = expectation(description: "Waiting for database to load bitcoin prices")
+        homeViewModel.loadPricesFromDatabase()
+        homeViewModel.didHomeViewModelLoad = { result in
+            if result {
+                waitingForCompletionException.fulfill()
+            }
+        }
+        wait(for: [waitingForCompletionException], timeout: 5)
+    }
 }

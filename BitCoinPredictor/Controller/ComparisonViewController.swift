@@ -88,7 +88,6 @@ extension ComparisonViewController: ChartViewDelegate {
         setChartFrame()
         let firstSet = CandleChartDataSet(entries: chartEntriesForFirstSet())
         let secondSet = CandleChartDataSet(entries: chartEntriesForSecondSet())
-        
         setPropertiesForFirstSet(firstSet)
         setPropertiesForSecondSet(secondSet)
         

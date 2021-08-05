@@ -20,7 +20,7 @@ class HomeViewModel {
     var counter = 0
     
     func updateTimer() {
-        if timerSeconds % 5 == 0 && counter < 10 {
+        if timerSeconds % 10 == 0 && counter < 20 {
             timerSeconds += 1
             counter += 1
             bitcoinPriceUsingAPI()
