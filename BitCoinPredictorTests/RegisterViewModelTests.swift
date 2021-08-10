@@ -10,6 +10,4 @@ import XCTest
 
 class RegisterViewModelTests: XCTestCase {
     
-
-
 }
