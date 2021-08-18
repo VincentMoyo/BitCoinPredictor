@@ -362,11 +362,11 @@
                                                                         <state key="normal" title="Not Set &gt;">
                                                                             <color key="titleColor" white="0.47205784940000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="setFirstNamePressed:" destination="rsp-i4-QlY" eventType="touchUpInside" id="1ub-Ad-etp"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="OpJ-cp-hGz" firstAttribute="top" secondItem="ru1-BU-3y7" secondAttribute="topMargin" id="w9V-wt-add"/>
-                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
@@ -398,6 +398,9 @@
                                                                         <state key="normal" title="Not Set &gt;">
                                                                             <color key="titleColor" white="0.47205784940000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="setLastNamePressed:" destination="rsp-i4-QlY" eventType="touchUpInside" id="t7i-D3-FmN"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -553,6 +556,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="setProfilePicturePressed:" destination="rsp-i4-QlY" eventType="touchUpInside" id="NAf-Zx-BUx"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9o-2v-lra">
                                                 <rect key="frame" x="0.0" y="527" width="428" height="20"/>
@@ -612,6 +618,9 @@
                     </view>
                     <connections>
                         <outlet property="activityLoader" destination="ZAe-Ce-O3I" id="9JI-Xa-W9f"/>
+                        <outlet property="firstNameLabel" destination="OpJ-cp-hGz" id="5rT-ds-LjS"/>
+                        <outlet property="lastNameLabel" destination="vjj-09-jLQ" id="dyI-he-BWJ"/>
+                        <outlet property="profilePictureImage" destination="PSg-rQ-0ks" id="1LZ-SC-HFG"/>
                         <segue destination="U1J-ky-pct" kind="presentation" identifier="welcome" modalPresentationStyle="fullScreen" id="WyH-om-dNu"/>
                     </connections>
                 </viewController>

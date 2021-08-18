@@ -7,9 +7,13 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    @IBOutlet weak var firstNameLabel: UIButton!
+    @IBOutlet weak var lastNameLabel: UIButton!
+    @IBOutlet weak var profilePictureImage: UIImageView!
+    
     var settingsViewModel = SettingsViewModel()
     
     override func viewDidLoad() {
@@ -22,6 +26,29 @@ class SettingsViewController: UIViewController {
     @IBAction func logOutPressed(_ sender: UIButton) {
         settingsViewModel.signOutUser()
         activateActivityIndicatorView()
+    }
+    
+    @IBAction func setProfilePicturePressed(_ sender: UIButton) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        profilePictureImage.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func setFirstNamePressed(_ sender: UIButton) {
+        setupProfileNames(firstNameLabel)
+    }
+    
+    @IBAction func setLastNamePressed(_ sender: UIButton) {
+        setupProfileNames(lastNameLabel)
     }
     
     private func bindSettingsViewModel() {
@@ -46,5 +73,25 @@ class SettingsViewController: UIViewController {
             self.showUserErrorMessageDidInitiate(result.localizedDescription)
             self.activityLoader.stopAnimating()
         }
+    }
+}
+
+extension SettingsViewController {
+    
+    private func setupProfileNames(_ nameLabel: UIButton) { 
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Set Name", message: "Set your username to complete your profile account setup", preferredStyle: .alert)
+        let actions = UIAlertAction(title: "Change", style: .default, handler: { (_) in
+            DispatchQueue.main.async {
+                nameLabel.setTitle(textField.text, for: .normal)
+            }
+        })
+        
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "New Name"
+            textField = alertTextField
+        }
+        alert.addAction(actions)
+        present(alert, animated: true, completion: nil)
     }
 }
