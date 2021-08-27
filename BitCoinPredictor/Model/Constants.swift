@@ -17,19 +17,33 @@ struct Constants {
     }
     
     struct Database {
-        static let kBitCoinDatabaseName = "ByteCoins"
-        static let kPredictedPriceDatabaseName = "PredictedPricesDatabase"
-        static let kPredictedPriceDocumentName = "prices"
-        static let kDate = "date"
-        static let kRate = "rate"
-        static let kPrice = "price"
-        
-        static let kBalanceDatabaseName = "AccountBalanceDatabase"
-        static let kBalanceDocumentName = "balances"
-        static let kBalance = "balance"
-        static let kEquity = "equity"
-        static let kFreeMargin = "freeMargin"
-        static let kBitcoin = "bitboin"
+        struct Bitcoin {
+            static let kBitcoinDatabaseName = "ByteCoins"
+            static let kBitcoinDate = "date"
+            static let kBitcoinRate = "rate"
+        }
+        struct PredictedPrice {
+            static let kPredictedPriceDatabaseName = "PredictedPricesDatabase"
+            static let kPredictedPriceDocumentName = "prices"
+            static let kPredictedPriceDate = "date"
+            static let kPredictedPrice = "price"
+        }
+        struct AccountBalance {
+            static let kBalanceDatabaseName = "AccountBalanceDatabase"
+            static let kBalanceDocumentName = "balances"
+            static let kBalance = "balance"
+            static let kEquity = "equity"
+            static let kFreeMargin = "freeMargin"
+            static let kBitcoin = "bitcoin"
+        }
+        struct UserSettings {
+            static let kUserInformationDatabaseName = "UserSettings"
+            static let kUserInformationDocumentName = "UserInformation"
+            static let kFirstName = "firstName"
+            static let kLastName = "lastName"
+            static let kDateOfBirth = "dateOfBirth"
+            static let kGender = "gender"
+        }
     }
     
     struct Authentication {
@@ -52,6 +66,6 @@ struct Constants {
     
     struct FormatForDate {
         static let dateFormatterGet = DateFormatter()
-        static let DateFormate = "yyyy-MM-dd HH:mm:ss"
+        static let DateFormate = "yyyy-MM-dd"
     }
 }

@@ -13,13 +13,17 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var firstNameLabel: UIButton!
     @IBOutlet weak var lastNameLabel: UIButton!
     @IBOutlet weak var profilePictureImage: UIImageView!
-    
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var datePicker: UIDatePicker!
+        
     var settingsViewModel = SettingsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activityLoader.isHidden = true
+        settingsViewModel.loadUserSettings()
         bindSettingsViewModel()
+        bindSignOutSettingsViewModel()
         bindSettingsViewModelErrors()
     }
     
@@ -44,18 +48,45 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func setFirstNamePressed(_ sender: UIButton) {
-        setupProfileNames(firstNameLabel)
+        setupProfileNames(firstNameLabel, isFirstName: true)
     }
     
     @IBAction func setLastNamePressed(_ sender: UIButton) {
-        setupProfileNames(lastNameLabel)
+        setupProfileNames(lastNameLabel, isFirstName: false)
     }
     
-    private func bindSettingsViewModel() {
+    @IBAction func dateOfBirthPressed(_ sender: UIDatePicker) {
+        Constants.FormatForDate.dateFormatterGet.dateFormat = Constants.FormatForDate.DateFormate
+        let dateResult = Constants.FormatForDate.dateFormatterGet.string(from: datePicker.date)
+        settingsViewModel.updateDateOfBirth(dateResult)
+    }
+    
+    @IBAction func genderIndexChangedPressed(_ sender: Any) {
+        settingsViewModel.updateGender(genderSegmentedControl.titleForSegment(at: genderSegmentedControl.selectedSegmentIndex)!)
+    }
+    
+    private func bindSignOutSettingsViewModel() {
         settingsViewModel.didSignOutUserLoad = { result in
             if result {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: Constants.Authentication.kWelcomeSegue, sender: self)
+                    self.activityLoader.stopAnimating()
+                }
+            }
+        }
+    }
+    
+    private func bindSettingsViewModel() {
+        settingsViewModel.didLoadUserSetting = { result in
+            if result {
+                DispatchQueue.main.async {
+                    self.settingsViewModel.userSettingsList.forEach { settings in
+                        self.firstNameLabel.setTitle(settings.firstName, for: .normal)
+                        self.lastNameLabel.setTitle(settings.lastName, for: .normal)
+                        Constants.FormatForDate.dateFormatterGet.dateFormat = Constants.FormatForDate.DateFormate
+                        let dateResult = Constants.FormatForDate.dateFormatterGet.date(from: settings.dateOfBirth)
+                        self.datePicker.setDate(dateResult!, animated: true)
+                    }
                     self.activityLoader.stopAnimating()
                 }
             }
@@ -78,12 +109,16 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
 
 extension SettingsViewController {
     
-    private func setupProfileNames(_ nameLabel: UIButton) { 
+    private func setupProfileNames(_ nameLabel: UIButton, isFirstName firstName: Bool) {
         var textField = UITextField()
         let alert = UIAlertController(title: "Set Name", message: "Set your username to complete your profile account setup", preferredStyle: .alert)
         let actions = UIAlertAction(title: "Change", style: .default, handler: { (_) in
-            DispatchQueue.main.async {
+            if firstName {
                 nameLabel.setTitle(textField.text, for: .normal)
+                self.settingsViewModel.updateFirstName(textField.text!)
+            } else {
+                nameLabel.setTitle(textField.text, for: .normal)
+                self.settingsViewModel.updateLastName(textField.text!)
             }
         })
         

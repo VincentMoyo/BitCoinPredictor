@@ -8,10 +8,42 @@
 import Foundation
 import FirebaseAuth
 
-struct SettingsViewModel {
+class SettingsViewModel {
     
     var didSignOutUserLoad: ((Bool) -> Void)?
+    var didLoadUserSetting: ((Bool) -> Void)?
     var signOutViewModelError: ((Error) -> Void)?
+    let database = DatabaseManager()
+    var userInformation = UserInformation()
+    var userSettingsList: [UserInformationModel] = []
+    
+    func loadUserSettings() {
+        database.loadUserSettings(SignedInUser: Auth.auth().currentUser!.uid) { result in
+            do {
+                let newUserSettings = try result.get()
+                self.userSettingsList = newUserSettings
+                self.didLoadUserSetting?(true)
+            } catch {
+                self.signOutViewModelError?(error)
+            }
+        }
+    }
+    
+    func updateFirstName(_ firstName: String) {
+        database.updateUserSettingsFirstName(SignedInUser: Auth.auth().currentUser!.uid, username: firstName)
+    }
+    
+    func updateLastName(_ lastName: String) {
+        database.updateUserSettingsLastName(SignedInUser: Auth.auth().currentUser!.uid, userLastName: lastName)
+    }
+    
+    func updateGender(_ gender: String) {
+        database.updateUserSettingsGender(SignedInUser: Auth.auth().currentUser!.uid, userGender: gender)
+    }
+    
+    func updateDateOfBirth(_ dateOfBirth: String) {
+        database.updateUserSettingsDateOfBirth(SignedInUser: Auth.auth().currentUser!.uid, DOB: dateOfBirth)
+    }
     
     func signOutUser() {
         let firebaseAuth = Auth.auth()
