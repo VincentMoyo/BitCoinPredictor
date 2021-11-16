@@ -13,7 +13,7 @@ struct Constants {
         static let kIdentifier = "Cell"
         static let kCellNibName = "NewsTableViewCell"
         static let kApiKey = "2f6fc28af88f4ad0955e7e4568e26c37"
-        static let kHeadline = "bitcoin"
+        static let kHeadline = "weather"
     }
     
     struct Database {

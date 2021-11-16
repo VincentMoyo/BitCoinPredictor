@@ -21,7 +21,7 @@
 		7871481B268F13C5001CB255 /* BitcoinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7871481A268F13C5001CB255 /* BitcoinAPI.swift */; };
 		78775D2026B5DB7700058214 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78775D1F26B5DB7700058214 /* BalanceViewController.swift */; };
 		78806ECD26D3894E005C5F07 /* UserInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78806ECC26D3894E005C5F07 /* UserInformationModel.swift */; };
-		78817812269DB268003F18C1 /* UserAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78817811269DB268003F18C1 /* UserAlerts.swift */; };
+		78817812269DB268003F18C1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78817811269DB268003F18C1 /* Protocols.swift */; };
 		7881AD07268DF1D800C319CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD06268DF1D800C319CF /* AppDelegate.swift */; };
 		7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7881AD08268DF1D800C319CF /* SceneDelegate.swift */; };
 		7881AD10268DF1DB00C319CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7881AD0F268DF1DB00C319CF /* Assets.xcassets */; };
@@ -91,7 +91,7 @@
 		7871481A268F13C5001CB255 /* BitcoinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAPI.swift; sourceTree = "<group>"; };
 		78775D1F26B5DB7700058214 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		78806ECC26D3894E005C5F07 /* UserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationModel.swift; sourceTree = "<group>"; };
-		78817811269DB268003F18C1 /* UserAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlerts.swift; sourceTree = "<group>"; };
+		78817811269DB268003F18C1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		7881AD03268DF1D800C319CF /* BitCoinPredictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinPredictor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7881AD06268DF1D800C319CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7881AD08268DF1D800C319CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 				7881AD3D268DF64800C319CF /* DateFormat.swift */,
 				78C16B6226A0590900E49A9F /* PredictedPriceData.swift */,
 				7881AD4B268DF74100C319CF /* DatabaseManager.swift */,
-				78817811269DB268003F18C1 /* UserAlerts.swift */,
+				78817811269DB268003F18C1 /* Protocols.swift */,
 				7881AD48268DF65D00C319CF /* PriceArray.swift */,
 				784B13C126985C4500453A1A /* Constants.swift */,
 				789F756A26A040D100A01183 /* NewsArray.swift */,
@@ -524,7 +524,7 @@
 				789F756F26A048A400A01183 /* PriceArrayModel.swift in Sources */,
 				7897DAD026B867ED0066CDEF /* PriceData.swift in Sources */,
 				78775D2026B5DB7700058214 /* BalanceViewController.swift in Sources */,
-				78817812269DB268003F18C1 /* UserAlerts.swift in Sources */,
+				78817812269DB268003F18C1 /* Protocols.swift in Sources */,
 				7881AD09268DF1D800C319CF /* SceneDelegate.swift in Sources */,
 				7868ABF826B962DD00416F30 /* SettingsViewModel.swift in Sources */,
 				7897DABC26B8329E0066CDEF /* LoginViewModel.swift in Sources */,
@@ -712,14 +712,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				DEVELOPMENT_TEAM = TNYCZP29C6;
 				INFOPLIST_FILE = BitCoinPredictor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictors;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -733,14 +733,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UKH67U3TZ4;
+				DEVELOPMENT_TEAM = TNYCZP29C6;
 				INFOPLIST_FILE = BitCoinPredictor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentCompany.BitCoinPredictors;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
