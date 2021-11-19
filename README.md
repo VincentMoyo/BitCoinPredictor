@@ -1,6 +1,6 @@
 # BitCoinPredictor
 
-![Simulator Screen Shot - iPhone 12 Pro Max - 2021-11-18 at 18 44 28](https://user-images.githubusercontent.com/80006278/142459451-b722da48-e1d4-4f81-9af0-b98b8236d391.png)
+![Simulator Screen Shot - iPhone 12 Pro Max - 2021-11-18 at 18 44 28]()
 
 
 ## Summary
@@ -15,7 +15,8 @@ The app is basically a bitcoin predictor game. you will be presented with a live
 ## APIs
 - https://www.coinapi.io/
 
-![Simulator Screen Shot - iPhone 12 Pro Max - 2021-11-18 at 18 45 16](https://user-images.githubusercontent.com/80006278/142459491-e3992094-86c3-47bb-86ab-a8d4766e063b.png)
-
-![Uploading Simulator Screen Shot - iPhone 12 Pro Max - 2021-11-18 at 18.44.42.png…]()
-![Uploading Simulator Screen Shot - iPhone 12 Pro Max - 2021-11-18 at 18.45.39.png…]()
+## Screenshots
+<p float="left">
+<img src="https://user-images.githubusercontent.com/80006278/142459451-b722da48-e1d4-4f81-9af0-b98b8236d391.png" width="500" height="800" />
+<img src="https://user-images.githubusercontent.com/80006278/142459491-e3992094-86c3-47bb-86ab-a8d4766e063b.png" width="500" height="800" />
+</p>
