@@ -1,5 +1,4 @@
 # BitCoinPredictor
-<img src="https://user-images.githubusercontent.com/80006278/142681429-da08ae07-8295-4ea8-89af-d9f1bb9f31d9.png" width="500" height="800" />
 ## Summary
 The app is basically a bitcoin predictor game. you will be presented with a live candle stick graph (Like a normal trading app) of the changing prices in bitcoin, then you are given R1 000 000 for free for you to start predicting the price of bitcoin, if you predict the price to be more valuable at a certain time you’ll have a higher return and visa versa. the app also has a news page containing all the news about bitcoin for you to make a more educated guess.
 
@@ -21,3 +20,4 @@ The app is basically a bitcoin predictor game. you will be presented with a live
 <img src="https://user-images.githubusercontent.com/80006278/142681468-f6450959-b035-463d-9ffa-804dcb3f2fba.png" width="500" height="800" />
 <img src="https://user-images.githubusercontent.com/80006278/142681475-921bbd81-64d2-440d-a5d3-28f992796ca0.png" width="500" height="800" />
 </p>
+<img src="https://user-images.githubusercontent.com/80006278/142681429-da08ae07-8295-4ea8-89af-d9f1bb9f31d9.png" width="500" height="800" />
