@@ -12,12 +12,14 @@ The app is basically a bitcoin predictor game. you will be presented with a live
 - https://www.coinapi.io/
 
 ## Screenshots
-<p float="left">
-<img src="https://user-images.githubusercontent.com/80006278/142459451-b722da48-e1d4-4f81-9af0-b98b8236d391.png" width="500" height="800" />
-<img src="https://user-images.githubusercontent.com/80006278/142459491-e3992094-86c3-47bb-86ab-a8d4766e063b.png" width="500" height="800" />
+<p float="center">
+<img src="https://user-images.githubusercontent.com/80006278/142459451-b722da48-e1d4-4f81-9af0-b98b8236d391.png" width="300" height="600" />
+<img src="https://user-images.githubusercontent.com/80006278/142459491-e3992094-86c3-47bb-86ab-a8d4766e063b.png" width="300" height="600" />
 </p>
-<p float="left">
-<img src="https://user-images.githubusercontent.com/80006278/142681468-f6450959-b035-463d-9ffa-804dcb3f2fba.png" width="500" height="800" />
-<img src="https://user-images.githubusercontent.com/80006278/142681475-921bbd81-64d2-440d-a5d3-28f992796ca0.png" width="500" height="800" />
+<p float="center">
+<img src="https://user-images.githubusercontent.com/80006278/142681468-f6450959-b035-463d-9ffa-804dcb3f2fba.png" width="300" height="600" />
+<img src="https://user-images.githubusercontent.com/80006278/142681475-921bbd81-64d2-440d-a5d3-28f992796ca0.png" width="300" height="600" />
 </p>
-<img src="https://user-images.githubusercontent.com/80006278/142681429-da08ae07-8295-4ea8-89af-d9f1bb9f31d9.png" width="500" height="800" />
+<p float="center">
+<img src="https://user-images.githubusercontent.com/80006278/142681429-da08ae07-8295-4ea8-89af-d9f1bb9f31d9.png" width="300" height="600" />
+</p>
