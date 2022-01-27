@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class HomeViewModel {
     
     private let apiClass = BitcoinAPI()
-    private let database = DatabaseManager()
+    private var database = DatabaseManager(databaseReference: Firestore.firestore())
     private lazy var timerSeconds = 0
     var previousPrice = 570000.0
     var priceArray: [PriceArrayModel] = []

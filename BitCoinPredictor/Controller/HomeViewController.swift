@@ -11,10 +11,10 @@ import FirebaseFirestore
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var bitCoinLabel: UILabel!
-    @IBOutlet weak var chartViewPrices: UIView!
-    @IBOutlet weak var liveGraphView: UIView!
-    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    @IBOutlet private weak var bitCoinLabel: UILabel!
+    @IBOutlet private weak var chartViewPrices: UIView!
+    @IBOutlet private weak var liveGraphView: UIView!
+    @IBOutlet private weak var activityLoader: UIActivityIndicatorView!
     
     private var candleChart = CandleStickChartView()
     private var timer = Timer()
@@ -26,32 +26,6 @@ class HomeViewController: UIViewController {
         activateActivityIndicatorView()
         startUpdateTimer()
         bindHomeViewModel()
-    }
-    
-    func startUpdateTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
-                                     selector: #selector(updateTimer),
-                                     userInfo: nil,
-                                     repeats: true)
-    }
-    
-    private func modifyChart() {
-        candleChart.dragEnabled = true
-        candleChart.setScaleEnabled(true)
-        candleChart.pinchZoomEnabled = true
-    }
-    
-    private func bindHomeViewModel() {
-        homeViewModel.didHomeViewModelLoad = { result in
-            if result {
-                DispatchQueue.main.async {
-                    self.bitCoinLabel.text = String(self.homeViewModel.priceData.price)
-                    self.candleChart.delegate = self
-                    self.modifyChart()
-                    self.activityLoader.stopAnimating()
-                }
-            }
-        }
     }
     
     @IBAction func zoomOut(_ sender: UIButton) {
@@ -73,6 +47,30 @@ class HomeViewController: UIViewController {
     private func activateActivityIndicatorView() {
         activityLoader.hidesWhenStopped = true
         activityLoader.startAnimating()
+    }
+    
+    private func startUpdateTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                     selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
+    }
+    
+    private func modifyChart() {
+        candleChart.dragEnabled = true
+        candleChart.setScaleEnabled(true)
+        candleChart.pinchZoomEnabled = true
+    }
+    
+    private func bindHomeViewModel() {
+        homeViewModel.didHomeViewModelLoad = { result in
+            if result {
+                self.bitCoinLabel.text = String(self.homeViewModel.priceData.price)
+                self.candleChart.delegate = self
+                self.modifyChart()
+                self.activityLoader.stopAnimating()
+            }
+        }
     }
     
     private func bindHomeViewModelErrors() {
@@ -133,12 +131,12 @@ extension HomeViewController: ChartViewDelegate {
     
     private func setShadowHigh(for price: Double) -> Double {
         return price > homeViewModel.previousPrice ? ((price - homeViewModel.previousPrice) / 5) +  price :
-            ((homeViewModel.previousPrice - price) / 5) + homeViewModel.previousPrice
+        ((homeViewModel.previousPrice - price) / 5) + homeViewModel.previousPrice
     }
     
     private func setShadowLow(for price: Double) -> Double {
         return price > homeViewModel.previousPrice ? homeViewModel.previousPrice - ((price - homeViewModel.previousPrice) / 5):
-            price - ((homeViewModel.previousPrice - price) / 5)
+        price - ((homeViewModel.previousPrice - price) / 5)
     }
 }
 

@@ -9,11 +9,11 @@ import UIKit
 
 class BalanceViewController: UIViewController {
     
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var equityLabel: UILabel!
-    @IBOutlet weak var freeMargin: UILabel!
-    @IBOutlet weak var bitcoinLabel: UILabel!
-    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    @IBOutlet private weak var balanceLabel: UILabel!
+    @IBOutlet private weak var equityLabel: UILabel!
+    @IBOutlet private weak var freeMargin: UILabel!
+    @IBOutlet private weak var bitcoinLabel: UILabel!
+    @IBOutlet private weak var activityLoader: UIActivityIndicatorView!
     
     private var balanceViewModel = BalanceViewModel()
     private var timer = Timer()
@@ -42,13 +42,11 @@ class BalanceViewController: UIViewController {
         balanceViewModel.didBalanceViewModelLoad = { result in
             if result {
                 self.balanceViewModel.balanceArray.forEach { accountBalance in
-                    DispatchQueue.main.async {
-                        self.balanceLabel.text = accountBalance.balance
-                        self.equityLabel.text = accountBalance.equity
-                        self.freeMargin.text = accountBalance.freeMargin
-                        self.bitcoinLabel.text = accountBalance.bitcoin
-                        self.activityLoader.stopAnimating()
-                    }
+                    self.balanceLabel.text = accountBalance.balance
+                    self.equityLabel.text = accountBalance.equity
+                    self.freeMargin.text = accountBalance.freeMargin
+                    self.bitcoinLabel.text = accountBalance.bitcoin
+                    self.activityLoader.stopAnimating()
                 }
             }
         }

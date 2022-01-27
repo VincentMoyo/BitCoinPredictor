@@ -7,12 +7,13 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 struct RegisterViewModel {
     
     var didRegisterUserLoad: ((Bool) -> Void)?
     var registerViewModelError: ((Error) -> Void)?
-    let database = DatabaseManager()
+    private var database = DatabaseManager(databaseReference: Firestore.firestore())
     var userInformation = UserInformation()
     
     func registerUser(_ email: String, _ password: String) {

@@ -7,13 +7,14 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class SettingsViewModel {
     
     var didSignOutUserLoad: ((Bool) -> Void)?
     var didLoadUserSetting: ((Bool) -> Void)?
     var signOutViewModelError: ((Error) -> Void)?
-    let database = DatabaseManager()
+    private var database = DatabaseManager(databaseReference: Firestore.firestore())
     var userInformation = UserInformation()
     var userSettingsList: [UserInformationModel] = []
     

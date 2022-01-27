@@ -9,14 +9,14 @@ import UIKit
 
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
-    @IBOutlet weak var firstNameLabel: UIButton!
-    @IBOutlet weak var lastNameLabel: UIButton!
-    @IBOutlet weak var profilePictureImage: UIImageView!
-    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var datePicker: UIDatePicker!
-        
-    var settingsViewModel = SettingsViewModel()
+    @IBOutlet private weak var activityLoader: UIActivityIndicatorView!
+    @IBOutlet private weak var firstNameLabel: UIButton!
+    @IBOutlet private weak var lastNameLabel: UIButton!
+    @IBOutlet private weak var profilePictureImage: UIImageView!
+    @IBOutlet private weak var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var datePicker: UIDatePicker!
+    
+    private var settingsViewModel = SettingsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +40,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         self.present(myPickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        profilePictureImage.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func setFirstNamePressed(_ sender: UIButton) {
         setupProfileNames(firstNameLabel, isFirstName: true)
     }
@@ -62,7 +55,15 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func genderIndexChangedPressed(_ sender: Any) {
-        settingsViewModel.updateGender(genderSegmentedControl.titleForSegment(at: genderSegmentedControl.selectedSegmentIndex)!)
+        guard let selectedGender = genderSegmentedControl.titleForSegment(at: genderSegmentedControl.selectedSegmentIndex) else { return }
+        settingsViewModel.updateGender(selectedGender)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        profilePictureImage.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     private func bindSignOutSettingsViewModel() {
@@ -79,16 +80,14 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     private func bindSettingsViewModel() {
         settingsViewModel.didLoadUserSetting = { result in
             if result {
-                DispatchQueue.main.async {
-                    self.settingsViewModel.userSettingsList.forEach { settings in
-                        self.firstNameLabel.setTitle(settings.firstName, for: .normal)
-                        self.lastNameLabel.setTitle(settings.lastName, for: .normal)
-                        Constants.FormatForDate.dateFormatterGet.dateFormat = Constants.FormatForDate.DateFormate
-                        let dateResult = Constants.FormatForDate.dateFormatterGet.date(from: settings.dateOfBirth)
-                        self.datePicker.setDate(dateResult!, animated: true)
-                    }
-                    self.activityLoader.stopAnimating()
+                self.settingsViewModel.userSettingsList.forEach { settings in
+                    self.firstNameLabel.setTitle(settings.firstName, for: .normal)
+                    self.lastNameLabel.setTitle(settings.lastName, for: .normal)
+                    Constants.FormatForDate.dateFormatterGet.dateFormat = Constants.FormatForDate.DateFormate
+                    guard let dateResult = Constants.FormatForDate.dateFormatterGet.date(from: settings.dateOfBirth) else { return }
+                    self.datePicker.setDate(dateResult, animated: true)
                 }
+                self.activityLoader.stopAnimating()
             }
         }
     }
@@ -107,6 +106,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 }
 
+// MARK: - Alerts
 extension SettingsViewController {
     
     private func setupProfileNames(_ nameLabel: UIButton, isFirstName firstName: Bool) {
@@ -115,10 +115,10 @@ extension SettingsViewController {
         let actions = UIAlertAction(title: "Change", style: .default, handler: { (_) in
             if firstName {
                 nameLabel.setTitle(textField.text, for: .normal)
-                self.settingsViewModel.updateFirstName(textField.text!)
+                self.settingsViewModel.updateFirstName(textField.text ?? "Not Set")
             } else {
                 nameLabel.setTitle(textField.text, for: .normal)
-                self.settingsViewModel.updateLastName(textField.text!)
+                self.settingsViewModel.updateLastName(textField.text ?? "Not Set")
             }
         })
         

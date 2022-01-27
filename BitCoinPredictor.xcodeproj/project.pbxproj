@@ -218,10 +218,10 @@
 			children = (
 				7881AD1F268DF1DB00C319CF /* Info.plist */,
 				78F9755926BA9121003AAE97 /* HomeViewModelTests.swift */,
-				78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */,
 				78F9755D26BA91EB003AAE97 /* ComparisonViewModelTests.swift */,
 				788959C326BC2036003FBD6C /* SettingsViewModelTests.swift */,
 				788959C126BC2032003FBD6C /* LoginViewModelTests.swift */,
+				78F9755B26BA9191003AAE97 /* BalanceViewModelTests.swift */,
 				788959BF26BC202B003FBD6C /* RegisterViewModelTests.swift */,
 				78F9755F26BA9240003AAE97 /* PredictViewModelTests.swift */,
 			);

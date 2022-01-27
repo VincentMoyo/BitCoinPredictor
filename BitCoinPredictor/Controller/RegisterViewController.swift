@@ -9,11 +9,11 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var activityLoader: UIActivityIndicatorView!
     
-    var registerViewModel = RegisterViewModel()
+    private var registerViewModel = RegisterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,8 @@ class RegisterViewController: UIViewController {
     private func bindRegisterViewModel() {
         registerViewModel.didRegisterUserLoad = { result in
             if result {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: Constants.Authentication.kRegisterSegue, sender: self)
-                    self.activityLoader.stopAnimating()
-                }
+                self.performSegue(withIdentifier: Constants.Authentication.kRegisterSegue, sender: self)
+                self.activityLoader.stopAnimating()
             }
         }
     }

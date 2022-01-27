@@ -9,11 +9,11 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var activityLoader: UIActivityIndicatorView!
     
-    var loginViewModel = LoginViewModel()
+    private lazy var loginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,8 @@ class LoginViewController: UIViewController {
     private func bindLoginViewModel() {
         loginViewModel.didAuthenticateUserLoad = { result in
             if result {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: Constants.Authentication.kLoginSegue, sender: self)
-                    self.activityLoader.stopAnimating()
-                }
+                self.performSegue(withIdentifier: Constants.Authentication.kLoginSegue, sender: self)
+                self.activityLoader.stopAnimating()
             }
         }
     }

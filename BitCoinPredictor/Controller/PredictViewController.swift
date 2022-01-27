@@ -11,12 +11,12 @@ class PredictViewController: UIViewController, ErrorReporting, DisplayingSuccess
     
     private var predictViewModel = PredictViewModel()
     
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var predictPriceLabel: UILabel!
-    @IBOutlet weak var tenIncrementButton: UIButton!
-    @IBOutlet weak var hundredIncrementButton: UIButton!
-    @IBOutlet weak var thousandIncrementButton: UIButton!
-    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var predictPriceLabel: UILabel!
+    @IBOutlet private weak var tenIncrementButton: UIButton!
+    @IBOutlet private weak var hundredIncrementButton: UIButton!
+    @IBOutlet private weak var thousandIncrementButton: UIButton!
+    @IBOutlet private weak var activityLoader: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +28,10 @@ class PredictViewController: UIViewController, ErrorReporting, DisplayingSuccess
     private func bindPredictViewModel() {
         predictViewModel.didPredictViewModelLoad = { result in
             if result {
-                DispatchQueue.main.async {
-                    self.priceLabel.text = String(self.predictViewModel.bitcoinPrice.price)
-                    self.predictPriceLabel.text = String(self.predictViewModel.bitcoinPrice.price)
-                    self.predictViewModel.predictedBitcoinPrice.currentPrice = self.predictViewModel.bitcoinPrice.price
-                    self.activityLoader.stopAnimating()
-                }
+                self.priceLabel.text = String(self.predictViewModel.bitcoinPrice.price)
+                self.predictPriceLabel.text = String(self.predictViewModel.bitcoinPrice.price)
+                self.predictViewModel.predictedBitcoinPrice.currentPrice = self.predictViewModel.bitcoinPrice.price
+                self.activityLoader.stopAnimating()
             }
         }
     }

@@ -10,9 +10,13 @@ import FirebaseFirestore
 
 struct DatabaseManager {
     
-    private let database = Firestore.firestore()
+    private let database: Firestore
     var delegateError: ErrorReporting?
     var delegateSuccess: DisplayingSuccessMessage?
+    
+    init(databaseReference: Firestore) {
+        self.database = databaseReference
+    }
     
     // MARK: - Bytecoin Database
     
@@ -35,7 +39,9 @@ struct DatabaseManager {
                         }
                     }
                 }
-                completion(.success(priceList))
+                DispatchQueue.main.async {
+                    completion(.success(priceList))
+                }
             }
     }
     
@@ -64,7 +70,9 @@ struct DatabaseManager {
                             let data = doc.data()
                             if let priceOfByteCoin = data[Constants.Database.PredictedPrice.kPredictedPrice] as? String,
                                let date = data[Constants.Database.PredictedPrice.kPredictedPriceDate] as? String {
+                                DispatchQueue.main.async {
                                 completion(.success((priceOfByteCoin, date)))
+                                }
                             }
                         }
                     }
@@ -112,7 +120,9 @@ struct DatabaseManager {
                         }
                     }
                 }
+                DispatchQueue.main.async {
                 completion(.success(balanceList))
+                }
             }
     }
     
@@ -158,7 +168,9 @@ struct DatabaseManager {
                         }
                     }
                 }
+                DispatchQueue.main.async {
                 completion(.success(userList))
+                }
             }
     }
     

@@ -33,8 +33,8 @@ class NewsTableViewController: UITableViewController {
                     self?.article = headlines.compactMap({
                         Article(
                             newsList: NewsArray(title: $0.title,
-                                               subtile: $0.articleDescription ?? NSLocalizedString("NO_DESCRIPTION", comment: ""),
-                                               imageURL: $0.urlToImage)
+                                                subtile: $0.articleDescription ?? NSLocalizedString("NO_DESCRIPTION", comment: ""),
+                                                imageURL: $0.urlToImage)
                         )
                     })
                     DispatchQueue.main.async {
@@ -51,7 +51,7 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return article.count
+        article.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class PredictViewModel {
     
-    private var database = DatabaseManager()
+    private var database = DatabaseManager(databaseReference: Firestore.firestore())
     private let bitcoinAPI = BitcoinAPI()
     var priceArray: [PriceArrayModel] = []
     var bitcoinPrice = PriceData()

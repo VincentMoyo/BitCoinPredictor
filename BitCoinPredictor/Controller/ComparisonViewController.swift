@@ -37,14 +37,12 @@ class ComparisonViewController: UIViewController {
     private func bindComparisonViewModel() {
         comparisonViewModel.didComparisonViewModelLoad = { result in
             if result {
-                DispatchQueue.main.async {
-                    self.comparisonViewModel.priceData.date = 0
-                    self.actualPriceLabel.text = String(self.comparisonViewModel.priceData.price)
-                    self.predictedPriceLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
-                    self.candleChart.delegate = self
-                    self.modifyChart()
-                    self.activityLoader.stopAnimating()
-                }
+                self.comparisonViewModel.priceData.date = 0
+                self.actualPriceLabel.text = String(self.comparisonViewModel.priceData.price)
+                self.predictedPriceLabel.text = String(self.comparisonViewModel.predictedPriceData.currentPrice)
+                self.candleChart.delegate = self
+                self.modifyChart()
+                self.activityLoader.stopAnimating()
             }
         }
     }
@@ -152,11 +150,11 @@ extension ComparisonViewController: ChartViewDelegate {
     
     private func setShadowHigh(for price: Double) -> Double {
         return price > comparisonViewModel.previousPrice ? ((price - comparisonViewModel.previousPrice) / 5) +  price :
-            ((comparisonViewModel.previousPrice - price) / 5) + comparisonViewModel.previousPrice
+        ((comparisonViewModel.previousPrice - price) / 5) + comparisonViewModel.previousPrice
     }
     
     private func setShadowLow(for price: Double) -> Double {
         return price > comparisonViewModel.previousPrice ? comparisonViewModel.previousPrice - ((price - comparisonViewModel.previousPrice) / 5):
-            price - ((comparisonViewModel.previousPrice - price) / 5)
+        price - ((comparisonViewModel.previousPrice - price) / 5)
     }
 }

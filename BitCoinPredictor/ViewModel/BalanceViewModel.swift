@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class BalanceViewModel {
     
-    private let database = DatabaseManager()
+    private var database = DatabaseManager(databaseReference: Firestore.firestore())
     var predictedPrice = PredictedPriceData()
     var balanceData = BalanceData()
     private lazy var timerSeconds = 0

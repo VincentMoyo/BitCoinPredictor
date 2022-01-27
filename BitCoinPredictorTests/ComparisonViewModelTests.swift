@@ -12,6 +12,11 @@ class ComparisonViewModelTests: XCTestCase {
     
     var comparisonViewModel = ComparisonViewModel()
     
+    func testCheckBitCoin() {
+        let bitcoin = comparisonViewModel.checkBitcoin(1.0, 1000000.0)
+        XCTAssertEqual(bitcoin, 2)
+    }
+    
     func testNegativeCheckBitCoin() {
         let bitcoin = comparisonViewModel.checkBitcoin(-1.0, 1000000.0)
         XCTAssertEqual(bitcoin, 0.0)

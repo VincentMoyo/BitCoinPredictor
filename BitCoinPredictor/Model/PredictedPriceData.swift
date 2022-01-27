@@ -13,7 +13,7 @@ struct PredictedPriceData {
     
     var currentPrice: Double {
         get {
-            return initialPredictedPrice
+            initialPredictedPrice
         }
         set {
             initialPredictedPrice = newValue
@@ -22,7 +22,7 @@ struct PredictedPriceData {
     
     var currentDate: Double {
         get {
-            return initialPredictedDate
+            initialPredictedDate
         }
         set {
             initialPredictedDate = newValue

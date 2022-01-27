@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class ComparisonViewModel {
     
     private let apiClass = BitcoinAPI()
-    private let database = DatabaseManager()
+    private var database = DatabaseManager(databaseReference: Firestore.firestore())
     var balanceData = BalanceData()
     private lazy var timerSeconds = 0
     lazy var predictedPrice = 0.0
@@ -36,12 +37,7 @@ class ComparisonViewModel {
     }
     
     func checkBitcoin (_ bitcoinPrice: Double, _ balance: Double) -> Double {
-        if bitcoinPrice <= 0 {
-            return 0.0
-        } else {
-            return round((balance/bitcoinPrice)*100) / 100
-        }
-       
+        bitcoinPrice <= 0 ? 0.0 : round((balance/bitcoinPrice)*100) / 100
     }
     
     private func checkEquity() {

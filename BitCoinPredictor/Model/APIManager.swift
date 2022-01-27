@@ -11,7 +11,7 @@ struct APIManager {
     
     func getCoinPrice(for currency: String, completion: @escaping (Result<(String), Error>) -> Void) {
         
-        let urlString = "\(Constants.APIS.kBaseURL)/\(currency)?apikey=\(Constants.APIS.kApiKey1)"
+        let urlString = "\(Constants.APIS.kBaseURL)/\(currency)?apikey=\(Constants.APIS.kApiKey7)"
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, _, error) in
@@ -22,7 +22,9 @@ struct APIManager {
                 if let safeData = data {
                     if let bitcoinPrice = self.parseJSON(safeData) {
                         let priceString = String(format: "%.2f", bitcoinPrice)
-                        completion(.success(priceString))
+                        DispatchQueue.main.async {
+                            completion(.success(priceString))
+                        }
                     }
                 }
             }
